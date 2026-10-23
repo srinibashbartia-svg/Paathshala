@@ -1,0 +1,1595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teach 1-on-1 Online with Paathshala | Top Educator Network & Flexible Hours</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: "#f5f6ff",
+              100: "#ebedff",
+              200: "#d6daff",
+              300: "#b4bcff",
+              400: "#8c95ff",
+              500: "#5458F7",
+              600: "#4345d9",
+              700: "#3434b0",
+              800: "#2c2c8c",
+              900: "#272870",
+            },
+            coral: {
+              50: "#fff5f2",
+              500: "#E76F51",
+              600: "#D45B3E",
+            },
+            forest: {
+              50: "#f0fdf4",
+              500: "#059669",
+              600: "#047857",
+            }
+          },
+          fontFamily: {
+            sans: ["Plus Jakarta Sans", "Inter", "system-ui", "sans-serif"],
+            mono: ["JetBrains Mono", "monospace"],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    .font-handwritten {
+      font-family: "Caveat", cursive, sans-serif;
+    }
+
+    body {
+      background-color: #0F172A;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(84, 88, 247, 0.15) 0%, transparent 60%),
+        linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 100% 100%, 32px 32px, 32px 32px;
+      color: #F8FAFC;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      overflow-x: hidden;
+    }
+
+        .card-flat {
+      background: #FFFFFF !important;
+      color: #0F172A !important;
+      border: 2px solid #FFFFFF !important;
+      border-radius: 24px !important;
+      box-shadow: 4px 4px 0px #FFFFFF !important;
+      position: relative !important;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    .card-flat:hover {
+      transform: translate(-2px, -2px) !important;
+      box-shadow: 6px 6px 0px #FFFFFF !important;
+    }
+
+    .card-dark {
+      background: #1E293B !important;
+      color: #FFFFFF !important;
+      border: 2px solid #FFFFFF !important;
+      border-radius: 24px !important;
+      box-shadow: 4px 4px 0px #FFFFFF !important;
+      transition: all 0.2s ease !important;
+    }
+    .card-dark:hover {
+      border-color: #FFFFFF !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 6px 6px 0px #FFFFFF !important;
+    }
+
+    .btn-coral-primary {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      background-color: #E76F51 !important;
+      color: #FFFFFF !important;
+      font-weight: 800 !important;
+      border: 2px solid #FFFFFF !important;
+      border-radius: 16px !important;
+      box-shadow: 4px 4px 0px #FFFFFF !important;
+      transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      cursor: pointer !important;
+      text-decoration: none !important;
+    }
+    .btn-coral-primary:hover {
+      background-color: #D45B3E !important;
+      transform: translate(-2px, -2px) !important;
+      box-shadow: 6px 6px 0px #FFFFFF !important;
+    }
+
+    .btn-emerald {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      background-color: #059669 !important;
+      color: #FFFFFF !important;
+      font-weight: 800 !important;
+      border: 2px solid #FFFFFF !important;
+      border-radius: 16px !important;
+      box-shadow: 4px 4px 0px #FFFFFF !important;
+      transition: all 0.15s ease !important;
+    }
+    .btn-emerald:hover {
+      background-color: #047857 !important;
+      transform: translate(-2px, -2px) !important;
+      box-shadow: 6px 6px 0px #FFFFFF !important;
+    }
+
+    #scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 4px;
+      background: linear-gradient(90deg, #5458F7, #E76F51, #5a5ff6);
+      z-index: 9999;
+    }
+
+    .fade-in-section {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-in-section.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-[#E76F51] selection:text-white">
+  
+  <div id="scroll-progress"></div>
+
+  <!-- ================= 1. STICKY NAVBAR ================= -->
+  <header class="relative z-50 bg-[#0F172A] text-white border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      
+      <!-- Brand & Badge -->
+      <div class="flex items-center gap-3 shrink-0">
+        <a href="/" class="flex items-center gap-2.5 group shrink-0 whitespace-nowrap">
+          <div class="w-10 h-10 rounded-full bg-white border-2 border-white p-1 shadow-[2px_2px_0px_#FFFFFF] flex items-center justify-center shrink-0 group-hover:-translate-y-0.5 transition-all overflow-hidden">
+            <img src="/images/new-logo-emblem.svg" alt="Paathshala Logo" class="w-full h-full object-contain" />
+          </div>
+          <span class="font-black text-xl tracking-tight text-white group-hover:text-[#5458F7] transition-colors whitespace-nowrap">Paathshala<span class="text-[#E76F51]">.</span></span>
+        </a>
+      </div>
+
+      <!-- Nav Links -->
+      <nav class="hidden lg:flex items-center gap-4 xl:gap-6 text-sm font-extrabold text-slate-300 whitespace-nowrap">
+        <a href="#why-teach" class="hover:text-[#E76F51] transition-colors whitespace-nowrap">Why Teach With Us</a>
+        <a href="#calculator" class="hover:text-[#E76F51] transition-colors whitespace-nowrap">Earnings Calculator</a>
+        <a href="#how-it-works" class="hover:text-[#E76F51] transition-colors whitespace-nowrap">3-Step Onboarding</a>
+        <a href="#testimonials" class="hover:text-[#E76F51] transition-colors whitespace-nowrap">Teacher Stories</a>
+        <a href="#faq" class="hover:text-[#E76F51] transition-colors whitespace-nowrap">FAQs</a>
+      </nav>
+
+      <!-- CTA Button -->
+      <div class="flex items-center gap-3 shrink-0">
+        <a href="#apply-form" class="btn-coral-primary px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-extrabold gap-1.5 whitespace-nowrap shrink-0">
+          <span>Apply to Teach</span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= 2. HERO SECTION ================= -->
+  <section class="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 text-center relative z-10">
+      
+      <!-- Top Tag -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-xs sm:text-sm font-bold mb-6">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+        Hiring Subject Experts for CBSE, ICSE & Coding
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-[1.15] mb-6 max-w-4xl mx-auto">
+        Teach 1-on-1 Online.<br class="hidden sm:inline" />
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#5a5ff6] via-[#8c95ff] to-[#b4bcff]">Earn ₹40k - ₹85k/Month</span> from Home.
+      </h1>
+
+      <p class="text-base sm:text-xl text-slate-300 max-w-2xl mx-auto font-medium mb-10 leading-relaxed">
+        Join 500+ passionate educators, IITians, and board exam specialists taking personalized live 1-on-1 sessions. Zero commute, flexible schedules, and verified students.
+      </p>
+
+      
+    
+    
+
+      
+    
+    
+
+      
+    
+    
+
+      
+    
+    
+
+      
+    <!-- ================= MULTI-STEP INTERACTIVE HERO WIZARD ================= -->
+    <div class="w-full max-w-2xl mx-auto my-6 px-2 sm:px-0 relative z-30 text-left">
+      <div class="card-flat p-4 sm:p-6 bg-white text-slate-900 border-2 border-[#18181B] rounded-3xl shadow-[6px_6px_0px_#18181B] relative overflow-hidden">
+        
+        <!-- Top Bar: Step Indicators -->
+        <div class="flex items-center justify-between pb-3 mb-4 border-b-2 border-slate-100">
+          <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#5458F7]/10 text-[#5458F7] font-mono text-xs font-black">
+            <span>💼 60-SECOND TEACHER APPLICATION WIZARD</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div id="step-pill-1-teachers" class="w-7 h-7 rounded-full flex items-center justify-center font-mono text-xs font-black bg-[#5458F7] text-white border border-[#18181B] shadow-[1px_1px_0px_#18181B]">1</div>
+            <div class="w-4 h-0.5 bg-slate-300"></div>
+            <div id="step-pill-2-teachers" class="w-7 h-7 rounded-full flex items-center justify-center font-mono text-xs font-black bg-slate-100 text-slate-500 border border-slate-300">2</div>
+            <div class="w-4 h-0.5 bg-slate-300"></div>
+            <div id="step-pill-3-teachers" class="w-7 h-7 rounded-full flex items-center justify-center font-mono text-xs font-black bg-slate-100 text-slate-500 border border-slate-300">✓</div>
+          </div>
+        </div>
+
+        <!-- ================= STEP 1 ================= -->
+        <div id="hero-step-1-teachers" class="space-y-3 transition-all duration-300">
+          <h4 class="text-base sm:text-lg font-black text-slate-900 tracking-tight">
+            Step 1 of 2: What is your primary teaching background?
+          </h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+            
+        <button type="button" onclick="selectHeroStep1('teachers', 'school_teacher')" class="group p-3.5 sm:p-4 rounded-2xl border-2 border-[#18181B] bg-slate-50 hover:bg-[#5458F7] hover:text-white transition-all text-left flex items-center justify-between shadow-[2px_2px_0px_#18181B] hover:shadow-[3px_3px_0px_#18181B] cursor-pointer w-full">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">👩‍🏫</span>
+            <div>
+              <div class="font-black text-sm text-slate-900 group-hover:text-white">School / College Teacher</div>
+              <div class="text-xs text-slate-600 group-hover:text-indigo-100 font-medium">Currently teaching or retired educator</div>
+            </div>
+          </div>
+          <span class="font-mono text-xs font-black text-slate-400 group-hover:text-white">➔</span>
+        </button>
+        <button type="button" onclick="selectHeroStep1('teachers', 'professional_tutor')" class="group p-3.5 sm:p-4 rounded-2xl border-2 border-[#18181B] bg-slate-50 hover:bg-[#5458F7] hover:text-white transition-all text-left flex items-center justify-between shadow-[2px_2px_0px_#18181B] hover:shadow-[3px_3px_0px_#18181B] cursor-pointer w-full">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">🎓</span>
+            <div>
+              <div class="font-black text-sm text-slate-900 group-hover:text-white">Professional Private Tutor</div>
+              <div class="text-xs text-slate-600 group-hover:text-indigo-100 font-medium">Experienced in 1-on-1 / small batch coaching</div>
+            </div>
+          </div>
+          <span class="font-mono text-xs font-black text-slate-400 group-hover:text-white">➔</span>
+        </button>
+        <button type="button" onclick="selectHeroStep1('teachers', 'stem_grad')" class="group p-3.5 sm:p-4 rounded-2xl border-2 border-[#18181B] bg-slate-50 hover:bg-[#5458F7] hover:text-white transition-all text-left flex items-center justify-between shadow-[2px_2px_0px_#18181B] hover:shadow-[3px_3px_0px_#18181B] cursor-pointer w-full">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">🔬</span>
+            <div>
+              <div class="font-black text-sm text-slate-900 group-hover:text-white">IIT / B.Tech / STEM Graduate</div>
+              <div class="text-xs text-slate-600 group-hover:text-indigo-100 font-medium">Strong subject mastery in Maths, Science or Coding</div>
+            </div>
+          </div>
+          <span class="font-mono text-xs font-black text-slate-400 group-hover:text-white">➔</span>
+        </button>
+        <button type="button" onclick="selectHeroStep1('teachers', 'side_hustle')" class="group p-3.5 sm:p-4 rounded-2xl border-2 border-[#18181B] bg-slate-50 hover:bg-[#5458F7] hover:text-white transition-all text-left flex items-center justify-between shadow-[2px_2px_0px_#18181B] hover:shadow-[3px_3px_0px_#18181B] cursor-pointer w-full">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">⚡</span>
+            <div>
+              <div class="font-black text-sm text-slate-900 group-hover:text-white">Working Professional / Freelancer</div>
+              <div class="text-xs text-slate-600 group-hover:text-indigo-100 font-medium">Looking for flexible high-paying evening side income</div>
+            </div>
+          </div>
+          <span class="font-mono text-xs font-black text-slate-400 group-hover:text-white">➔</span>
+        </button>
+          </div>
+        </div>
+
+        <!-- ================= STEP 2 ================= -->
+        <div id="hero-step-2-teachers" class="space-y-3 transition-all duration-300 hidden">
+          <div class="flex items-center justify-between">
+            <h4 class="text-base sm:text-lg font-black text-slate-900 tracking-tight">
+              Step 2 of 2: What subjects do you want to teach?
+            </h4>
+            <button type="button" onclick="backHeroStep('teachers', 1)" class="text-xs font-mono font-bold text-slate-500 hover:text-slate-900 underline cursor-pointer">
+              ← Back
+            </button>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+            
+        <button type="button" onclick="selectHeroStep2('teachers', 'cbse_maths_sci')" class="group p-3.5 sm:p-4 rounded-2xl border-2 border-[#18181B] bg-slate-50 hover:bg-emerald-500 hover:text-slate-950 transition-all text-left flex items-center justify-between shadow-[2px_2px_0px_#18181B] hover:shadow-[3px_3px_0px_#18181B] cursor-pointer w-full">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">📐</span>
+            <div>
+              <div class="font-black text-sm text-slate-900 group-hover:text-slate-950">CBSE / ICSE Maths & Science (Grades 6–10)</div>
+              <div class="inline-block mt-0.5 px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-white/80 text-slate-800 border border-[#18181B]">High Demand</div>
+            </div>
+          </div>
+          <span class="font-mono text-xs font-black text-slate-400 group-hover:text-slate-950">➔</span>
+        </button>
+        <button type="button" onclick="selectHeroStep2('teachers', 'senior_pcm_neet')" class="group p-3.5 sm:p-4 rounded-2xl border-2 border-[#18181B] bg-slate-50 hover:bg-emerald-500 hover:text-slate-950 transition-all text-left flex items-center justify-between shadow-[2px_2px_0px_#18181B] hover:shadow-[3px_3px_0px_#18181B] cursor-pointer w-full">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">⚡</span>
+            <div>
+              <div class="font-black text-sm text-slate-900 group-hover:text-slate-950">Senior 11/12 PCM / PCB / JEE / NEET</div>
+              <div class="inline-block mt-0.5 px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-white/80 text-slate-800 border border-[#18181B]">Premium ₹/Hr</div>
+            </div>
+          </div>
+          <span class="font-mono text-xs font-black text-slate-400 group-hover:text-slate-950">➔</span>
+        </button>
+        <button type="button" onclick="selectHeroStep2('teachers', 'coding_python_ai')" class="group p-3.5 sm:p-4 rounded-2xl border-2 border-[#18181B] bg-slate-50 hover:bg-emerald-500 hover:text-slate-950 transition-all text-left flex items-center justify-between shadow-[2px_2px_0px_#18181B] hover:shadow-[3px_3px_0px_#18181B] cursor-pointer w-full">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">💻</span>
+            <div>
+              <div class="font-black text-sm text-slate-900 group-hover:text-slate-950">Coding, Python, AI & Game Dev</div>
+              <div class="inline-block mt-0.5 px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-white/80 text-slate-800 border border-[#18181B]">High Demand</div>
+            </div>
+          </div>
+          <span class="font-mono text-xs font-black text-slate-400 group-hover:text-slate-950">➔</span>
+        </button>
+        <button type="button" onclick="selectHeroStep2('teachers', 'primary_maths')" class="group p-3.5 sm:p-4 rounded-2xl border-2 border-[#18181B] bg-slate-50 hover:bg-emerald-500 hover:text-slate-950 transition-all text-left flex items-center justify-between shadow-[2px_2px_0px_#18181B] hover:shadow-[3px_3px_0px_#18181B] cursor-pointer w-full">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">🧮</span>
+            <div>
+              <div class="font-black text-sm text-slate-900 group-hover:text-slate-950">Primary / Middle Foundations</div>
+              <div class="inline-block mt-0.5 px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-white/80 text-slate-800 border border-[#18181B]">Flexible Hours</div>
+            </div>
+          </div>
+          <span class="font-mono text-xs font-black text-slate-400 group-hover:text-slate-950">➔</span>
+        </button>
+          </div>
+        </div>
+
+        <!-- ================= STEP 3: MATCHED MENTOR ================= -->
+        <div id="hero-step-3-teachers" class="space-y-4 transition-all duration-300 hidden">
+          <div class="flex items-center justify-between">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 font-mono text-xs font-black border border-emerald-300">
+              <span>🎉 MATCH FOUND • TOP 1.4% MENTOR</span>
+            </div>
+            <button type="button" onclick="backHeroStep('teachers', 2)" class="text-xs font-mono font-bold text-slate-500 hover:text-slate-900 underline cursor-pointer">
+              Change Selection
+            </button>
+          </div>
+
+          <!-- Matched Mentor Card -->
+          <div class="p-4 rounded-2xl bg-gradient-to-br from-indigo-50/80 via-white to-emerald-50/60 border-2 border-[#18181B] shadow-[3px_3px_0px_#18181B]">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-200">
+              <div class="flex items-center gap-3">
+                <div id="mentor-avatar-teachers" class="w-12 h-12 rounded-2xl bg-[#5458F7] text-white flex items-center justify-center text-2xl border-2 border-[#18181B] shadow-[2px_2px_0px_#18181B]">
+                  👨‍🏫
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span id="mentor-name-teachers" class="font-black text-base text-slate-900">Arjun Verma</span>
+                    <span id="mentor-tag-teachers" class="px-2 py-0.5 rounded text-[10px] font-mono font-black bg-[#FEF08A] text-slate-900 border border-[#18181B]">CBSE Specialist</span>
+                  </div>
+                  <div id="mentor-role-teachers" class="text-xs font-bold text-[#5458F7]">IIT Delhi B.Tech • 500+ Board Toppers</div>
+                </div>
+              </div>
+              <div class="text-right sm:text-right flex sm:flex-col items-center sm:items-end justify-between">
+                <span id="mentor-rating-teachers" class="text-xs font-mono font-black text-amber-600 bg-amber-50 px-2 py-1 rounded border border-amber-200">4.98 ★ (450+ Reviews)</span>
+                <span id="mentor-exp-teachers" class="text-[11px] font-mono font-bold text-slate-500 mt-0.5">8+ Years Experience</span>
+              </div>
+            </div>
+
+            <p id="mentor-highlight-teachers" class="text-xs text-slate-700 font-medium mt-3 leading-relaxed">
+              Eliminates calculation slips and master NCERT Exemplar & CBSE standard proofs with 1-on-1 scaffolding.
+            </p>
+          </div>
+
+          <!-- Final Booking CTA Button -->
+          <div class="pt-1">
+            <button onclick="document.getElementById('teacher-apply-modal') ? document.getElementById('teacher-apply-modal').classList.remove('hidden') : window.location.href='/teach-with-us'" class="btn-coral-primary w-full py-3.5 text-sm sm:text-base font-black shadow-[4px_4px_0px_#18181B] hover:shadow-[5px_5px_0px_#18181B] transition-all flex items-center justify-center gap-2 cursor-pointer">
+              <span>Apply to Teach ➔</span>
+            </button>
+            <div class="flex items-center justify-center gap-4 mt-2 text-[11px] font-mono text-slate-500">
+              <span>🔒 100% Free Trial</span>
+              <span>•</span>
+              <span>⚡ No Credit Card Required</span>
+              <span>•</span>
+              <span>⏱️ 45-Min Live Session</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <script>
+      var mentorsData_teachers = {"cbse_maths_sci": {"name": "Pooja Sharma", "role": "M.Sc. Maths \u2022 Ex-DPS Teacher \u2022 Paathshala Mentor", "rating": "Earns \u20b945,000/mo Part-Time", "exp": "Teaches 15 Hours / Week", "highlight": "\"Paathshala manages all student bookings, parent communication, and instant weekly payouts. I just teach pure 1-on-1 from my home setup.\"", "avatar": "\ud83d\udc69\u200d\ud83c\udfeb", "tag": "Active Educator"}, "senior_pcm_neet": {"name": "Er. Aman Singhal", "role": "IIT Kanpur \u2022 Senior Physics Mentor", "rating": "Earns \u20b975,000/mo Part-Time", "exp": "Teaches 20 Hours / Week", "highlight": "\"The caliber of students is phenomenal. Because it is strict 1-on-1, every class is deeply fulfilling and intellectually engaging.\"", "avatar": "\ud83d\udc68\u200d\ud83c\udfeb", "tag": "Senior PCM Mentor"}, "coding_python_ai": {"name": "Karthik Raman", "role": "Senior Software Architect \u2022 AI Mentor", "rating": "Earns \u20b960,000/mo Evenings", "exp": "Teaches 12 Hours / Week", "highlight": "\"I teach Python and AI in the evenings after my tech day job. Paathshala gives me complete schedule flexibility and timely payments.\"", "avatar": "\ud83d\udc68\u200d\ud83d\udcbb", "tag": "Tech Mentor"}, "primary_maths": {"name": "Neha Agarwal", "role": "B.Ed. \u2022 Early Math Specialist", "rating": "Earns \u20b935,000/mo Flexible", "exp": "Teaches 10 Hours / Week", "highlight": "\"Zero admin hassle. No chasing parents for fee payments. Every session is tracked automatically on the platform.\"", "avatar": "\ud83d\udc69\u200d\ud83c\udfeb", "tag": "Foundations Mentor"}};
+      var selectedStep1_teachers = null;
+
+      function selectHeroStep1(catId, choiceId) {
+        selectedStep1_teachers = choiceId;
+        document.getElementById('hero-step-1-' + catId).classList.add('hidden');
+        document.getElementById('hero-step-2-' + catId).classList.remove('hidden');
+        document.getElementById('step-pill-2-' + catId).className = 'w-7 h-7 rounded-full flex items-center justify-center font-mono text-xs font-black bg-[#5458F7] text-white border border-[#18181B] shadow-[1px_1px_0px_#18181B]';
+      }
+
+      function selectHeroStep2(catId, subjectId) {
+        document.getElementById('hero-step-2-' + catId).classList.add('hidden');
+        document.getElementById('hero-step-3-' + catId).classList.remove('hidden');
+        document.getElementById('step-pill-3-' + catId).className = 'w-7 h-7 rounded-full flex items-center justify-center font-mono text-xs font-black bg-emerald-500 text-slate-950 border border-[#18181B] shadow-[1px_1px_0px_#18181B]';
+
+        var mentor = mentorsData_teachers[subjectId] || Object.values(mentorsData_teachers)[0];
+        if (mentor) {
+          document.getElementById('mentor-name-' + catId).textContent = mentor.name;
+          document.getElementById('mentor-role-' + catId).textContent = mentor.role;
+          document.getElementById('mentor-rating-' + catId).textContent = mentor.rating;
+          document.getElementById('mentor-exp-' + catId).textContent = mentor.exp;
+          document.getElementById('mentor-highlight-' + catId).textContent = mentor.highlight;
+          document.getElementById('mentor-avatar-' + catId).textContent = mentor.avatar;
+          document.getElementById('mentor-tag-' + catId).textContent = mentor.tag;
+        }
+      }
+
+      function backHeroStep(catId, toStep) {
+        if (toStep === 1) {
+          document.getElementById('hero-step-2-' + catId).classList.add('hidden');
+          document.getElementById('hero-step-1-' + catId).classList.remove('hidden');
+          document.getElementById('step-pill-2-' + catId).className = 'w-7 h-7 rounded-full flex items-center justify-center font-mono text-xs font-black bg-slate-100 text-slate-500 border border-slate-300';
+        } else if (toStep === 2) {
+          document.getElementById('hero-step-3-' + catId).classList.add('hidden');
+          document.getElementById('hero-step-2-' + catId).classList.remove('hidden');
+          document.getElementById('step-pill-3-' + catId).className = 'w-7 h-7 rounded-full flex items-center justify-center font-mono text-xs font-black bg-slate-100 text-slate-500 border border-slate-300';
+        }
+      }
+    </script>
+    
+
+      <!-- Hero Actions -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+        <a href="#apply-form" class="btn-coral-primary w-full sm:w-auto px-8 py-4 text-base font-black gap-2 shadow-[4px_4px_0px_#FFFFFF]">
+          <span>Apply in 2 Minutes</span>
+          <span>→</span>
+        </a>
+        <a href="#calculator" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-slate-800/90 hover:bg-slate-700 text-white font-extrabold border-2 border-white shadow-[4px_4px_0px_#FFFFFF] hover:shadow-[6px_6px_0px_#FFFFFF] text-sm sm:text-base transition-all flex items-center justify-center gap-2">
+          <i data-lucide="calculator" class="w-5 h-5 text-emerald-400"></i>
+          <span>Calculate Your Earnings</span>
+        </a>
+      </div>
+
+      <!-- Trust Badges Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-left">
+        <div class="p-4 rounded-2xl bg-slate-800/80 border-2 border-white shadow-[3px_3px_0px_#FFFFFF] backdrop-blur-sm">
+          <div class="text-emerald-400 font-black text-2xl sm:text-3xl font-mono">100%</div>
+          <div class="text-xs sm:text-sm font-bold text-slate-300 mt-1">Live 1-on-1 Classes</div>
+          <div class="text-[11px] text-slate-400">No chaotic 50-student batches</div>
+        </div>
+        <div class="p-4 rounded-2xl bg-slate-800/80 border-2 border-white shadow-[3px_3px_0px_#FFFFFF] backdrop-blur-sm">
+          <div class="text-[#5458F7] font-black text-2xl sm:text-3xl font-mono">1st of Month</div>
+          <div class="text-xs sm:text-sm font-bold text-slate-300 mt-1">Guaranteed Payouts</div>
+          <div class="text-[11px] text-slate-400">Direct bank transfer every month</div>
+        </div>
+        <div class="p-4 rounded-2xl bg-slate-800/80 border-2 border-white shadow-[3px_3px_0px_#FFFFFF] backdrop-blur-sm">
+          <div class="text-amber-400 font-black text-2xl sm:text-3xl font-mono">Flexible</div>
+          <div class="text-xs sm:text-sm font-bold text-slate-300 mt-1">Choose Your Hours</div>
+          <div class="text-[11px] text-slate-400">5 to 30 hours per week</div>
+        </div>
+        <div class="p-4 rounded-2xl bg-slate-800/80 border-2 border-white shadow-[3px_3px_0px_#FFFFFF] backdrop-blur-sm">
+          <div class="text-[#E76F51] font-black text-2xl sm:text-3xl font-mono">Ready Kit</div>
+          <div class="text-xs sm:text-sm font-bold text-slate-300 mt-1">Teaching Materials</div>
+          <div class="text-[11px] text-slate-400">Question banks & tools provided</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 3. EARNINGS CALCULATOR ================= -->
+  <section id="calculator" class="py-16 md:py-24 bg-transparent border-y border-slate-800 fade-in-section">
+    <div class="max-w-4xl mx-auto px-4">
+      
+      <div class="text-center mb-12">
+        <span class="px-3.5 py-1 rounded-full bg-[#5458F7]/20 border border-[#5458F7]/40 text-[#8c95ff] font-mono text-xs font-bold uppercase tracking-widest">
+          Transparent Compensation
+        </span>
+        <h2 class="text-2xl sm:text-4xl font-black text-white mt-3">Interactive Monthly Earnings Estimator</h2>
+        <p class="text-slate-400 text-sm sm:text-base mt-2">See how much you can earn based on your weekly availability and teaching domain.</p>
+      </div>
+
+      <div class="card-flat p-6 sm:p-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          
+          <!-- Controls -->
+          <div class="space-y-6">
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <label class="font-extrabold text-slate-900 text-sm">Weekly Teaching Hours</label>
+                <span id="hours-display" class="font-mono font-black text-emerald-600 bg-emerald-50 px-3 py-1 rounded-lg border border-emerald-200 text-sm">15 Hours / Week</span>
+              </div>
+              <input type="range" id="hours-range" min="5" max="35" value="15" step="1" 
+                     class="w-full h-3 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#059669]" />
+              <div class="flex justify-between text-[11px] text-slate-500 font-mono mt-1">
+                <span>5 hrs (Part-time)</span>
+                <span>20 hrs</span>
+                <span>35 hrs (Full-time)</span>
+              </div>
+            </div>
+
+            <div>
+              <label class="block font-extrabold text-slate-900 text-sm mb-2">Select Domain & Grade Level</label>
+              <div class="grid grid-cols-2 gap-2.5">
+                <button type="button" onclick="setSubjectTier(650, this)" class="tier-btn active px-3 py-2.5 rounded-xl border-2 border-emerald-600 bg-emerald-50 text-emerald-950 font-bold text-xs text-left transition-all">
+                  <div class="font-extrabold">Maths / Science</div>
+                  <div class="text-[11px] text-slate-600">Class 6 to 10 (CBSE/ICSE)</div>
+                </button>
+                <button type="button" onclick="setSubjectTier(800, this)" class="tier-btn px-3 py-2.5 rounded-xl border-2 border-slate-300 bg-white text-slate-900 font-bold text-xs text-left hover:border-slate-400 transition-all">
+                  <div class="font-extrabold">Coding & AI for Kids</div>
+                  <div class="text-[11px] text-slate-600">Python, Pygame, AI Labs</div>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Calculated Output Card -->
+          <div class="bg-slate-950 rounded-2xl p-6 sm:p-8 text-white border-2 border-white text-center shadow-[4px_4px_0px_#FFFFFF]">
+            <div class="text-xs uppercase font-mono text-slate-400 font-bold tracking-wider">Estimated Monthly Earnings</div>
+            <div id="payout-result" class="text-4xl sm:text-5xl font-black text-emerald-400 font-mono my-3">
+              ₹39,000
+            </div>
+            <div class="text-xs text-slate-400 mb-6">
+              *Based on 4.3 weeks/month + student milestone bonuses. Direct payout on the 1st of every month.
+            </div>
+            <a href="#apply-form" class="btn-emerald w-full py-3 text-sm font-black gap-2">
+              <span>Start Earning With Us</span>
+              <span>→</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 4. WHY TEACH WITH PAATHSHALA ================= -->
+  <section id="why-teach" class="py-16 md:py-24 max-w-6xl mx-auto px-4 fade-in-section">
+    <div class="text-center mb-16">
+      <span class="px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-xs font-bold uppercase tracking-widest">
+        The Paathshala Difference
+      </span>
+      <h2 class="text-2xl sm:text-4xl font-black text-white mt-3">Designed for Teachers Who Care About Impact</h2>
+      <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-2xl mx-auto">We take care of parent operations, scheduling, and billing so you can focus 100% on pure teaching.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <div class="card-dark p-6 sm:p-8">
+        <div class="w-12 h-12 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 mb-5">
+          <i data-lucide="user-check" class="w-6 h-6"></i>
+        </div>
+        <h3 class="text-lg font-black text-white mb-2">Dedicated 1-on-1 Attention</h3>
+        <p class="text-slate-300 text-sm leading-relaxed">
+          Teach one student at a time. No crowd management or answering 100 unmuted mics. Experience the joy of truly transforming a child's academic confidence.
+        </p>
+      </div>
+
+      <div class="card-dark p-6 sm:p-8">
+        <div class="w-12 h-12 rounded-xl bg-[#5458F7]/20 border border-[#5458F7]/40 flex items-center justify-center text-[#8c95ff] mb-5">
+          <i data-lucide="book-open-check" class="w-6 h-6"></i>
+        </div>
+        <h3 class="text-lg font-black text-white mb-2">Ready Question Banks & Tools</h3>
+        <p class="text-slate-300 text-sm leading-relaxed">
+          Get curated NCERT, ICSE, and exemplar problem sets, chapter summaries, and an interactive digital whiteboard so lesson preparation takes minutes.
+        </p>
+      </div>
+
+      <div class="card-dark p-6 sm:p-8">
+        <div class="w-12 h-12 rounded-xl bg-[#E76F51]/20 border border-[#E76F51]/40 flex items-center justify-center text-[#E76F51] mb-5">
+          <i data-lucide="message-square-text" class="w-6 h-6"></i>
+        </div>
+        <h3 class="text-lg font-black text-white mb-2">Automated Parent Updates</h3>
+        <p class="text-slate-300 text-sm leading-relaxed">
+          Fill a quick 1-minute summary after class. Our system formats and delivers monthly progress reports to parents automatically.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 5. 3-STEP ONBOARDING ================= -->
+  <section id="how-it-works" class="py-16 md:py-24 bg-transparent border-t border-slate-800 fade-in-section">
+    <div class="max-w-5xl mx-auto px-4">
+      
+      <div class="text-center mb-14">
+        <h2 class="text-2xl sm:text-4xl font-black text-white">How to Become a Paathshala Educator</h2>
+        <p class="text-slate-400 text-sm sm:text-base mt-2">Simple, transparent 3-step evaluation to join our elite 1.4% educator faculty.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+        
+        <div class="card-flat p-6 relative">
+          <div class="w-8 h-8 rounded-full bg-slate-900 text-white font-mono font-black text-sm flex items-center justify-center mb-4">1</div>
+          <h3 class="font-black text-lg text-slate-900 mb-2">Submit Application</h3>
+          <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+            Fill out the 2-minute form below with your academic background, subject expertise, and weekly availability.
+          </p>
+        </div>
+
+        <div class="card-flat p-6 relative">
+          <div class="w-8 h-8 rounded-full bg-[#5458F7] text-white font-mono font-black text-sm flex items-center justify-center mb-4">2</div>
+          <h3 class="font-black text-lg text-slate-900 mb-2">15-Min Live Demo</h3>
+          <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+            Deliver a short 15-minute mock concept explanation to our academic team to assess pedagogical clarity and empathy.
+          </p>
+        </div>
+
+        <div class="card-flat p-6 relative">
+          <div class="w-8 h-8 rounded-full bg-emerald-600 text-white font-mono font-black text-sm flex items-center justify-center mb-4">3</div>
+          <h3 class="font-black text-lg text-slate-900 mb-2">Match & Start Teaching</h3>
+          <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+            Get matched with verified 1-on-1 students looking for your subject expertise. Start taking classes and earn from home.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 6. TEACHER TESTIMONIALS ================= -->
+  <section id="testimonials" class="py-16 md:py-24 max-w-6xl mx-auto px-4 fade-in-section">
+    <div class="text-center mb-14">
+      <span class="px-3.5 py-1 rounded-full bg-[#E76F51]/10 border border-[#E76F51]/30 text-[#E76F51] font-mono text-xs font-bold uppercase tracking-widest">
+        Faculty Voices
+      </span>
+      <h2 class="text-2xl sm:text-4xl font-black text-white mt-3">What Our Tutors Say</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <div class="card-flat p-6 flex flex-col justify-between">
+        <p class="text-slate-700 text-sm italic mb-6">
+          "Teaching 1-on-1 on Paathshala gives me the freedom to tailor lessons to how each student thinks. The timely 1st of month payouts and ready question banks make it hassle-free."
+        </p>
+        <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+          <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-800 font-black flex items-center justify-center font-mono text-sm">
+            AS
+          </div>
+          <div>
+            <div class="font-extrabold text-slate-900 text-sm">Ananya Sharma</div>
+            <div class="text-xs text-slate-500">ICSE Maths Tutor • Ex-BITS Pilani</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-flat p-6 flex flex-col justify-between">
+        <p class="text-slate-700 text-sm italic mb-6">
+          "I take 15 hours of classes a week after my daytime schedule. The students are motivated and parents really appreciate the structured monthly progress reports."
+        </p>
+        <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+          <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-800 font-black flex items-center justify-center font-mono text-sm">
+            RK
+          </div>
+          <div>
+            <div class="font-extrabold text-slate-900 text-sm">Rohit Kulkarni</div>
+            <div class="text-xs text-slate-500">CBSE Physics & Maths Expert • 4+ Yrs Exp</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-flat p-6 flex flex-col justify-between">
+        <p class="text-slate-700 text-sm italic mb-6">
+          "The interactive code runner and structured curriculum let kids build games in Python right in their first month. Best teaching environment I've worked with."
+        </p>
+        <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+          <div class="w-10 h-10 rounded-full bg-purple-100 text-purple-800 font-black flex items-center justify-center font-mono text-sm">
+            NM
+          </div>
+          <div>
+            <div class="font-extrabold text-slate-900 text-sm">Neha Mukherjee</div>
+            <div class="text-xs text-slate-500">Kids Coding & AI Mentor • B.Tech CSE</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 7. APPLICATION FORM ================= -->
+  <section id="apply-form" class="py-16 md:py-24 bg-transparent border-t border-slate-800 fade-in-section">
+    <div class="max-w-3xl mx-auto px-4">
+      
+      <div class="card-flat p-6 sm:p-10">
+        <div class="text-center mb-8">
+          <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-mono font-bold">2-MINUTE APPLICATION</span>
+          <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-2">Apply to Teach with Paathshala</h2>
+          <p class="text-slate-600 text-xs sm:text-sm mt-1">Our academic recruitment team will review your application and schedule a 15-min demo within 24 hours.</p>
+        </div>
+
+        <form id="tutor-application-form" onsubmit="handleTutorSubmit(event)" class="space-y-4">
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-black text-slate-700 uppercase tracking-wider mb-1">Full Name *</label>
+              <input type="text" required placeholder="e.g. Priya Sharma" class="w-full px-4 py-3 rounded-xl border-2 border-slate-300 focus:border-[#5458F7] outline-none text-sm font-medium" />
+            </div>
+            <div>
+              <label class="block text-xs font-black text-slate-700 uppercase tracking-wider mb-1">WhatsApp Phone Number *</label>
+              <input type="tel" required placeholder="+91 98765 43210" class="w-full px-4 py-3 rounded-xl border-2 border-slate-300 focus:border-[#5458F7] outline-none text-sm font-medium" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-black text-slate-700 uppercase tracking-wider mb-1">Email Address *</label>
+              <input type="email" required placeholder="priya@example.com" class="w-full px-4 py-3 rounded-xl border-2 border-slate-300 focus:border-[#5458F7] outline-none text-sm font-medium" />
+            </div>
+            <div>
+              <label class="block text-xs font-black text-slate-700 uppercase tracking-wider mb-1">Highest Qualification / College *</label>
+              <input type="text" required placeholder="e.g. B.Tech / M.Sc Mathematics" class="w-full px-4 py-3 rounded-xl border-2 border-slate-300 focus:border-[#5458F7] outline-none text-sm font-medium" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-black text-slate-700 uppercase tracking-wider mb-1">Primary Teaching Subject *</label>
+              <select required class="w-full px-4 py-3 rounded-xl border-2 border-slate-300 focus:border-[#5458F7] outline-none text-sm font-bold bg-white">
+                <option value="">Select Primary Subject</option>
+                <option value="maths">Mathematics (CBSE / ICSE)</option>
+                <option value="science">Science / Physics / Chemistry</option>
+                <option value="coding">Coding & AI for Kids (Python/Scratch)</option>
+                <option value="english">English Language & Literature</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-black text-slate-700 uppercase tracking-wider mb-1">Weekly Availability *</label>
+              <select required class="w-full px-4 py-3 rounded-xl border-2 border-slate-300 focus:border-[#5458F7] outline-none text-sm font-bold bg-white">
+                <option value="">Select Weekly Hours</option>
+                <option value="5-10">5 - 10 Hours / Week</option>
+                <option value="10-20">10 - 20 Hours / Week</option>
+                <option value="20+">20+ Hours / Week (Full Commitment)</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-black text-slate-700 uppercase tracking-wider mb-1">Teaching Experience (Years / Details)</label>
+            <textarea rows="2" placeholder="Briefly describe your tutoring or school teaching experience..." class="w-full px-4 py-3 rounded-xl border-2 border-slate-300 focus:border-[#5458F7] outline-none text-sm font-medium"></textarea>
+          </div>
+
+          <button type="submit" class="btn-coral-primary w-full py-4 text-base font-black shadow-[4px_4px_0px_#FFFFFF] mt-2">
+            Submit Application & Schedule Demo →
+          </button>
+
+          <p class="text-center text-[11px] text-slate-500 mt-2">
+            🔒 Your contact details are kept strictly confidential and used solely for Paathshala educator onboarding.
+          </p>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 7. EDUCATOR REALITY CHECK & TRANSFORMATION ================= -->
+    <!-- ================= 1. EMPATHY & REALITY CHECK ================= -->
+    <section id="empathy-reality-check" class="py-16 sm:py-24 bg-transparent relative z-20">
+      <div class="max-w-6xl mx-auto px-4">
+        
+        <!-- Standalone Dedicated Header -->
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FEF08A] text-slate-950 font-black text-xs border-2 border-[#18181B] shadow-[2px_2px_0px_#18181B] uppercase tracking-wider font-mono mb-4">
+            ( TEACHER REALITY CHECK )
+          </div>
+          <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white font-black leading-tight">
+            Tired of School Admin Bureaucracy & Chasing Private Tuition Fees?
+          </h2>
+          <p class="text-sm sm:text-base text-indigo-100 font-semibold font-medium mt-3">
+            Great educators deserve respect, schedule autonomy, and fair compensation. Here is why conventional teaching burns educators out:
+          </p>
+        </div>
+
+        <!-- Pain Point Bento Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+        <div class="md:col-span-2 card-flat p-6 sm:p-7 bg-white text-slate-900 border-2 border-[#18181B] rounded-3xl shadow-[5px_5px_0px_#18181B] flex flex-col justify-between hover:translate-y-[-2px] transition-all">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-rose-100 border border-rose-300 flex items-center justify-center text-xl mb-4 shadow-[1px_1px_0px_#18181B]">
+              🛑
+            </div>
+            <h3 class="font-black text-lg sm:text-xl text-slate-900 mb-2 leading-snug">
+              School Admin & Paperwork Overload
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+              Spending 60% of your time filling registers, grading endless papers, and handling administrative bureaucracy instead of actual teaching.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-rose-600 font-mono text-xs font-black">
+            <span>⚠️ HIGH FRICTION POINT</span>
+          </div>
+        </div>
+        <div class="md:col-span-1 card-flat p-6 sm:p-7 bg-white text-slate-900 border-2 border-[#18181B] rounded-3xl shadow-[5px_5px_0px_#18181B] flex flex-col justify-between hover:translate-y-[-2px] transition-all">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-rose-100 border border-rose-300 flex items-center justify-center text-xl mb-4 shadow-[1px_1px_0px_#18181B]">
+              🛑
+            </div>
+            <h3 class="font-black text-lg sm:text-xl text-slate-900 mb-2 leading-snug">
+              Awkward Fee Chasing With Parents
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+              In offline tutoring, chasing parents every month for delayed fees, dealing with sudden cancellations without notice, and zero financial security.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-rose-600 font-mono text-xs font-black">
+            <span>⚠️ HIGH FRICTION POINT</span>
+          </div>
+        </div>
+        <div class="md:col-span-3 card-flat p-6 sm:p-7 bg-white text-slate-900 border-2 border-[#18181B] rounded-3xl shadow-[5px_5px_0px_#18181B] flex flex-col justify-between hover:translate-y-[-2px] transition-all">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-rose-100 border border-rose-300 flex items-center justify-center text-xl mb-4 shadow-[1px_1px_0px_#18181B]">
+              🛑
+            </div>
+            <h3 class="font-black text-lg sm:text-xl text-slate-900 mb-2 leading-snug">
+              Fixed Low Pay With Zero Growth
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+              Fixed monthly school salaries that do not reflect your true teaching skill, with rigid 8 AM to 4 PM hours and long stressful commutes.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-rose-600 font-mono text-xs font-black">
+            <span>⚠️ HIGH FRICTION POINT</span>
+          </div>
+        </div>
+        </div>
+
+        <!-- Solution Pivot Callout -->
+        <div class="mt-8 p-6 sm:p-7 rounded-3xl bg-slate-900 text-white border-2 border-[#18181B] shadow-[6px_6px_0px_#18181B] text-center max-w-4xl mx-auto">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#5458F7] text-white font-mono text-xs font-black uppercase tracking-wider mb-2">
+            ✨ THE PAATHSHALA SOLUTION
+          </div>
+          <p class="text-sm sm:text-base text-slate-200 font-bold leading-relaxed">
+            💡 Paathshala handles 100% of student matching, scheduling, and guaranteed payouts so you can focus entirely on impactful 1-on-1 teaching from home.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= 2. 3-STEP SIMPLE PROCESS ================= -->
+    <section id="simple-process-steps" class="py-16 sm:py-24 bg-transparent relative z-20">
+      <div class="max-w-6xl mx-auto px-4">
+        
+        <!-- Standalone Dedicated Header -->
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#E76F51] text-slate-950 font-black text-xs border-2 border-[#18181B] shadow-[2px_2px_0px_#18181B] uppercase tracking-wider font-mono mb-4">
+            ( HOW IT WORKS )
+          </div>
+          <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white font-black leading-tight">
+            Start Teaching in 3 Simple Steps
+          </h2>
+          <p class="text-sm sm:text-base text-indigo-100 font-semibold font-medium mt-3">
+            Zero hassle. Flexible scheduling. Experience the 1-on-1 difference immediately.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+        <div class="card-flat p-6 sm:p-7 bg-white text-slate-900 border-2 border-[#18181B] rounded-3xl shadow-[5px_5px_0px_#18181B] relative flex flex-col justify-between hover:translate-y-[-2px] transition-all">
+          <div>
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#5458F7] text-white font-mono font-black text-xl border-2 border-[#18181B] shadow-[2px_2px_0px_#18181B] mb-5">
+              01
+            </div>
+            <h3 class="font-black text-lg sm:text-xl text-slate-900 mb-2 leading-snug">
+              Apply in 60 Seconds
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+              Submit your subject expertise and qualifications. No tedious resume forms required.
+            </p>
+          </div>
+          <div class="mt-5 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-emerald-700 font-mono text-xs font-black">
+            <span>✓ STEP COMPLETED IN 1 SESSION</span>
+          </div>
+        </div>
+        <div class="card-flat p-6 sm:p-7 bg-white text-slate-900 border-2 border-[#18181B] rounded-3xl shadow-[5px_5px_0px_#18181B] relative flex flex-col justify-between hover:translate-y-[-2px] transition-all">
+          <div>
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#5458F7] text-white font-mono font-black text-xl border-2 border-[#18181B] shadow-[2px_2px_0px_#18181B] mb-5">
+              02
+            </div>
+            <h3 class="font-black text-lg sm:text-xl text-slate-900 mb-2 leading-snug">
+              Quick 15-Min Demo Session
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+              Showcase your 1-on-1 teaching style on our digital whiteboard with our academic team.
+            </p>
+          </div>
+          <div class="mt-5 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-emerald-700 font-mono text-xs font-black">
+            <span>✓ STEP COMPLETED IN 1 SESSION</span>
+          </div>
+        </div>
+        <div class="card-flat p-6 sm:p-7 bg-white text-slate-900 border-2 border-[#18181B] rounded-3xl shadow-[5px_5px_0px_#18181B] relative flex flex-col justify-between hover:translate-y-[-2px] transition-all">
+          <div>
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#5458F7] text-white font-mono font-black text-xl border-2 border-[#18181B] shadow-[2px_2px_0px_#18181B] mb-5">
+              03
+            </div>
+            <h3 class="font-black text-lg sm:text-xl text-slate-900 mb-2 leading-snug">
+              Start Earning Immediately
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+              Get matched with verified students, set your own calendar hours, and receive weekly payouts.
+            </p>
+          </div>
+          <div class="mt-5 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-emerald-700 font-mono text-xs font-black">
+            <span>✓ STEP COMPLETED IN 1 SESSION</span>
+          </div>
+        </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= 3. INTERACTIVE USERFLOW JOURNEY ================= -->
+    <section id="transformation-journey-teachers" class="py-16 sm:py-24 bg-transparent relative z-20">
+      <div class="w-full max-w-5xl mx-auto px-4">
+          
+          <!-- Top Title Badge Block -->
+          <div class="text-center mb-4">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-300 text-slate-950 font-black text-xs border-2 border-[#18181B] shadow-[2px_2px_0px_#18181B] uppercase tracking-wider font-mono mb-1.5">
+              ( THE USERFLOW JOURNEY )
+            </div>
+            <h2 class="text-xl sm:text-3xl lg:text-4xl font-black tracking-tight text-white font-black leading-tight">
+              The Journey: Before vs After Paathshala
+            </h2>
+          </div>
+
+          <!-- Main Centered Userflow Showcase Card -->
+          <div id="stage-wrap-teachers" class="card-flat p-5 sm:p-7 bg-white text-slate-900 border-2 border-[#18181B] rounded-3xl shadow-[8px_8px_0px_#18181B] relative overflow-hidden transition-all duration-300">
+            
+            <!-- Userflow Progress Highway & Stage Tabs -->
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pb-4 mb-5 border-b-2 border-slate-100">
+              
+              <!-- 3 Connected Step Highway Nodes -->
+              <div class="grid grid-cols-3 gap-2 sm:gap-3 w-full sm:w-auto">
+                <button type="button" onclick="setTransformationStage('teachers', 1)" id="stage-tab-1-teachers" class="flex items-center justify-center sm:justify-start gap-2 px-3 sm:px-4 py-2 rounded-xl border-2 border-[#18181B] font-mono text-xs font-black transition-all bg-rose-500 text-white shadow-[2px_2px_0px_#18181B] cursor-pointer text-center">
+                  <span class="w-5 h-5 rounded-full bg-white text-rose-600 flex items-center justify-center text-[10px] font-black">01</span>
+                  <span>Friction</span>
+                </button>
+                <button type="button" onclick="setTransformationStage('teachers', 2)" id="stage-tab-2-teachers" class="flex items-center justify-center sm:justify-start gap-2 px-3 sm:px-4 py-2 rounded-xl border-2 border-[#18181B] font-mono text-xs font-black transition-all bg-slate-100 text-slate-800 shadow-[2px_2px_0px_#18181B] cursor-pointer text-center">
+                  <span class="w-5 h-5 rounded-full bg-slate-300 text-slate-800 flex items-center justify-center text-[10px] font-black">02</span>
+                  <span>Catalyst</span>
+                </button>
+                <button type="button" onclick="setTransformationStage('teachers', 3)" id="stage-tab-3-teachers" class="flex items-center justify-center sm:justify-start gap-2 px-3 sm:px-4 py-2 rounded-xl border-2 border-[#18181B] font-mono text-xs font-black transition-all bg-slate-100 text-slate-800 shadow-[2px_2px_0px_#18181B] cursor-pointer text-center">
+                  <span class="w-5 h-5 rounded-full bg-slate-300 text-slate-800 flex items-center justify-center text-[10px] font-black">03</span>
+                  <span>Mastery</span>
+                </button>
+              </div>
+
+              <!-- Journey Milestone Progress Line -->
+              <div class="w-full sm:w-56">
+                <div class="flex items-center justify-between text-[11px] font-mono font-bold text-slate-500 mb-1">
+                  <span>JOURNEY MILESTONE</span>
+                  <span id="stage-percent-teachers" class="font-black text-[#5458F7]">Step 1 / 3</span>
+                </div>
+                <div class="w-full h-2.5 rounded-full bg-slate-100 border border-[#18181B] overflow-hidden">
+                  <div id="stage-progress-bar-teachers" class="h-full bg-gradient-to-r from-rose-500 via-[#5458F7] to-emerald-500 transition-all duration-300" style="width: 33.33%;"></div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- ================= STAGE 1: THE STRUGGLE ================= -->
+            <div id="stage-content-1-teachers" class="transition-opacity duration-300">
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                <div class="lg:col-span-5">
+                  <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-100 text-rose-900 font-mono font-black text-xs border border-rose-300 mb-2">
+                    ⚠️ STAGE 01: BASELINE FRICTION
+                  </div>
+                  <h3 class="text-lg sm:text-xl font-black text-slate-900 tracking-tight mb-1">
+                    DAY 01: THE CONVENTIONAL TEACHING GRIND
+                  </h3>
+                  <p class="text-xs sm:text-sm font-bold text-rose-600 mb-2.5">Admin Overload, Awkward Fee Chasing & Commutes</p>
+                  <p class="text-xs text-slate-600 font-medium leading-relaxed mb-4">
+                    In crowded 50-student batches and generic broadcast apps, quiet students hesitate to ask doubts. Small conceptual gaps compound silently until exams arrive.
+                  </p>
+                  <button type="button" onclick="setTransformationStage('teachers', 2)" class="px-4 py-2 rounded-xl bg-slate-900 text-white font-black text-xs border-2 border-[#18181B] shadow-[2px_2px_0px_#18181B] hover:shadow-[3px_3px_0px_#18181B] transition-all cursor-pointer inline-flex items-center gap-1.5">
+                    <span>Next Milestone: 1-on-1 Catalyst</span>
+                    <span>➔</span>
+                  </button>
+                </div>
+                <div class="lg:col-span-7 p-4 sm:p-5 rounded-2xl bg-rose-50/90 border-2 border-rose-300 shadow-[3px_3px_0px_#18181B]">
+                  <h4 class="text-xs font-mono font-black uppercase text-rose-900 tracking-wider mb-2.5 pb-1.5 border-b border-rose-200">
+                    Baseline Friction &amp; Pain Points:
+                  </h4>
+                  <ul class="space-y-2 text-xs sm:text-sm font-bold text-slate-800">
+                    <li class="flex items-start gap-2"><span class="text-rose-500 font-black">✕</span><span>60% time wasted on school paperwork, registers & admin duties</span></li><li class="flex items-start gap-2"><span class="text-rose-500 font-black">✕</span><span>Awkwardly chasing parents every month for delayed tuition fees</span></li><li class="flex items-start gap-2"><span class="text-rose-500 font-black">✕</span><span>Fixed rigid hours and exhausting morning & evening commutes</span></li><li class="flex items-start gap-2"><span class="text-rose-500 font-black">✕</span><span>Exhaustion from managing rowdy 50-student classrooms</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- ================= STAGE 2: THE 1-ON-1 CATALYST ================= -->
+            <div id="stage-content-2-teachers" class="transition-opacity duration-300" style="display: none;">
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                <div class="lg:col-span-5">
+                  <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-slate-950 font-mono font-black text-xs border border-amber-300 mb-2">
+                    ⚡ STAGE 02: THE 1-ON-1 INTERVENTION
+                  </div>
+                  <h3 class="text-lg sm:text-xl font-black text-slate-900 tracking-tight mb-1">
+                    DAY 14: THE PAATHSHALA TEACHER STUDIO
+                  </h3>
+                  <p class="text-xs sm:text-sm font-bold text-[#5458F7] mb-2.5">Pure 1-on-1 Teaching, Automated Bookings</p>
+                  <p class="text-xs text-slate-600 font-medium leading-relaxed mb-4">
+                    Live digital whiteboard scaffolding from dedicated top 1.4% mentors who move strictly at your child's pace, building deep first-principles intuition.
+                  </p>
+                  <button type="button" onclick="setTransformationStage('teachers', 3)" class="px-4 py-2 rounded-xl bg-[#5458F7] text-white font-black text-xs border-2 border-[#18181B] shadow-[2px_2px_0px_#18181B] hover:shadow-[3px_3px_0px_#18181B] transition-all cursor-pointer inline-flex items-center gap-1.5">
+                    <span>Next Milestone: 95%+ Mastery</span>
+                    <span>➔</span>
+                  </button>
+                </div>
+                <div class="lg:col-span-7 p-4 sm:p-5 rounded-2xl bg-[#5458F7] text-white border-2 border-[#18181B] shadow-[3px_3px_0px_#18181B]">
+                  <h4 class="text-xs font-mono font-black uppercase text-amber-300 tracking-wider mb-2.5 pb-1.5 border-b border-indigo-400">
+                    The 1-on-1 Scaffolding Architecture:
+                  </h4>
+                  <ul class="space-y-2 text-xs sm:text-sm font-bold text-indigo-50">
+                    <li class="flex items-start gap-2"><span class="text-amber-300 font-black">⚡</span><span>Pure 1-on-1 teaching with motivated, verified students</span></li><li class="flex items-start gap-2"><span class="text-amber-300 font-black">⚡</span><span>Automated calendar scheduling and zero parent fee chasing</span></li><li class="flex items-start gap-2"><span class="text-amber-300 font-black">⚡</span><span>Guaranteed weekly direct bank payouts for every hour taught</span></li><li class="flex items-start gap-2"><span class="text-amber-300 font-black">⚡</span><span>Teach from anywhere on an interactive digital whiteboard</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- ================= STAGE 3: THE MASTERY ================= -->
+            <div id="stage-content-3-teachers" class="transition-opacity duration-300" style="display: none;">
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                <div class="lg:col-span-5">
+                  <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 font-mono font-black text-xs border border-emerald-300 mb-2">
+                    🎉 STAGE 03: TRANSFORMATION OUTCOME
+                  </div>
+                  <h3 class="text-lg sm:text-xl font-black text-slate-900 tracking-tight mb-1">
+                    DAY 60: COMPLETE FINANCIAL & SCHEDULE FREEDOM
+                  </h3>
+                  <p class="text-xs sm:text-sm font-bold text-emerald-700 mb-2.5">Earn ₹30K–₹80K/mo on Your Own Schedule</p>
+                  <p class="text-xs text-slate-600 font-medium leading-relaxed mb-4">
+                    Complete conceptual independence, flawless answer-writing step rubrics, and the confidence to top school unit tests and final exams.
+                  </p>
+                  <button onclick="document.getElementById('teacher-apply-modal') ? document.getElementById('teacher-apply-modal').classList.remove('hidden') : window.location.href='/teach-with-us'" class="btn-coral-primary px-4 py-2 text-xs sm:text-sm font-black shadow-[3px_3px_0px_#18181B] inline-flex items-center gap-1.5 cursor-pointer">
+                    <span>Apply to Teach With Us ➔</span>
+                  </button>
+                </div>
+                <div class="lg:col-span-7 p-4 sm:p-5 rounded-2xl bg-emerald-50/90 border-2 border-emerald-300 shadow-[3px_3px_0px_#18181B]">
+                  <h4 class="text-xs font-mono font-black uppercase text-emerald-900 tracking-wider mb-2.5 pb-1.5 border-b border-emerald-200">
+                    Verified Academic Outcomes:
+                  </h4>
+                  <ul class="space-y-2 text-xs sm:text-sm font-bold text-slate-800">
+                    <li class="flex items-start gap-2"><span class="text-emerald-500 font-black">✓</span><span>Earn ₹30,000 to ₹80,000+ monthly teaching 10–20 hours/week</span></li><li class="flex items-start gap-2"><span class="text-emerald-500 font-black">✓</span><span>100% control over your calendar and preferred teaching slots</span></li><li class="flex items-start gap-2"><span class="text-emerald-500 font-black">✓</span><span>Deeply rewarding personal connection with every student</span></li><li class="flex items-start gap-2"><span class="text-emerald-500 font-black">✓</span><span>Zero admin friction with dedicated Paathshala teacher support</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <script>
+      function setTransformationStage(catId, stageNum) {
+        for (var i = 1; i <= 3; i++) {
+          var content = document.getElementById('stage-content-' + i + '-' + catId);
+          var tab = document.getElementById('stage-tab-' + i + '-' + catId);
+          if (content) content.style.display = (i === stageNum) ? 'block' : 'none';
+          if (tab) {
+            if (i === stageNum) {
+              if (i === 1) tab.className = 'flex items-center justify-center sm:justify-start gap-2 px-3 sm:px-4 py-2 rounded-xl border-2 border-[#18181B] font-mono text-xs font-black transition-all bg-rose-500 text-white shadow-[2px_2px_0px_#18181B] cursor-pointer text-center';
+              else if (i === 2) tab.className = 'flex items-center justify-center sm:justify-start gap-2 px-3 sm:px-4 py-2 rounded-xl border-2 border-[#18181B] font-mono text-xs font-black transition-all bg-[#5458F7] text-white shadow-[2px_2px_0px_#18181B] cursor-pointer text-center';
+              else if (i === 3) tab.className = 'flex items-center justify-center sm:justify-start gap-2 px-3 sm:px-4 py-2 rounded-xl border-2 border-[#18181B] font-mono text-xs font-black transition-all bg-emerald-500 text-white shadow-[2px_2px_0px_#18181B] cursor-pointer text-center';
+            } else {
+              tab.className = 'flex items-center justify-center sm:justify-start gap-2 px-3 sm:px-4 py-2 rounded-xl border-2 border-[#18181B] font-mono text-xs font-black transition-all bg-slate-100 text-slate-800 shadow-[2px_2px_0px_#18181B] cursor-pointer text-center';
+            }
+          }
+        }
+        var bar = document.getElementById('stage-progress-bar-' + catId);
+        var label = document.getElementById('stage-percent-' + catId);
+        if (bar) bar.style.width = (stageNum === 1 ? '33.33%' : (stageNum === 2 ? '66.66%' : '100%'));
+        if (label) label.textContent = (stageNum === 1 ? 'Step 1 / 3' : (stageNum === 2 ? 'Step 2 / 3' : 'Step 3 / 3 (Mastery)'));
+      }
+
+      // Interactive stage tabs enabled on-click without scroll hijacking
+    </script>
+
+    <!-- ================= 4. DUAL-TRACK RAILWAY JOURNEY (NON-CARD COMPARISON) ================= -->
+    <section id="direct-comparison-table" class="py-16 sm:py-24 bg-transparent relative z-20">
+      <div class="max-w-6xl mx-auto px-4">
+        
+        <!-- Standalone Dedicated Header -->
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white text-slate-950 font-black text-xs border-2 border-[#18181B] shadow-[2px_2px_0px_#18181B] uppercase tracking-wider font-mono mb-4">
+            ( TWO PARALLEL PATHWAYS )
+          </div>
+          <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white font-black leading-tight">
+            The Two Teaching Pathways: School Grind vs Paathshala Freedom
+          </h2>
+          <p class="text-sm sm:text-base text-indigo-100 font-semibold font-medium mt-3">
+            Compare the friction of the conventional herd line with the clarity of the Paathshala 1-on-1 Express.
+          </p>
+        </div>
+
+        <!-- Track Header Badges -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+          <div class="p-4 rounded-2xl bg-rose-500 text-white border-2 border-[#18181B] shadow-[4px_4px_0px_#18181B] flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="text-xl">🛑</span>
+              <span class="font-mono font-black text-xs sm:text-sm uppercase tracking-wider">TRACK A: THE CONVENTIONAL HERD LINE</span>
+            </div>
+            <span class="px-2 py-0.5 rounded text-[10px] font-mono font-black bg-white text-rose-950 border border-[#18181B]">1:50 BATCH</span>
+          </div>
+          <div class="p-4 rounded-2xl bg-emerald-500 text-slate-950 border-2 border-[#18181B] shadow-[4px_4px_0px_#18181B] flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="text-xl">⚡</span>
+              <span class="font-mono font-black text-xs sm:text-sm uppercase tracking-wider">TRACK B: PAATHSHALA 1-ON-1 EXPRESS</span>
+            </div>
+            <span class="px-2 py-0.5 rounded text-[10px] font-mono font-black bg-slate-950 text-emerald-400 border border-[#18181B]">1-ON-1 ONLY</span>
+          </div>
+        </div>
+
+        <!-- Dual-Track Highway Nodes Grid -->
+        <div class="space-y-4">
+          
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 relative">
+          
+          <!-- Track A (Herd Line) Station Stop -->
+          <div class="p-5 sm:p-6 rounded-2xl bg-rose-50/90 border-2 border-[#18181B] shadow-[4px_4px_0px_#18181B] relative flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 pb-3 mb-3 border-b border-rose-200">
+                <div class="flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-full bg-rose-500 text-white flex items-center justify-center font-mono text-xs font-black">01</span>
+                  <span class="font-mono text-xs font-black text-rose-900 uppercase tracking-wider">HERD LINE STOP</span>
+                </div>
+                <span class="text-[11px] font-mono font-bold text-rose-700 bg-rose-200/70 px-2 py-0.5 rounded border border-rose-300">⚠️ FRICTION</span>
+              </div>
+              <h4 class="font-black text-base sm:text-lg text-slate-900 mb-1.5">Station 1: School Admin & Registers</h4>
+              <p class="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed">60% time lost on exam supervision, attendance registers, and endless paperwork.</p>
+            </div>
+          </div>
+
+          <!-- Track B (Paathshala Express) Milestone Stop -->
+          <div class="p-5 sm:p-6 rounded-2xl bg-emerald-50/90 border-2 border-[#18181B] shadow-[4px_4px_0px_#18181B] relative flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 pb-3 mb-3 border-b border-emerald-200">
+                <div class="flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center font-mono text-xs font-black">01</span>
+                  <span class="font-mono text-xs font-black text-emerald-950 uppercase tracking-wider">PAATHSHALA 1-ON-1 EXPRESS</span>
+                </div>
+                <span class="text-[11px] font-mono font-bold text-emerald-800 bg-emerald-200 px-2 py-0.5 rounded border border-emerald-300">⚡ FAST-TRACK</span>
+              </div>
+              <h4 class="font-black text-base sm:text-lg text-slate-900 mb-1.5">Milestone 1: Pure 1-on-1 Teaching</h4>
+              <p class="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed">Zero administrative paperwork. 100% focused on pure interactive teaching.</p>
+            </div>
+          </div>
+
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 relative">
+          
+          <!-- Track A (Herd Line) Station Stop -->
+          <div class="p-5 sm:p-6 rounded-2xl bg-rose-50/90 border-2 border-[#18181B] shadow-[4px_4px_0px_#18181B] relative flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 pb-3 mb-3 border-b border-rose-200">
+                <div class="flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-full bg-rose-500 text-white flex items-center justify-center font-mono text-xs font-black">02</span>
+                  <span class="font-mono text-xs font-black text-rose-900 uppercase tracking-wider">HERD LINE STOP</span>
+                </div>
+                <span class="text-[11px] font-mono font-bold text-rose-700 bg-rose-200/70 px-2 py-0.5 rounded border border-rose-300">⚠️ FRICTION</span>
+              </div>
+              <h4 class="font-black text-base sm:text-lg text-slate-900 mb-1.5">Station 2: Awkward Monthly Fee Chasing</h4>
+              <p class="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed">Awkward calls to parents asking for unpaid tuition dues. Last minute cancellations.</p>
+            </div>
+          </div>
+
+          <!-- Track B (Paathshala Express) Milestone Stop -->
+          <div class="p-5 sm:p-6 rounded-2xl bg-emerald-50/90 border-2 border-[#18181B] shadow-[4px_4px_0px_#18181B] relative flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 pb-3 mb-3 border-b border-emerald-200">
+                <div class="flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center font-mono text-xs font-black">02</span>
+                  <span class="font-mono text-xs font-black text-emerald-950 uppercase tracking-wider">PAATHSHALA 1-ON-1 EXPRESS</span>
+                </div>
+                <span class="text-[11px] font-mono font-bold text-emerald-800 bg-emerald-200 px-2 py-0.5 rounded border border-emerald-300">⚡ FAST-TRACK</span>
+              </div>
+              <h4 class="font-black text-base sm:text-lg text-slate-900 mb-1.5">Milestone 2: Automated Guaranteed Payouts</h4>
+              <p class="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed">Platform handles all student billing. Direct weekly bank payouts for every session.</p>
+            </div>
+          </div>
+
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 relative">
+          
+          <!-- Track A (Herd Line) Station Stop -->
+          <div class="p-5 sm:p-6 rounded-2xl bg-rose-50/90 border-2 border-[#18181B] shadow-[4px_4px_0px_#18181B] relative flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 pb-3 mb-3 border-b border-rose-200">
+                <div class="flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-full bg-rose-500 text-white flex items-center justify-center font-mono text-xs font-black">03</span>
+                  <span class="font-mono text-xs font-black text-rose-900 uppercase tracking-wider">HERD LINE STOP</span>
+                </div>
+                <span class="text-[11px] font-mono font-bold text-rose-700 bg-rose-200/70 px-2 py-0.5 rounded border border-rose-300">⚠️ FRICTION</span>
+              </div>
+              <h4 class="font-black text-base sm:text-lg text-slate-900 mb-1.5">Station 3: Rigid 8-to-4 Commute</h4>
+              <p class="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed">Exhausting daily travel, rigid attendance punches, and zero schedule flexibility.</p>
+            </div>
+          </div>
+
+          <!-- Track B (Paathshala Express) Milestone Stop -->
+          <div class="p-5 sm:p-6 rounded-2xl bg-emerald-50/90 border-2 border-[#18181B] shadow-[4px_4px_0px_#18181B] relative flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 pb-3 mb-3 border-b border-emerald-200">
+                <div class="flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center font-mono text-xs font-black">03</span>
+                  <span class="font-mono text-xs font-black text-emerald-950 uppercase tracking-wider">PAATHSHALA 1-ON-1 EXPRESS</span>
+                </div>
+                <span class="text-[11px] font-mono font-bold text-emerald-800 bg-emerald-200 px-2 py-0.5 rounded border border-emerald-300">⚡ FAST-TRACK</span>
+              </div>
+              <h4 class="font-black text-base sm:text-lg text-slate-900 mb-1.5">Milestone 3: Complete Schedule Autonomy</h4>
+              <p class="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed">Open slots when you want (evenings/weekends). Teach from anywhere in India.</p>
+            </div>
+          </div>
+
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 relative">
+          
+          <!-- Track A (Herd Line) Station Stop -->
+          <div class="p-5 sm:p-6 rounded-2xl bg-rose-50/90 border-2 border-[#18181B] shadow-[4px_4px_0px_#18181B] relative flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 pb-3 mb-3 border-b border-rose-200">
+                <div class="flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-full bg-rose-500 text-white flex items-center justify-center font-mono text-xs font-black">04</span>
+                  <span class="font-mono text-xs font-black text-rose-900 uppercase tracking-wider">HERD LINE STOP</span>
+                </div>
+                <span class="text-[11px] font-mono font-bold text-rose-700 bg-rose-200/70 px-2 py-0.5 rounded border border-rose-300">⚠️ FRICTION</span>
+              </div>
+              <h4 class="font-black text-base sm:text-lg text-slate-900 mb-1.5">Station 4: Low Fixed Monthly Pay</h4>
+              <p class="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed">Salaries capped by school budgets regardless of your subject expertise and passion.</p>
+            </div>
+          </div>
+
+          <!-- Track B (Paathshala Express) Milestone Stop -->
+          <div class="p-5 sm:p-6 rounded-2xl bg-emerald-50/90 border-2 border-[#18181B] shadow-[4px_4px_0px_#18181B] relative flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 pb-3 mb-3 border-b border-emerald-200">
+                <div class="flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center font-mono text-xs font-black">04</span>
+                  <span class="font-mono text-xs font-black text-emerald-950 uppercase tracking-wider">PAATHSHALA 1-ON-1 EXPRESS</span>
+                </div>
+                <span class="text-[11px] font-mono font-bold text-emerald-800 bg-emerald-200 px-2 py-0.5 rounded border border-emerald-300">⚡ FAST-TRACK</span>
+              </div>
+              <h4 class="font-black text-base sm:text-lg text-slate-900 mb-1.5">Destination: Earn ₹30K–₹80K/mo Part-Time</h4>
+              <p class="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed">High earning potential proportional to your teaching hours and student ratings.</p>
+            </div>
+          </div>
+
+        </div>
+        </div>
+
+        <!-- Bottom Track Summary Pill -->
+        <div class="mt-8 p-5 rounded-2xl bg-slate-900 text-white border-2 border-[#18181B] shadow-[5px_5px_0px_#18181B] flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="flex items-center gap-3 text-left">
+            <span class="text-2xl">💡</span>
+            <div>
+              <div class="font-black text-sm text-amber-300">Why Stay on the Slow Track?</div>
+              <div class="text-xs text-slate-300 font-medium">Switch to dedicated 1-on-1 mentorship with zero lock-in commitment.</div>
+            </div>
+          </div>
+          <button onclick="document.getElementById('teacher-apply-modal') ? document.getElementById('teacher-apply-modal').classList.remove('hidden') : window.location.href='/teach-with-us'" class="btn-coral-primary px-5 py-2.5 text-xs sm:text-sm font-black shadow-[2px_2px_0px_#18181B] whitespace-nowrap cursor-pointer">
+            <span>Apply to Teach With Us ➔</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= 5. AUTHENTIC VERIFIED STORIES ================= -->
+    <section id="verified-success-stories" class="py-16 sm:py-24 bg-transparent relative z-20">
+      <div class="max-w-6xl mx-auto px-4">
+        
+        <!-- Standalone Dedicated Header -->
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FEF08A] text-slate-950 font-black text-xs border-2 border-[#18181B] shadow-[2px_2px_0px_#18181B] uppercase tracking-wider font-mono mb-4">
+            ( VERIFIED PROOF )
+          </div>
+          <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white font-black leading-tight">
+            Real Transformations. Real Results.
+          </h2>
+          <p class="text-sm sm:text-base text-indigo-100 font-semibold font-medium mt-3">
+            Read verified reviews and experiences from our community.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+        <div class="card-flat p-6 sm:p-7 bg-white text-slate-900 border-2 border-[#18181B] rounded-3xl shadow-[5px_5px_0px_#18181B] flex flex-col justify-between hover:translate-y-[-2px] transition-all">
+          <div>
+            <div class="flex items-center justify-between gap-2 pb-3 mb-3 border-b border-slate-100">
+              <div class="flex items-center gap-2">
+                <div class="w-9 h-9 rounded-full bg-[#5458F7] text-white flex items-center justify-center font-mono font-black text-sm border border-[#18181B]">
+                  P
+                </div>
+                <div>
+                  <h4 class="font-black text-sm text-slate-900">Pooja Sharma</h4>
+                  <p class="text-[11px] font-mono text-slate-500 font-bold">Ex-DPS Mathematics Teacher</p>
+                </div>
+              </div>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono font-black bg-emerald-100 text-emerald-900 border border-emerald-300">
+                Teaches CBSE 9–12
+              </span>
+            </div>
+
+            <div class="inline-block px-2.5 py-1 rounded-lg bg-[#FEF08A] text-slate-950 font-mono font-black text-xs border border-[#18181B] mb-3 shadow-[1px_1px_0px_#18181B]">
+              🌟 Earns ₹52,000/mo Part-Time
+            </div>
+
+            <p class="text-xs sm:text-sm text-slate-700 font-medium italic leading-relaxed">
+              "After leaving full-time school teaching, Paathshala gave me the exact flexibility I needed. I teach 15 hours a week in the evenings and earn more per hour than my school salary!"
+            </p>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-mono">
+            <span class="font-bold text-slate-500">— Delhi NCR</span>
+            <span class="text-emerald-700 font-black">✓ Verified Student</span>
+          </div>
+        </div>
+        <div class="card-flat p-6 sm:p-7 bg-white text-slate-900 border-2 border-[#18181B] rounded-3xl shadow-[5px_5px_0px_#18181B] flex flex-col justify-between hover:translate-y-[-2px] transition-all">
+          <div>
+            <div class="flex items-center justify-between gap-2 pb-3 mb-3 border-b border-slate-100">
+              <div class="flex items-center gap-2">
+                <div class="w-9 h-9 rounded-full bg-[#5458F7] text-white flex items-center justify-center font-mono font-black text-sm border border-[#18181B]">
+                  V
+                </div>
+                <div>
+                  <h4 class="font-black text-sm text-slate-900">Vikramaditya Rao</h4>
+                  <p class="text-[11px] font-mono text-slate-500 font-bold">Senior Physics Educator</p>
+                </div>
+              </div>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono font-black bg-emerald-100 text-emerald-900 border border-emerald-300">
+                Teaches ICSE & JEE
+              </span>
+            </div>
+
+            <div class="inline-block px-2.5 py-1 rounded-lg bg-[#FEF08A] text-slate-950 font-mono font-black text-xs border border-[#18181B] mb-3 shadow-[1px_1px_0px_#18181B]">
+              🌟 Earns ₹68,000/mo Part-Time
+            </div>
+
+            <p class="text-xs sm:text-sm text-slate-700 font-medium italic leading-relaxed">
+              "The digital whiteboard tools and student quality are top-tier. No awkward fee conversations with parents—everything is automated and transparent."
+            </p>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-mono">
+            <span class="font-bold text-slate-500">— Bangalore</span>
+            <span class="text-emerald-700 font-black">✓ Verified Student</span>
+          </div>
+        </div>
+        <div class="card-flat p-6 sm:p-7 bg-white text-slate-900 border-2 border-[#18181B] rounded-3xl shadow-[5px_5px_0px_#18181B] flex flex-col justify-between hover:translate-y-[-2px] transition-all">
+          <div>
+            <div class="flex items-center justify-between gap-2 pb-3 mb-3 border-b border-slate-100">
+              <div class="flex items-center gap-2">
+                <div class="w-9 h-9 rounded-full bg-[#5458F7] text-white flex items-center justify-center font-mono font-black text-sm border border-[#18181B]">
+                  D
+                </div>
+                <div>
+                  <h4 class="font-black text-sm text-slate-900">Dr. Shreya Bansal</h4>
+                  <p class="text-[11px] font-mono text-slate-500 font-bold">Ph.D. Computer Science</p>
+                </div>
+              </div>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono font-black bg-emerald-100 text-emerald-900 border border-emerald-300">
+                Teaches Python & AI
+              </span>
+            </div>
+
+            <div class="inline-block px-2.5 py-1 rounded-lg bg-[#FEF08A] text-slate-950 font-mono font-black text-xs border border-[#18181B] mb-3 shadow-[1px_1px_0px_#18181B]">
+              🌟 Earns ₹45,000/mo Flexible
+            </div>
+
+            <p class="text-xs sm:text-sm text-slate-700 font-medium italic leading-relaxed">
+              "Teaching young minds to code 1-on-1 is incredibly fulfilling. Paathshala handles all the logistics while I do what I love."
+            </p>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-mono">
+            <span class="font-bold text-slate-500">— Mumbai</span>
+            <span class="text-emerald-700 font-black">✓ Verified Student</span>
+          </div>
+        </div>
+        </div>
+
+      </div>
+    </section>
+    
+
+  <div id="booking-modal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="card-flat p-6 sm:p-10 bg-white max-w-lg w-full relative">
+      <button onclick="closeBookingModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 border border-slate-300 font-black text-slate-700 flex items-center justify-center hover:bg-slate-200">
+        ✕
+      </button>
+
+      <div class="text-center mb-6">
+        <h3 class="text-2xl font-black text-slate-900">Book Free 1-on-1 Trial</h3>
+        <p class="text-xs text-slate-500 font-semibold mt-1">45-min live session with an IIT Master Mentor</p>
+      </div>
+
+      <form onsubmit="handleModalSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Student Name</label>
+          <input type="text" required placeholder="Aryan Sharma" class="w-full px-3.5 py-2.5 bg-slate-50 border-2 border-slate-300 rounded-xl text-sm font-bold text-slate-900" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Parent WhatsApp</label>
+          <input type="tel" pattern="[0-9]{10}" required placeholder="9876543210" class="w-full px-3.5 py-2.5 bg-slate-50 border-2 border-slate-300 rounded-xl text-sm font-bold text-slate-900" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Focus Subject</label>
+          <select class="w-full px-3.5 py-2.5 bg-slate-50 border-2 border-slate-300 rounded-xl text-sm font-bold text-slate-900">
+            <option>Class 10 Mathematics</option>
+            <option>Class 10 Science</option>
+            <option>Class 10 Social Science</option>
+            <option>Coding &amp; AI for Kids</option>
+            <option>1-on-1 Comprehensive Track</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-coral-primary w-full py-3.5 text-sm font-black whitespace-nowrap shrink-0">
+          Confirm Free Slot →
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <footer id="site-footer" class="w-full pt-16 pb-0 px-4 sm:px-8 mt-auto text-inherit relative z-20 overflow-hidden">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 mb-12">
+        <!-- Col 1: Brand & Mission -->
+        <div class="space-y-3.5">
+          <div class="flex items-center gap-2.5">
+            <div class="w-9 h-9 rounded-full bg-white border-2 border-white p-1 flex items-center justify-center shrink-0 shadow-[2px_2px_0px_#FFFFFF]">
+              <img src="/images/new-logo-emblem.svg" alt="Paathshala Logo" class="w-full h-full object-contain" />
+            </div>
+            <span class="font-black text-xl tracking-tight">Paathshala</span>
+          </div>
+          <p class="text-xs sm:text-sm opacity-80 leading-relaxed font-medium">
+            Empowering students in classes 1 to 12 across India with live interactive 1-on-1 classes, experienced top 1.4% tutors, and custom-tailored learning companion features.
+          </p>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div class="space-y-3.5">
+          <h4 class="font-extrabold text-sm tracking-wider uppercase">Quick Links</h4>
+          <ul class="space-y-2.5 text-xs sm:text-sm opacity-85 font-semibold">
+            <li><a href="/" class="hover:underline transition-all">Home</a></li>
+            <li><a href="/about-us" class="hover:underline transition-all">About Us</a></li>
+            <li><a href="/classes" class="hover:underline transition-all">Classes &amp; Pricing</a></li>
+            <li><a href="/blogs" class="hover:underline transition-all">Blogs &amp; News</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: For Teachers -->
+        <div class="space-y-3.5">
+          <h4 class="font-extrabold text-sm tracking-wider uppercase">For Teachers</h4>
+          <ul class="space-y-2.5 text-xs sm:text-sm opacity-85 font-semibold">
+            <li><a href="/teach-with-us.html" class="hover:underline transition-all">Apply Now</a></li>
+            <li><a href="/support" class="hover:underline transition-all">Tutor Support</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Contact -->
+        <div class="space-y-3.5">
+          <h4 class="font-extrabold text-sm tracking-wider uppercase">Contact</h4>
+          <ul class="space-y-2.5 text-xs sm:text-sm opacity-85 font-semibold">
+            <li>
+              <span class="block text-[11px] opacity-70 uppercase font-bold">Email:</span>
+              <a href="mailto:paathshalasupport@safwhigre.com" class="hover:underline transition-all break-all">paathshalasupport@safwhigre.com</a>
+            </li>
+            <li>
+              <span class="block text-[11px] opacity-70 uppercase font-bold">Phone:</span>
+              <a href="tel:+918010571912" class="hover:underline transition-all">+91 80105 71912</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <p class="text-center text-xs opacity-75 font-medium">
+        © 2026 Safwhigre Technologies OPC Private Limited. All Rights Reserved.
+      </p>
+    </div>
+    <!-- Big Full-Width Typography: "paathshala" with Scroll Scrub Reveal Parallax -->
+      <!-- Big Full-Width Typography: "paathshala" with Scroll Scrub Reveal Parallax -->
+    <div id="footer-big-text-wrap" class="w-full select-none pointer-events-none overflow-hidden block leading-none">
+      <svg id="footer-svg-text" viewBox="0 0 1500 198" class="w-full h-auto block will-change-transform" preserveAspectRatio="xMidYMin slice">
+        <text x="50%" y="220" text-anchor="middle" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-weight="900" font-size="285" letter-spacing="-14" fill="#18181B">paathshala</text>
+      </svg>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    lucide.createIcons();
+
+    window.addEventListener("scroll", () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById("scroll-progress").style.width = scrolled + "%";
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll(".fade-in-section").forEach(sec => observer.observe(sec));
+
+    let currentRate = 650;
+    const hoursRange = document.getElementById("hours-range");
+    const hoursDisplay = document.getElementById("hours-display");
+    const payoutResult = document.getElementById("payout-result");
+
+    function updateCalculator() {
+      const hours = parseInt(hoursRange.value);
+      hoursDisplay.textContent = `${hours} Hours / Week`;
+      const monthlyHours = hours * 4.3;
+      const total = Math.round(monthlyHours * currentRate);
+      payoutResult.textContent = "₹" + total.toLocaleString("en-IN");
+    }
+
+    hoursRange.addEventListener("input", updateCalculator);
+
+    function setSubjectTier(rate, btn) {
+      currentRate = rate;
+      document.querySelectorAll(".tier-btn").forEach(b => {
+        b.classList.remove("border-emerald-600", "bg-emerald-50", "text-emerald-950");
+        b.classList.add("border-slate-300", "bg-white", "text-slate-900");
+      });
+      btn.classList.add("border-emerald-600", "bg-emerald-50", "text-emerald-950");
+      btn.classList.remove("border-slate-300", "bg-white", "text-slate-900");
+      updateCalculator();
+    }
+
+    function handleTutorSubmit(e) {
+      e.preventDefault();
+      alert("Thank you for applying! Our Academic Dean will contact you on WhatsApp within 24 hours to schedule your 15-minute live demo.");
+      e.target.reset();
+    }
+  </script>
+
+  <script>
+    // Booking Modal Handlers
+    function openBookingModal() {
+      const m = document.getElementById('booking-modal');
+      if (m) {
+        m.classList.remove('hidden');
+        m.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+    function closeBookingModal() {
+      const m = document.getElementById('booking-modal');
+      if (m) {
+        m.classList.add('hidden');
+        m.classList.remove('flex');
+        document.body.style.overflow = 'auto';
+      }
+    }
+    function handleModalSubmit(e) {
+      e.preventDefault();
+      closeBookingModal();
+      if (window.confetti) {
+        confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+      }
+      alert('Thank you! Your free trial session has been reserved. Our mentor will reach out on WhatsApp shortly.');
+    }
+  </script>
+
+</body>
+</html>

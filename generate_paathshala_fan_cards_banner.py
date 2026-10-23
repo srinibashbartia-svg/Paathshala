@@ -1,0 +1,633 @@
+import os
+import shutil
+
+scratch_dir = "/Users/srinibashbartia/.gemini/antigravity/scratch/paathshala-guided-learning"
+brain_dir = "/Users/srinibashbartia/.gemini/antigravity/brain/280bacfb-a77d-43c5-8fd5-6bc903a3d7fe"
+
+html_content = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Paathshala · Guided Learning After Class</title>
+
+<!-- Paathshala Official Fonts: Outfit (Display) & Plus Jakarta Sans (Body/UI) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    /* Paathshala Official Brand Palette (Strictly Solid Colors — No Gradients) */
+    --violet: #5458F7;
+    --violet-dark: #3730A3;
+    --violet-soft: #EEF0FF;
+    --orange: #FF5A36;
+    --orange-hover: #E04320;
+    --orange-soft: #FFF0EB;
+    --yellow: #FFD24A;
+    --mint: #86EFAC;
+    --mint-dark: #15803D;
+    --mint-soft: #DCFCE7;
+    --ink: #0F172A;
+    --ink-body: #334155;
+    --card-surface: #FAF7F2;
+    --card-active: #FFFFFF;
+    --white: #FFFFFF;
+    --page-bg: #F1F5F9;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  html, body {
+    min-height: 100%;
+    background: var(--page-bg);
+    font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: var(--ink);
+  }
+
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 20px;
+  }
+
+  /* ---------- Main Banner Container (Paathshala Royal Violet + Crisp Ink Outline) ---------- */
+  .modal {
+    position: relative;
+    width: 100%;
+    max-width: 1080px;
+    min-height: 730px;
+    background-color: var(--violet);
+    border: 3px solid var(--ink);
+    border-radius: 28px;
+    box-shadow: 10px 10px 0px var(--ink);
+    overflow: hidden;
+    padding: 52px 40px 0;
+    text-align: center;
+  }
+
+  /* Subtle Structural Dot Pattern (Solid — No Gradients) */
+  .modal::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.2) 1.5px, transparent 1.5px);
+    background-size: 24px 24px;
+    pointer-events: none;
+  }
+
+  /* Top-Left Brand Mark */
+  .brand-pill {
+    position: absolute;
+    top: 22px;
+    left: 26px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--white);
+    color: var(--ink);
+    border: 2px solid var(--ink);
+    border-radius: 12px;
+    padding: 6px 12px;
+    font-family: "Outfit", sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    box-shadow: 3px 3px 0px var(--ink);
+    z-index: 6;
+    text-decoration: none;
+  }
+
+  .brand-pill-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 4px;
+    background: var(--orange);
+    border: 1.5px solid var(--ink);
+  }
+
+  /* Close Button */
+  .close {
+    position: absolute;
+    top: 22px;
+    right: 24px;
+    width: 38px;
+    height: 38px;
+    border: 2px solid var(--ink);
+    border-radius: 10px;
+    background: var(--white);
+    color: var(--ink);
+    font-family: "Outfit", sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 3px 3px 0px var(--ink);
+    z-index: 6;
+    display: grid;
+    place-items: center;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  }
+  .close:hover {
+    background: var(--yellow);
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0px var(--ink);
+  }
+
+  /* ---------- Top Hero Copy ---------- */
+  .content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 16px;
+    border-radius: 999px;
+    background: var(--yellow);
+    color: var(--ink);
+    border: 2px solid var(--ink);
+    box-shadow: 3px 3px 0px var(--ink);
+    font-family: "Outfit", sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  h1 {
+    margin: 22px auto 0;
+    max-width: 880px;
+    font-family: "Outfit", sans-serif;
+    font-weight: 900;
+    font-size: clamp(38px, 5.5vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    color: var(--white);
+  }
+
+  h1 .accent {
+    color: var(--yellow);
+    font-style: normal;
+    display: inline-block;
+  }
+
+  .sub {
+    margin: 18px auto 0;
+    max-width: 650px;
+    color: var(--white);
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.55;
+  }
+
+  .cta {
+    margin-top: 28px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 34px;
+    border-radius: 999px;
+    background: var(--orange);
+    color: var(--white);
+    border: 2.5px solid var(--ink);
+    font-family: "Outfit", sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    box-shadow: 5px 5px 0px var(--ink);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  }
+  .cta:hover {
+    background: var(--orange-hover);
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0px var(--ink);
+  }
+  .cta:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--ink);
+  }
+
+  /* ---------- Stage with Tilted, Clickable Cards ---------- */
+  .stage {
+    position: relative;
+    height: 380px;
+    margin-top: 48px;
+  }
+
+  .card {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 330px;
+    height: 340px;
+    background: var(--card-surface);
+    color: var(--ink);
+    border: 2.5px solid var(--ink);
+    border-radius: 22px;
+    padding: 20px 20px 0;
+    text-align: left;
+    overflow: hidden;
+    box-shadow: 6px 6px 0px var(--ink);
+    cursor: pointer;
+    transition:
+      transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1),
+      bottom 0.55s cubic-bezier(0.2, 0.8, 0.2, 1),
+      background 0.4s ease,
+      box-shadow 0.4s ease;
+    outline: none;
+  }
+
+  .card.pos-left {
+    transform: translateX(-132%) rotate(-5deg);
+    transform-origin: bottom center;
+    z-index: 1;
+  }
+
+  .card.pos-right {
+    transform: translateX(32%) rotate(5deg);
+    transform-origin: bottom center;
+    z-index: 1;
+  }
+
+  .card.pos-mid {
+    transform: translateX(-50%) rotate(0deg);
+    bottom: 12px;
+    height: 340px;
+    background: var(--card-active);
+    z-index: 3;
+    cursor: default;
+    box-shadow: 10px 10px 0px var(--ink);
+  }
+
+  .card:not(.pos-mid):hover {
+    background: var(--white);
+    box-shadow: 8px 8px 0px var(--ink);
+  }
+
+  .card:focus-visible {
+    outline: 3px solid var(--yellow);
+    outline-offset: 2px;
+  }
+
+  /* ---------- Card Preview Boxes (Strictly Solid Colors + Ink Outlines) ---------- */
+  .preview {
+    height: 132px;
+    border-radius: 14px;
+    border: 2px solid var(--ink);
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .preview.violet { background: var(--violet-soft); }
+  .preview.orange { background: var(--orange-soft); }
+  .preview.mint   { background: var(--mint-soft); }
+
+  /* Card Heading + Icon */
+  .head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+    font-family: "Outfit", sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+
+  .icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    border: 2px solid var(--ink);
+    box-shadow: 2px 2px 0px var(--ink);
+    display: grid;
+    place-items: center;
+    font-size: 15px;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  .icon.violet { background: var(--violet); color: var(--white); }
+  .icon.orange { background: var(--orange); color: var(--white); }
+  .icon.mint   { background: var(--mint);   color: var(--ink); }
+
+  /* Card Feature List */
+  .items {
+    list-style: none;
+    margin-top: 14px;
+  }
+
+  .items li {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink-body);
+    padding: 6px 0;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .items li::before {
+    content: "+";
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    border: 1.5px solid var(--ink);
+    display: inline-grid;
+    place-items: center;
+    font-family: "Outfit", sans-serif;
+    font-weight: 900;
+    font-size: 14px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .card.pos-left .items li::before  { background: var(--orange); color: var(--white); }
+  .card.pos-mid .items li::before   { background: var(--violet); color: var(--white); }
+  .card.pos-right .items li::before { background: var(--mint);   color: var(--ink); }
+
+  /* ---------- Left Card: Reel Breakdowns Preview ---------- */
+  .reel {
+    width: 100%;
+    background: var(--white);
+    border: 2px solid var(--ink);
+    border-radius: 12px;
+    padding: 12px 14px;
+    text-align: left;
+    box-shadow: 3px 3px 0px var(--ink);
+  }
+  .reel .t {
+    font-family: "Outfit", sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--orange);
+  }
+  .reel .q {
+    font-family: "Outfit", sans-serif;
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-top: 2px;
+  }
+  .bar {
+    margin-top: 10px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--orange-soft);
+    border: 1.5px solid var(--ink);
+    overflow: hidden;
+  }
+  .bar span {
+    display: block;
+    width: 65%;
+    height: 100%;
+    background: var(--orange);
+  }
+
+  /* ---------- Middle Card: 1-on-1 Mentor Phone Preview ---------- */
+  .phone {
+    width: 175px;
+    height: 112px;
+    background: var(--white);
+    border: 2px solid var(--ink);
+    border-radius: 14px;
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    box-shadow: 3px 3px 0px var(--ink);
+  }
+  .bubble {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 8px;
+    border: 1.5px solid var(--ink);
+    line-height: 1.25;
+    text-align: left;
+  }
+  .bubble.them {
+    background: var(--card-surface);
+    color: var(--ink);
+    align-self: flex-start;
+  }
+  .bubble.me {
+    background: var(--violet);
+    color: var(--white);
+    align-self: flex-end;
+  }
+
+  /* ---------- Right Card: Clarity Summary Pill ---------- */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border-radius: 999px;
+    background: var(--mint);
+    border: 2px solid var(--ink);
+    color: var(--ink);
+    font-family: "Outfit", sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    box-shadow: 4px 4px 0px var(--ink);
+  }
+
+  /* ---------- Floating Sticker Chips ---------- */
+  .chip {
+    position: absolute;
+    z-index: 4;
+    padding: 8px 16px;
+    border-radius: 999px;
+    border: 2px solid var(--ink);
+    font-family: "Outfit", sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    box-shadow: 4px 4px 0px var(--ink);
+    white-space: nowrap;
+    pointer-events: none;
+  }
+  .chip.c1 {
+    top: 10px;
+    left: 7%;
+    background: var(--yellow);
+    color: var(--ink);
+    transform: rotate(-4deg);
+  }
+  .chip.c3 {
+    top: 2px;
+    right: 22%;
+    background: var(--white);
+    color: var(--violet-dark);
+    transform: rotate(2deg);
+  }
+  .chip.c2 {
+    top: 64px;
+    right: 5%;
+    background: var(--mint);
+    color: var(--ink);
+    transform: rotate(4deg);
+  }
+
+  @media (max-width: 860px) {
+    .modal { min-height: auto; padding-top: 64px; }
+    .stage { height: 340px; transform: scale(0.8); transform-origin: top center; }
+    .chip { display: none; }
+  }
+  @media (max-width: 560px) {
+    .stage { transform: scale(0.62); height: 300px; margin-top: 24px; }
+    .sub { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="modal" role="dialog" aria-label="Guided Learning After Class">
+  <a href="https://paathshala.app" class="brand-pill">
+    <span class="brand-pill-dot"></span>
+    Paathshala
+  </a>
+  <button class="close" aria-label="Close">&times;</button>
+
+  <div class="content">
+    <span class="badge">&#9733; Guided Learning After Class</span>
+
+    <h1>Too Shy to Ask in Class?<br><span class="accent">We Clear Every Doubt After.</span></h1>
+
+    <p class="sub">
+      From hesitant silence to complete concept clarity. Your dedicated 1-on-1 mentor
+      re-explains every lesson from scratch until it clicks, 100% judgment-free.
+    </p>
+
+    <a class="cta" href="https://paathshala.app">
+      <span>Book Free 1-on-1 Class</span>
+      <span>&#10140;</span>
+    </a>
+  </div>
+
+  <div class="stage">
+    <div class="chip c1">&#9733; 0% Shyness</div>
+    <div class="chip c3">1.5k doubts solved</div>
+    <div class="chip c2">CBSE &amp; ICSE covered</div>
+
+    <!-- Left: reel breakdowns -->
+    <article class="card pos-left" tabindex="0" role="button" aria-label="Reel Breakdowns">
+      <div class="preview orange">
+        <div class="reel">
+          <div class="t">Reel &middot; 2 min</div>
+          <div class="q">Quadratic equations</div>
+          <div class="bar"><span></span></div>
+        </div>
+      </div>
+      <div class="head">
+        <span class="icon orange">&#9654;</span>
+        Reel Breakdowns
+      </div>
+      <ul class="items">
+        <li>Step-by-step visual walkthroughs</li>
+        <li>Intimidating topics, made simple</li>
+      </ul>
+    </article>
+
+    <!-- Middle: mentor session -->
+    <article class="card pos-mid" tabindex="0" role="button" aria-label="1-on-1 Mentor">
+      <div class="preview violet">
+        <div class="phone">
+          <div class="bubble them">Sir, can you explain this again?</div>
+          <div class="bubble me">Of course. Let's start from scratch.</div>
+          <div class="bubble them">Okay, now it makes sense!</div>
+        </div>
+      </div>
+      <div class="head">
+        <span class="icon violet">&#128172;</span>
+        1-on-1 Mentor
+      </div>
+      <ul class="items">
+        <li>Private access right after class</li>
+        <li>Repeat as many times as needed</li>
+      </ul>
+    </article>
+
+    <!-- Right: clarity summary -->
+    <article class="card pos-right" tabindex="0" role="button" aria-label="Clarity Summary">
+      <div class="preview mint">
+        <span class="pill">&#10003; Concept clear</span>
+      </div>
+      <div class="head">
+        <span class="icon mint">&#9733;</span>
+        Clarity Summary
+      </div>
+      <ul class="items">
+        <li>Bite-sized takeaways</li>
+        <li>Zero hesitation, full clarity</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<script>
+  (function () {
+    const cards = document.querySelectorAll('.stage .card');
+
+    function bringToCenter(card) {
+      if (card.classList.contains('pos-mid')) return;
+
+      const mid = document.querySelector('.stage .card.pos-mid');
+      // The clicked card leaves from whichever side it was on; the centre card takes that side.
+      const sideClass = card.classList.contains('pos-left') ? 'pos-left' : 'pos-right';
+
+      card.classList.remove(sideClass);
+      card.classList.add('pos-mid');
+
+      mid.classList.remove('pos-mid');
+      mid.classList.add(sideClass);
+    }
+
+    cards.forEach(function (card) {
+      card.addEventListener('click', function () { bringToCenter(card); });
+      card.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          bringToCenter(card);
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
+'''
+
+banner_path = os.path.join(scratch_dir, "banner.html")
+homepage_path = os.path.join(scratch_dir, "homepage-section.html")
+
+with open(banner_path, "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+with open(homepage_path, "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+shutil.copyfile(banner_path, os.path.join(brain_dir, "banner.html"))
+shutil.copyfile(homepage_path, os.path.join(brain_dir, "homepage-section.html"))
+
+print("Successfully generated Paathshala styled fan cards banner!")

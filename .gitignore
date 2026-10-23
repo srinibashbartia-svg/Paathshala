@@ -1,0 +1,7 @@
+node_modules/
+dist-surge/
+reel.mp4
+*.pptx
+.DS_Store
+*.pyc
+__pycache__/

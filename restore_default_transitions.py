@@ -1,0 +1,1657 @@
+import sys, os
+
+html_content = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Guided Learning | Paathshala</title>
+    <meta name="description" content="A dedicated expert teacher who meets your child exactly where they're stuck. Live 1-on-1 classes, 60-second concept reels, and personalized guidance.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Paathshala Official Design Tokens */
+            --bg: #5458F7;                      /* Signature Royal Indigo */
+            --bg-dots: rgba(255, 255, 255, 0.22);
+            --card-bg: #FAF7F2;                 /* Warm Editorial Cream */
+            --fg: #FFFFFF;                      /* Crisp White Text */
+            --fg-dark: #18181B;                 /* Deep Obsidian for cards */
+            --mut: rgba(255, 255, 255, 0.82);   /* Soft White Secondary */
+            --mut-dark: #52525B;
+            --a: #E76F51;                       /* Paathshala Coral Accent */
+            --a-hover: #D95D3F;
+            --b: #FF5D8F;                       /* Vibrant Pink */
+            --c: #06D6A0;                       /* Emerald Mint */
+            --d: #7C6CFF;                       /* Electric Purple */
+            --g: #FFD25E;                       /* Warm Amber Gold */
+            --border-dark: #18181B;             /* Neobrutalist Ink Outline */
+            --ln: rgba(255, 255, 255, 0.2);
+            box-sizing: border-box;
+            padding-top: env(safe-area-inset-top, 0px);
+            padding-bottom: env(safe-area-inset-bottom, 0px);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: env(safe-area-inset-top, 0px);
+            max-width: 100vw;
+            overflow-x: clip;
+            background-color: #5458F7;
+        }
+
+        body {
+            background-color: #5458F7 !important;
+            background-image: radial-gradient(var(--bg-dots) 1.5px, transparent 1.5px) !important;
+            background-size: 24px 24px !important;
+            background-attachment: fixed !important;
+            color: #FFFFFF !important;
+            font-family: 'Plus Jakarta Sans', 'Poppins', sans-serif;
+            overflow-x: clip;
+            line-height: 1.45;
+            min-height: 100vh;
+        }
+
+        h1, h2, .big {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            letter-spacing: -0.035em;
+            line-height: 1.02;
+        }
+
+        a:focus-visible, button:focus-visible, summary:focus-visible {
+            outline: 3px solid var(--a);
+            outline-offset: 3px;
+        }
+
+        /* FIXED BRAND NAVBAR */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: calc(14px + env(safe-area-inset-top, 0px)) 5vw 14px;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            background: rgba(84, 88, 247, 0.88);
+            border-bottom: 1px solid var(--ln);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .brand-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #FFFFFF;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 800;
+        }
+
+        .brand-emblem {
+            width: 34px;
+            height: 34px;
+            border-radius: 9px;
+            background: #FFFFFF;
+            border: 2px solid var(--border-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 2px 2px 0px var(--border-dark);
+        }
+
+        .brand-emblem svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-link {
+            color: var(--mut);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 14.5px;
+            transition: color 0.15s;
+        }
+
+        .nav-link:hover {
+            color: #FFFFFF;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--a);
+            color: #FFFFFF !important;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            padding: 13px 26px;
+            border-radius: 99px;
+            text-decoration: none;
+            border: 2px solid var(--border-dark);
+            box-shadow: 4px 4px 0px var(--border-dark);
+            cursor: pointer;
+            font-size: 15px;
+            transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+        }
+
+        .btn:hover {
+            background: var(--a-hover);
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px var(--border-dark);
+        }
+
+        .btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px var(--border-dark);
+        }
+
+        .btn.ghost {
+            background: transparent;
+            color: #FFFFFF !important;
+            border: 2px solid rgba(255, 255, 255, 0.7);
+            box-shadow: none;
+        }
+
+        .btn.ghost:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: #FFFFFF;
+            transform: translateY(-2px);
+            box-shadow: none;
+        }
+
+        nav .btn {
+            padding: 8px 18px;
+            font-size: 13px;
+            box-shadow: 2px 2px 0px var(--border-dark);
+        }
+
+        .hl {
+            color: var(--a) !important;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 110px 5vw 35px;
+            position: relative;
+            overflow: hidden;
+            background: transparent;
+        }
+
+        .hero:before, .hero:after {
+            content: "";
+            position: absolute;
+            width: 50vw;
+            height: 50vw;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.35;
+            animation: float 14s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+
+        .hero:before {
+            background: #7C6CFF;
+            top: -15vw;
+            left: -10vw;
+        }
+
+        .hero:after {
+            background: #E76F51;
+            bottom: -20vw;
+            right: -10vw;
+            animation-delay: -7s;
+        }
+
+        @keyframes float {
+            to { transform: translate(6vw, 6vw) scale(1.15); }
+        }
+
+        .hero-top-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 4vw;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 35px;
+        }
+
+        h1 {
+            font-size: clamp(42px, 6.5vw, 86px);
+            color: #FFFFFF;
+        }
+
+        .w {
+            display: inline-block;
+            overflow: hidden;
+            vertical-align: top;
+            padding-bottom: 0.08em;
+        }
+
+        .w i {
+            display: inline-block;
+            font-style: normal;
+            transform: translateY(110%) rotate(6deg);
+            animation: heroUp 0.85s cubic-bezier(.2, .9, .2, 1) forwards;
+            animation-delay: calc(var(--n) * 80ms + 0.15s);
+        }
+
+        @keyframes heroUp {
+            to { transform: none; }
+        }
+
+        .sub {
+            margin: 18px 0 24px;
+            color: var(--mut);
+            font-size: clamp(16px, 1.8vw, 20px);
+            max-width: 36ch;
+            opacity: 0;
+            animation: fade 0.8s 1.1s forwards;
+            line-height: 1.5;
+        }
+
+        @keyframes fade {
+            to { opacity: 1; }
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 800;
+            padding: 6px 14px;
+            border: 2px solid var(--border-dark);
+            border-radius: 99px;
+            margin-bottom: 16px;
+            color: var(--border-dark);
+            background: var(--g);
+            box-shadow: 2px 2px 0px var(--border-dark);
+        }
+
+        .hero-btn-group {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fade 0.8s 1.2s forwards;
+        }
+
+        /* EDITORIAL LAB WIDGET (FACELESS SILHOUETTES) */
+        .lab {
+            background: var(--card-bg);
+            border: 3px solid var(--border-dark);
+            border-radius: 24px;
+            padding: 24px;
+            text-align: center;
+            box-shadow: 6px 6px 0px var(--border-dark), 0 20px 40px rgba(0, 0, 0, 0.25);
+            transform: translateY(30px) scale(0.97);
+            opacity: 0;
+            animation: pop 0.9s 0.9s cubic-bezier(.2, .9, .2, 1) forwards;
+            position: relative;
+            color: var(--fg-dark);
+        }
+
+        @keyframes pop {
+            to { transform: none; opacity: 1; }
+        }
+
+        .lab p {
+            color: var(--mut-dark);
+            font-weight: 700;
+            font-size: 15px;
+            margin: 12px 0 16px;
+            min-height: 2.4em;
+        }
+
+        .hs {
+            width: 100%;
+            max-width: 340px;
+            height: auto;
+            display: block;
+            margin: auto;
+            overflow: visible;
+        }
+
+        .a1, .a2, .q, .bl {
+            transition: opacity 0.35s ease;
+        }
+
+        .a2, .bl {
+            opacity: 0;
+        }
+
+        .glued .a1, .glued .q {
+            opacity: 0;
+        }
+
+        .glued .a2, .glued .bl {
+            opacity: 1;
+        }
+
+        .tch {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.7s cubic-bezier(.3, 1.4, .4, 1);
+        }
+
+        .glued .tch {
+            opacity: 1;
+            transform: none;
+        }
+
+        .q {
+            transform-box: fill-box;
+            transform-origin: center;
+            animation: wob 0.8s ease-in-out infinite alternate;
+        }
+
+        @keyframes wob {
+            to { transform: rotate(-7deg); }
+        }
+
+        /* =========================================================================
+           HIGHLIGHT REELS TICKER: BIGGER REELS WITH IN-VIDEO LOWER-LEFT TITLE
+           (GRADIENT OVERLAY BEHIND TITLE & MUTED VIDEO AUTOPLAY)
+           ========================================================================= */
+        .hero-ticker-section {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            margin-top: 10px;
+            opacity: 0;
+            animation: fade 0.8s 1.3s forwards;
+        }
+
+        .ticker-label-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+            font-size: 0.88rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: #FFFFFF;
+        }
+
+        .ticker-label-bar span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .live-dot {
+            width: 10px;
+            height: 10px;
+            background: #EF4444;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 12px #EF4444;
+            animation: blink 1.4s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .ticker-scroll-viewport {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent);
+            padding: 10px 0 24px;
+        }
+
+        .ticker-track {
+            display: flex;
+            gap: 22px;
+            width: max-content;
+            animation: scrollTicker 45s linear infinite;
+        }
+
+        .ticker-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scrollTicker {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        /* BIGGER REEL CARD (FULL VIDEO CANVAS) */
+        .reel-card {
+            width: 220px;
+            height: 350px;
+            border-radius: 20px;
+            border: 3px solid var(--border-dark);
+            box-shadow: 6px 6px 0px var(--border-dark);
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: #000000;
+            text-decoration: none;
+            display: block;
+            cursor: pointer;
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s;
+        }
+
+        .reel-card:hover {
+            transform: translateY(-8px) scale(1.025);
+            box-shadow: 10px 10px 0px var(--border-dark);
+        }
+
+        .reel-card video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .reel-gradient-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to top,
+                rgba(15, 18, 44, 0.95) 0%,
+                rgba(15, 18, 44, 0.72) 36%,
+                rgba(15, 18, 44, 0.15) 65%,
+                transparent 100%
+            );
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .reel-lower-left {
+            position: absolute;
+            bottom: 14px;
+            left: 14px;
+            right: 14px;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            text-align: left;
+        }
+
+        .reel-tag-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.65rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            background: var(--a);
+            color: #FFFFFF;
+            padding: 3px 9px;
+            border-radius: 99px;
+            width: fit-content;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+        }
+
+        .reel-title-text {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.05rem;
+            line-height: 1.22;
+            color: #FFFFFF;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .reel-tutor-sub {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .reel-top-badges {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            right: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 3;
+        }
+
+        .reel-badge-mute {
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: #FFFFFF;
+            font-size: 0.64rem;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: 99px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .reel-badge-dur {
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: #FFFFFF;
+            font-size: 0.66rem;
+            font-weight: 900;
+            padding: 3px 8px;
+            border-radius: 99px;
+            font-family: 'Outfit', sans-serif;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        /* =========================================================================
+           DEFAULT / ORIGINAL CURTAIN TRANSITION ENGINE (RESTORED AS REQUESTED)
+           ========================================================================= */
+        #story {
+            height: 520vh;
+            position: relative;
+        }
+
+        .stage {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: grid;
+            place-items: center;
+            background-color: transparent !important;
+            background: transparent !important;
+        }
+
+        .stage[data-s="0"] { --cc: var(--a); --o: 20% 70%; }
+        .stage[data-s="1"] { --cc: #7C6CFF; --o: 80% 30%; }
+        .stage[data-s="2"] { --cc: var(--g); --o: 50% 50%; }
+        .stage[data-s="3"] { --cc: var(--c); --o: 30% 60%; }
+        .stage[data-s="4"] { --cc: var(--a); --o: 50% 50%; }
+
+        .prog {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--a), var(--g), var(--c), #7C6CFF);
+            width: calc(var(--p, 0) * 100%);
+            z-index: 20;
+            box-shadow: 0 0 14px rgba(231, 111, 81, 0.8);
+        }
+
+        /* ORIGINAL 8-BLADE CURTAIN SWEEP */
+        #cur {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            z-index: 8;
+            pointer-events: none;
+        }
+
+        #cur i {
+            flex: 1;
+            background: var(--cc, var(--a));
+            transform: scaleY(0);
+        }
+
+        #cur.go i {
+            animation: cur 1.1s cubic-bezier(.7, 0, .3, 1) calc(var(--n) * 60ms) both;
+        }
+
+        @keyframes cur {
+            0%   { transform: scaleY(0); transform-origin: top; }
+            45%  { transform: scaleY(1); transform-origin: top; }
+            55%  { transform: scaleY(1); transform-origin: bottom; }
+            100% { transform: scaleY(0); transform-origin: bottom; }
+        }
+
+        /* ORIGINAL SCENE TRANSITION STACK */
+        .scene {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 6vw;
+            opacity: 0;
+            z-index: 1;
+            pointer-events: none;
+            clip-path: circle(0% at var(--o, 50% 50%));
+            transform: scale(1.2);
+            transition: clip-path 1.2s cubic-bezier(.7, 0, .2, 1), transform 1.6s cubic-bezier(.2, .8, .2, 1), opacity 0s;
+        }
+
+        .scene.on {
+            opacity: 1;
+            z-index: 3;
+            pointer-events: auto;
+            clip-path: circle(150% at var(--o, 50% 50%));
+            transform: none;
+        }
+
+        .scene.out {
+            opacity: 1;
+            z-index: 2;
+            clip-path: circle(150% at var(--o, 50% 50%));
+            transform: scale(0.9);
+            transition: transform 1.2s cubic-bezier(.7, 0, .2, 1), opacity 0.5s 0.7s;
+        }
+
+        .scene:not(.on):not(.out) * {
+            transition-duration: 0s !important;
+            transition-delay: 0s !important;
+        }
+
+        .big {
+            font-size: clamp(40px, 8vw, 108px);
+            color: #FFFFFF;
+        }
+
+        .t2 {
+            font-size: clamp(34px, 6vw, 84px);
+            margin-bottom: 12px;
+            color: #FFFFFF;
+        }
+
+        .mask {
+            clip-path: inset(0 100% 0 0);
+            transition: clip-path 1s cubic-bezier(.7, 0, .2, 1);
+        }
+
+        .on .mask {
+            clip-path: inset(0 0 0 0);
+            transition-delay: 0.55s;
+        }
+
+        .cap {
+            color: var(--mut);
+            font-size: clamp(15px, 2vw, 20px);
+            margin-top: 16px;
+            max-width: 46ch;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: 0.8s 0.7s;
+            line-height: 1.5;
+        }
+
+        .on .cap {
+            opacity: 1;
+            transform: none;
+            transition-delay: 0.9s;
+        }
+
+        .bgword {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 2vh;
+            overflow: hidden;
+            opacity: 0.12;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .bgword div {
+            font-family: 'Outfit', sans-serif;
+            font-size: 18vh;
+            font-weight: 900;
+            white-space: nowrap;
+            color: transparent;
+            -webkit-text-stroke: 2px #FFFFFF;
+            animation: mq 30s linear infinite;
+        }
+
+        .bgword div + div {
+            animation-direction: reverse;
+        }
+
+        @keyframes mq {
+            to { transform: translateX(-50%); }
+        }
+
+        /* SCENE SVG VISUALS */
+        svg.sv {
+            width: min(88vw, 460px);
+            height: auto;
+            max-height: 44vh;
+            margin: 8px 0 22px;
+            overflow: visible;
+        }
+
+        .fl {
+            font-size: 36px;
+            animation: drift 3.2s ease-in-out infinite alternate;
+        }
+
+        @keyframes drift {
+            to { translate: var(--dx) var(--dy); }
+        }
+
+        .tile {
+            transform-box: fill-box;
+            transform-origin: center;
+            transform: scale(0);
+            transition: transform 0.7s cubic-bezier(.3, 1.5, .4, 1) 0.6s;
+        }
+
+        .on .tile {
+            transform: none;
+        }
+
+        .wb text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 30px;
+            font-weight: 800;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .on .t1 {
+            opacity: 1;
+            transition-delay: 1.3s;
+        }
+
+        .on .t2 {
+            opacity: 1;
+            transition-delay: 2.3s;
+        }
+
+        svg.tg {
+            width: min(94vw, 900px);
+            overflow: visible;
+            margin-top: 18px;
+        }
+
+        .tg path {
+            fill: none;
+            stroke: var(--g);
+            stroke-width: 8;
+            stroke-linecap: round;
+            stroke-dasharray: 1;
+            stroke-dashoffset: 1;
+            transition: stroke-dashoffset 2.6s linear;
+        }
+
+        .on .tg path {
+            stroke-dashoffset: 0;
+        }
+
+        .tg circle {
+            fill: var(--card-bg);
+            stroke: var(--border-dark);
+            stroke-width: 2.5;
+            transform-box: fill-box;
+            transform-origin: center;
+            transform: scale(0);
+            transition: transform 0.6s cubic-bezier(.3, 1.8, .4, 1) calc(var(--n) * 0.85s);
+        }
+
+        .on .tg circle {
+            transform: scale(1);
+        }
+
+        .tg text {
+            fill: #FFFFFF;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 22px;
+            text-anchor: middle;
+            opacity: 0;
+            transition: opacity 0.6s calc(var(--n) * 0.85s + 0.2s);
+        }
+
+        .on .tg text {
+            opacity: 1;
+        }
+
+        .tg .em {
+            font-size: 26px;
+            fill: #000000;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0 8px;
+            perspective: 900px;
+        }
+
+        .tc {
+            width: clamp(120px, 24vw, 200px);
+            aspect-ratio: 9 / 14;
+            border-radius: 20px;
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            color: #1A1200;
+            text-align: left;
+            margin: 0 calc(clamp(120px, 24vw, 200px) / -2.4);
+            transform: translateY(60px);
+            opacity: 0;
+            transition: all 1s cubic-bezier(.2, .9, .2, 1);
+            position: relative;
+            border: 2.5px solid var(--border-dark);
+            box-shadow: 4px 4px 0px var(--border-dark);
+        }
+
+        .on .tc {
+            opacity: 1;
+            margin: 0 8px;
+            transform: rotate(var(--r)) translateY(var(--y));
+        }
+
+        .tc u {
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 800;
+            background: #FFFFFFB0;
+            border-radius: 99px;
+            padding: 3px 9px;
+            align-self: flex-start;
+            margin-bottom: 8px;
+        }
+
+        .tc b {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(14px, 2vw, 19px);
+            line-height: 1.1;
+        }
+
+        .tc small {
+            font-weight: 700;
+            opacity: 0.75;
+            margin-top: 4px;
+        }
+
+        .tc svg {
+            position: absolute;
+            top: 12px;
+            left: 0;
+            width: 100%;
+            padding: 0 12px;
+        }
+
+        /* TEACHER PROFILE MINI BANNER IN SCENE 3 */
+        .teacher-mini-preview-card {
+            background: #FFFFFF;
+            border: 2.5px solid var(--border-dark);
+            border-radius: 99px;
+            padding: 8px 20px 8px 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 18px;
+            box-shadow: 4px 4px 0px var(--border-dark);
+            color: var(--fg-dark);
+        }
+
+        .teacher-avatar-badge {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #FFFFFF;
+            border: 2px solid var(--border-dark);
+        }
+
+        .teacher-preview-meta {
+            text-align: left;
+            line-height: 1.25;
+        }
+
+        .teacher-preview-name {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 0.95rem;
+            color: var(--fg-dark);
+        }
+
+        .teacher-preview-badge {
+            font-size: 0.74rem;
+            color: #15803D;
+            font-weight: 800;
+        }
+
+        .row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2vw;
+        }
+
+        .row .stat {
+            font-size: clamp(60px, 14vw, 190px);
+            color: #FFFFFF;
+            text-shadow: 4px 4px 0px var(--border-dark);
+        }
+
+        .row svg {
+            width: clamp(70px, 14vw, 150px);
+            transform: scale(0);
+            transition: transform 0.8s cubic-bezier(.3, 1.5, .4, 1) 0.9s;
+        }
+
+        .on .row svg {
+            transform: none;
+        }
+
+        /* MARQUEE */
+        .marq {
+            overflow: hidden;
+            white-space: nowrap;
+            padding: 5vh 0;
+            border-block: 1px solid var(--ln);
+        }
+
+        .marq div {
+            display: inline-block;
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(50px, 11vw, 150px);
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            animation: mq 22s linear infinite;
+        }
+
+        .marq span {
+            color: transparent;
+            -webkit-text-stroke: 2px #FFFFFF;
+        }
+
+        .marq em {
+            color: var(--a);
+            font-style: normal;
+        }
+
+        /* FAQS */
+        .faq {
+            padding: 14vh 6vw;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .faq h2 {
+            font-size: clamp(38px, 6vw, 76px);
+            margin-bottom: 30px;
+            color: #FFFFFF;
+        }
+
+        details {
+            border-bottom: 1px solid var(--ln);
+            padding: 20px 0;
+            cursor: pointer;
+        }
+
+        summary {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(18px, 2.4vw, 26px);
+            font-weight: 700;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            color: #FFFFFF;
+        }
+
+        summary:after {
+            content: "+";
+            color: var(--a);
+            font-size: 30px;
+            transition: transform 0.3s;
+        }
+
+        details[open] summary:after {
+            transform: rotate(45deg);
+        }
+
+        details p {
+            color: var(--mut);
+            margin-top: 12px;
+            line-height: 1.55;
+            font-size: 16px;
+        }
+
+        .rv {
+            opacity: 0;
+            transform: translateY(60px) scale(0.97);
+            filter: blur(8px);
+            transition: all 1s cubic-bezier(.2, .9, .2, 1);
+        }
+
+        .rv.in {
+            opacity: 1;
+            transform: none;
+            filter: none;
+        }
+
+        /* CTA */
+        .cta {
+            text-align: center;
+            padding: 18vh 6vw;
+        }
+
+        .cta h2 {
+            font-size: clamp(44px, 9vw, 130px);
+            margin-bottom: 34px;
+            color: #FFFFFF;
+        }
+
+        .cta .btn {
+            margin: 6px;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--mut);
+            padding: 30px 6vw 50px;
+            font-size: 13px;
+            border-top: 1px solid var(--ln);
+        }
+
+        footer a {
+            color: #FFFFFF;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 860px) {
+            .hero-top-grid {
+                grid-template-columns: 1fr;
+                padding-top: 15px;
+            }
+            .on .tc:nth-child(3) {
+                display: none;
+            }
+            .reel-card {
+                width: 180px;
+                height: 290px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01s !important;
+                animation-delay: 0s !important;
+                transition-duration: 0.01s !important;
+                transition-delay: 0s !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SVG DEFINITIONS (MINIMALIST FACELESS SILHOUETTES) -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <defs>
+            <g id="hd">
+                <circle r="34" style="fill:#F2C6A0"/>
+                <path d="M-35-4Q-30-48 0-46Q30-48 35-4Q20-26 0-24Q-20-26-35-4Z" fill="#18181B"/>
+            </g>
+            <g id="stuS">
+                <path d="M-62 110Q0 20 62 110Z" style="fill:#38BDF8"/>
+                <use href="#hd"/>
+            </g>
+            <g id="stuH">
+                <path d="M-62 110Q0 20 62 110Z" style="fill:#38BDF8"/>
+                <use href="#hd"/>
+            </g>
+            <g id="tea">
+                <path d="M-62 110Q0 20 62 110Z" style="fill:#E76F51"/>
+                <circle r="34" style="fill:#F2C6A0"/>
+                <path d="M-36 0Q-34-50 0-48Q34-50 36 0Q22-24 0-22Q-22-24-36 0Z" fill="#3A2A1A"/>
+            </g>
+        </defs>
+    </svg>
+
+    <!-- FIXED TOP NAVBAR -->
+    <nav>
+        <a href="https://paathshala.app/" class="brand-wrap">
+            <div class="brand-emblem">
+                <svg viewBox="-5.5 -2.5 45 45" fill="none">
+                    <circle cx="16.827" cy="20.95" r="21.5" fill="#FFFFFF" />
+                    <path d="M15.3789 1.56641C18.3485 -0.00397233 21.8239 -0.319563 25.0273 0.691406V0.692383C28.099 1.67819 30.6634 3.82668 32.1709 6.67871V6.67969C33.65 9.5688 33.9475 12.9198 33.001 16.0244L33 16.0273C32.7663 16.8763 32.3452 17.8593 31.7959 18.7578C31.2461 19.6571 30.5729 20.4651 29.8379 20.9727L29.8301 20.9785L29.8232 20.9854C29.2171 21.5856 28.6251 22.154 27.9209 22.6201L27.9131 22.626C27.417 23.0235 26.8435 23.281 26.2578 23.5615C23.8896 24.6956 21.2532 25.014 18.6572 25.3838C17.5223 25.5455 16.3713 25.7405 15.2402 25.874L15.1436 25.8857V25.9824C15.1382 26.9792 15.125 28.0164 15.1436 29.0146V29.0195C15.2326 30.5471 15.239 32.7448 14.9053 34.1934C13.8023 38.9792 8.91801 41.328 4.48145 39.2656H4.48047C3.48 38.8053 2.75252 38.2262 2.0791 37.3516L2.07324 37.3457L1.92285 37.1709C0.397689 35.3408 -0.21388 32.689 0.275391 30.3652L0.167969 30.3418L0.276367 30.3652L0.277344 30.3525C0.278271 30.3429 0.278388 30.3323 0.279297 30.3223C0.903668 26.8641 3.29994 24.1185 6.36719 22.4961C6.57023 22.3887 7.15533 22.1484 7.72852 21.9053C8.01263 21.7848 8.29222 21.6643 8.51465 21.5615C8.62571 21.5102 8.72387 21.4623 8.80176 21.4209C8.87621 21.3814 8.94258 21.3425 8.98145 21.3076L9.01953 21.2734L9.01758 21.2227C8.99171 20.3933 8.98483 19.563 8.99609 18.7334C9.00396 17.9678 8.98779 17.1376 8.97266 16.2813C8.95751 15.4242 8.94299 14.5395 8.95312 13.6621C8.97343 11.9056 9.09309 10.1855 9.5 8.77832C10.3637 5.7917 12.3812 3.2335 15.1123 1.71094L15.3789 1.56641Z" fill="#5F5AF6" stroke="black" stroke-width="0.22"/>
+                    <path d="M27.142 13.0609L27.3185 13.0612C27.6183 13.0878 27.9587 13.1253 28.1817 13.3206C30.8965 15.699 31.0252 18.9068 29.2136 21.755C28.9327 22.1967 28.2947 22.2791 28.2108 22.7999C27.611 23.2069 26.9192 23.4699 26.2332 23.7481C23.4164 24.8906 20.2822 25.2101 17.2249 25.579C15.8905 25.74 14.8158 26.2706 13.4793 26.4041C11.7112 26.6422 8.30149 30.1145 6.60504 30.5874C6.60829 30.4183 6.91796 27.3761 7.84467 25.579C9.43249 22.4998 11.9016 21.1201 14.734 19.8646C15.0803 19.6812 15.3437 19.6949 15.6625 19.4302L15.5989 19.3706C15.8376 19.2941 17.1559 19.1762 17.4724 19.137C22.4276 18.5234 26.1931 17.7941 27.142 13.0609Z" fill="#E87257"/>
+                </svg>
+            </div>
+            <span>Paathshala <span class="hl">·</span> Guided learning</span>
+        </a>
+        <div class="nav-links">
+            <a href="#story" class="nav-link">Why Guided?</a>
+            <a href="#faq" class="nav-link">FAQ</a>
+            <a class="btn" href="https://paathshala.app/booking">Book free trial</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION WITH TOP GRID & BIGGER HIGHLIGHT REELS TICKER -->
+    <section class="hero">
+        <div class="hero-top-grid">
+            <div>
+                <span class="pill">Live 1-on-1 classes · Classes 1 to 12</span>
+                <h1 id="h1"></h1>
+                <p class="sub">A dedicated expert teacher who meets your child exactly where they're stuck.</p>
+                <div class="hero-btn-group">
+                    <a class="btn" href="https://paathshala.app/booking">Book free trial ➔</a>
+                    <a class="btn ghost" href="#story">Explore the journey ↓</a>
+                </div>
+            </div>
+
+            <!-- INTERACTIVE LAB WIDGET (FACELESS SILHOUETTES) -->
+            <div class="lab">
+                <svg class="hs" id="nuc" viewBox="0 0 340 270" aria-hidden="true">
+                    <rect x="20" y="240" width="300" height="8" rx="4" style="fill:#CBD5E1"/>
+                    <g class="a1"><use href="#stuS" x="105" y="130"/></g>
+                    <g class="a2"><use href="#stuH" x="105" y="130"/></g>
+                    <path d="M60 240l45-18 45 18z" fill="#FFFFFF" stroke="#18181B" stroke-width="2"/>
+                    <g class="q">
+                        <circle cx="105" cy="40" r="30" style="fill:#FFFFFF; stroke:var(--a); stroke-width:2.5;"/>
+                        <text x="105" y="54" text-anchor="middle" font-family="'Outfit', sans-serif" font-size="38" font-weight="900" style="fill:var(--a)">?</text>
+                    </g>
+                    <g class="bl">
+                        <circle cx="105" cy="40" r="30" style="fill:var(--g); stroke:#18181B; stroke-width:2.5;"/>
+                        <text x="105" y="52" text-anchor="middle" font-size="28">💡</text>
+                    </g>
+                    <g class="tch">
+                        <use href="#tea" x="245" y="130"/>
+                        <rect x="175" y="12" width="144" height="34" rx="17" style="fill:#FFFFFF; stroke:#18181B; stroke-width:2;"/>
+                        <text x="247" y="34" text-anchor="middle" font-family="'Outfit', sans-serif" font-size="13.5" font-weight="800" style="fill:#18181B">Let's try together!</text>
+                    </g>
+                </svg>
+                <p id="lt">Stuck on a question, alone.</p>
+                <button class="btn" id="glue" style="width:100%; justify-content:center;">Turn on the guide ✨</button>
+            </div>
+        </div>
+
+        <!-- =========================================================================
+             HIGHLIGHT REELS TICKER: BIGGER REELS WITH IN-VIDEO LOWER-LEFT TITLE
+             (GRADIENT OVERLAY BEHIND TITLE & MUTED VIDEO AUTOPLAY)
+             ========================================================================= -->
+        <div class="hero-ticker-section">
+            <div class="ticker-label-bar">
+                <span><i class="live-dot"></i> Live Highlight Reels from 1-on-1 Classes (Playing Muted)</span>
+                <span style="font-size:0.8rem; color:var(--mut);">Tap any reel to open ➔</span>
+            </div>
+            <div class="ticker-scroll-viewport">
+                <div class="ticker-track">
+
+                    <!-- REEL 1: NUCLEAR GLUE (REAL MP4 PLAYING MUTED) -->
+                    <a href="https://paathshala.app/reels/6acca1a0fa97e5183b039237-r1" target="_blank" class="reel-card">
+                        <video autoplay loop muted playsinline preload="auto" poster="https://storage.googleapis.com/paathshala-storage/recordings/6acca1a0fa97e5183b039237/thumbnails/reel_6acca1a0fa97e5183b039237-r1.jpg">
+                            <source src="https://storage.googleapis.com/paathshala-storage/recordings/6acca1a0fa97e5183b039237/reels/6acca1a0fa97e5183b039237-r1.mp4" type="video/mp4">
+                        </video>
+                        <div class="reel-top-badges">
+                            <span class="reel-badge-mute">🔇 Muted</span>
+                            <span class="reel-badge-dur">0:50</span>
+                        </div>
+                        <div class="reel-gradient-overlay"></div>
+                        <div class="reel-lower-left">
+                            <span class="reel-tag-pill">⚛️ Aha Moment!</span>
+                            <div class="reel-title-text">The 'Nuclear Glue' Inside an Atom</div>
+                            <div class="reel-tutor-sub">Leah Alexander · Physics</div>
+                        </div>
+                    </a>
+
+                    <!-- REEL 2: 99.999% EMPTY SPACE (REAL MP4 PLAYING MUTED) -->
+                    <a href="https://paathshala.app/reels/6acca1a0fa97e5183b039237-r2" target="_blank" class="reel-card">
+                        <video autoplay loop muted playsinline preload="auto" poster="https://storage.googleapis.com/paathshala-storage/recordings/6acca1a0fa97e5183b039237/thumbnails/reel_6acca1a0fa97e5183b039237-r2.jpg">
+                            <source src="https://storage.googleapis.com/paathshala-storage/recordings/6acca1a0fa97e5183b039237/reels/6acca1a0fa97e5183b039237-r2.mp4" type="video/mp4">
+                        </video>
+                        <div class="reel-top-badges">
+                            <span class="reel-badge-mute">🔇 Muted</span>
+                            <span class="reel-badge-dur">0:58</span>
+                        </div>
+                        <div class="reel-gradient-overlay"></div>
+                        <div class="reel-lower-left">
+                            <span class="reel-tag-pill">🌌 Mind Blown</span>
+                            <div class="reel-title-text">You Are 99.999% Empty Space!</div>
+                            <div class="reel-tutor-sub">Leah Alexander · Chemistry</div>
+                        </div>
+                    </a>
+
+                    <!-- REEL 3: VEDIC MULTIPLICATION -->
+                    <a href="https://paathshala.app/reels/6acca1a0fa97e5183b039237-r1" target="_blank" class="reel-card">
+                        <video autoplay loop muted playsinline preload="auto" poster="https://storage.googleapis.com/paathshala-storage/recordings/6acca1a0fa97e5183b039237/thumbnails/reel_6acca1a0fa97e5183b039237-r1_og.jpg">
+                            <source src="https://storage.googleapis.com/paathshala-storage/recordings/6acca1a0fa97e5183b039237/reels/6acca1a0fa97e5183b039237-r1.mp4" type="video/mp4">
+                        </video>
+                        <div class="reel-top-badges">
+                            <span class="reel-badge-mute">🔇 Muted</span>
+                            <span class="reel-badge-dur">0:42</span>
+                        </div>
+                        <div class="reel-gradient-overlay"></div>
+                        <div class="reel-lower-left">
+                            <span class="reel-tag-pill">💡 Mental Math</span>
+                            <div class="reel-title-text">Multiply Any 2-Digit Number in 3s</div>
+                            <div class="reel-tutor-sub">Nikita Arvey · Mathematics</div>
+                        </div>
+                    </a>
+
+                    <!-- REEL 4: AUTUMN LEAVES -->
+                    <a href="https://paathshala.app/reels/6acca1a0fa97e5183b039237-r2" target="_blank" class="reel-card">
+                        <video autoplay loop muted playsinline preload="auto" poster="https://storage.googleapis.com/paathshala-storage/recordings/6acca1a0fa97e5183b039237/thumbnails/reel_6acca1a0fa97e5183b039237-r2.jpg">
+                            <source src="https://storage.googleapis.com/paathshala-storage/recordings/6acca1a0fa97e5183b039237/reels/6acca1a0fa97e5183b039237-r2.mp4" type="video/mp4">
+                        </video>
+                        <div class="reel-top-badges">
+                            <span class="reel-badge-mute">🔇 Muted</span>
+                            <span class="reel-badge-dur">0:54</span>
+                        </div>
+                        <div class="reel-gradient-overlay"></div>
+                        <div class="reel-lower-left">
+                            <span class="reel-tag-pill">🌿 Nature Decoded</span>
+                            <div class="reel-title-text">Why Leaves Turn Red In Autumn</div>
+                            <div class="reel-tutor-sub">Soumi Sarkar · Biology</div>
+                        </div>
+                    </a>
+
+                    <!-- REEL 5: MAGIC E PHONICS -->
+                    <a href="https://paathshala.app/reels/6acca1a0fa97e5183b039237-r1" target="_blank" class="reel-card">
+                        <video autoplay loop muted playsinline preload="auto" poster="https://storage.googleapis.com/paathshala-storage/recordings/6acca1a0fa97e5183b039237/thumbnails/reel_6acca1a0fa97e5183b039237-r1.jpg">
+                            <source src="https://storage.googleapis.com/paathshala-storage/recordings/6acca1a0fa97e5183b039237/reels/6acca1a0fa97e5183b039237-r1.mp4" type="video/mp4">
+                        </video>
+                        <div class="reel-top-badges">
+                            <span class="reel-badge-mute">🔇 Muted</span>
+                            <span class="reel-badge-dur">0:38</span>
+                        </div>
+                        <div class="reel-gradient-overlay"></div>
+                        <div class="reel-lower-left">
+                            <span class="reel-tag-pill">🔤 Phonics Secret</span>
+                            <div class="reel-title-text">The Secret Magic 'E' Rule</div>
+                            <div class="reel-tutor-sub">Leah Alexander · English</div>
+                        </div>
+                    </a>
+
+                    <!-- REEL 6: PYTHAGORAS WATER TANKS -->
+                    <a href="https://paathshala.app/reels/6acca1a0fa97e5183b039237-r2" target="_blank" class="reel-card">
+                        <video autoplay loop muted playsinline preload="auto" poster="https://storage.googleapis.com/paathshala-storage/recordings/6acca1a0fa97e5183b039237/thumbnails/reel_6acca1a0fa97e5183b039237-r2.jpg">
+                            <source src="https://storage.googleapis.com/paathshala-storage/recordings/6acca1a0fa97e5183b039237/reels/6acca1a0fa97e5183b039237-r2.mp4" type="video/mp4">
+                        </video>
+                        <div class="reel-top-badges">
+                            <span class="reel-badge-mute">🔇 Muted</span>
+                            <span class="reel-badge-dur">0:48</span>
+                        </div>
+                        <div class="reel-gradient-overlay"></div>
+                        <div class="reel-lower-left">
+                            <span class="reel-tag-pill">📐 Visual Proof</span>
+                            <div class="reel-title-text">Pythagoras Theorem with Water</div>
+                            <div class="reel-tutor-sub">Tanu Riya · Geometry</div>
+                        </div>
+                    </a>
+
+                    <!-- REPEAT CARDS FOR SEAMLESS 45s MARQUEE LOOP -->
+                    <a href="https://paathshala.app/reels/6acca1a0fa97e5183b039237-r1" target="_blank" class="reel-card">
+                        <video autoplay loop muted playsinline preload="auto" poster="https://storage.googleapis.com/paathshala-storage/recordings/6acca1a0fa97e5183b039237/thumbnails/reel_6acca1a0fa97e5183b039237-r1.jpg">
+                            <source src="https://storage.googleapis.com/paathshala-storage/recordings/6acca1a0fa97e5183b039237/reels/6acca1a0fa97e5183b039237-r1.mp4" type="video/mp4">
+                        </video>
+                        <div class="reel-top-badges">
+                            <span class="reel-badge-mute">🔇 Muted</span>
+                            <span class="reel-badge-dur">0:50</span>
+                        </div>
+                        <div class="reel-gradient-overlay"></div>
+                        <div class="reel-lower-left">
+                            <span class="reel-tag-pill">⚛️ Aha Moment!</span>
+                            <div class="reel-title-text">The 'Nuclear Glue' Inside an Atom</div>
+                            <div class="reel-tutor-sub">Leah Alexander · Physics</div>
+                        </div>
+                    </a>
+
+                    <a href="https://paathshala.app/reels/6acca1a0fa97e5183b039237-r2" target="_blank" class="reel-card">
+                        <video autoplay loop muted playsinline preload="auto" poster="https://storage.googleapis.com/paathshala-storage/recordings/6acca1a0fa97e5183b039237/thumbnails/reel_6acca1a0fa97e5183b039237-r2.jpg">
+                            <source src="https://storage.googleapis.com/paathshala-storage/recordings/6acca1a0fa97e5183b039237/reels/6acca1a0fa97e5183b039237-r2.mp4" type="video/mp4">
+                        </video>
+                        <div class="reel-top-badges">
+                            <span class="reel-badge-mute">🔇 Muted</span>
+                            <span class="reel-badge-dur">0:58</span>
+                        </div>
+                        <div class="reel-gradient-overlay"></div>
+                        <div class="reel-lower-left">
+                            <span class="reel-tag-pill">🌌 Mind Blown</span>
+                            <div class="reel-title-text">You Are 99.999% Empty Space!</div>
+                            <div class="reel-tutor-sub">Leah Alexander · Chemistry</div>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================================
+         ORIGINAL CURTAIN SWEEP STAGE (#story)
+         ========================================================================= -->
+    <section id="story">
+        <div class="stage" id="stage" data-s="0">
+            <div class="prog"></div>
+
+            <!-- ORIGINAL 8-BLADE CURTAIN WIPE -->
+            <div id="cur">
+                <i style="--n:0"></i><i style="--n:1"></i><i style="--n:2"></i><i style="--n:3"></i>
+                <i style="--n:4"></i><i style="--n:5"></i><i style="--n:6"></i><i style="--n:7"></i>
+            </div>
+
+            <!-- SCENE 0: LEARNING ALONE IS A MAZE -->
+            <div class="scene" data-s="0">
+                <div class="bgword">
+                    <div>STUCK · STUCK · STUCK · STUCK · STUCK ·</div>
+                    <div>CONFUSED · ALONE · LOST IN NOTES · STUCK ·</div>
+                </div>
+                <svg class="sv" viewBox="0 0 400 260" aria-hidden="true">
+                    <use href="#stuS" x="200" y="115" transform="translate(-40 -23) scale(1.2)"/>
+                    <text class="fl" x="40" y="70" style="--dx:14px;--dy:-10px">📚</text>
+                    <text class="fl" x="320" y="60" style="--dx:-12px;--dy:12px">▶️</text>
+                    <text class="fl" x="30" y="200" style="--dx:10px;--dy:12px">📝</text>
+                    <text class="fl" x="330" y="200" style="--dx:-14px;--dy:-8px">💻</text>
+                    <text class="fl" x="130" y="30" style="--dx:6px;--dy:-14px;fill:var(--a);font-weight:900">?</text>
+                    <text class="fl" x="245" y="40" style="--dx:-8px;--dy:-12px;fill:var(--a);font-weight:900">?</text>
+                </svg>
+                <div class="big mask">Learning alone is a <span class="hl">maze.</span></div>
+                <p class="cap">Videos, notes, recorded lectures. When doubt strikes at 8 PM, a pre-recorded screen cannot see the confusion in their eyes.</p>
+            </div>
+
+            <!-- SCENE 1: THEN A GUIDE STEPS IN -->
+            <div class="scene" data-s="1">
+                <div class="big t2 mask">Then a guide <span class="hl">steps in.</span></div>
+                <svg class="sv" viewBox="0 0 420 270" aria-hidden="true">
+                    <defs>
+                        <clipPath id="c1"><rect x="20" y="14" width="180" height="136" rx="14"/></clipPath>
+                        <clipPath id="c2"><rect x="220" y="14" width="180" height="136" rx="14"/></clipPath>
+                    </defs>
+                    <g class="tile">
+                        <rect x="20" y="14" width="180" height="136" rx="14" fill="#FAF7F2" stroke="#18181B" stroke-width="2"/>
+                        <g clip-path="url(#c1)"><use href="#tea" x="110" y="62" transform="translate(110 62) scale(.72) translate(-110 -62)"/></g>
+                    </g>
+                    <g class="tile">
+                        <rect x="220" y="14" width="180" height="136" rx="14" fill="#FAF7F2" stroke="#18181B" stroke-width="2"/>
+                        <g clip-path="url(#c2)"><use href="#stuH" x="310" y="62" transform="translate(310 62) scale(.72) translate(-310 -62)"/></g>
+                    </g>
+                    <g class="wb">
+                        <rect x="20" y="164" width="380" height="96" rx="14" fill="#FAF7F2" stroke="#18181B" stroke-width="2.5"/>
+                        <text class="t1" x="44" y="210" fill="#18181B">2x + 3 = 11</text>
+                        <text class="t2" x="44" y="246" fill="var(--a)">x = 4  ✓</text>
+                    </g>
+                </svg>
+                <p class="cap">One master teacher, one student, one shared interactive whiteboard where confusion turns to clarity.</p>
+            </div>
+
+            <!-- SCENE 2: FROM CONFUSION TO AHA IN 60 SECONDS -->
+            <div class="scene" data-s="2">
+                <div class="big t2 mask">From confusion to <span class="hl">"Aha!"</span> in 60s.</div>
+                <svg class="tg" viewBox="0 0 800 240" aria-hidden="true">
+                    <path pathLength="1" d="M40 170C150 170 150 60 270 60S400 170 530 170 670 60 760 60"/>
+                    <circle cx="40" cy="170" r="28" style="--n:0"/>
+                    <circle cx="270" cy="60" r="28" style="--n:1"/>
+                    <circle cx="530" cy="170" r="28" style="--n:2"/>
+                    <circle cx="760" cy="60" r="28" style="--n:3"/>
+                    <text class="em" x="40" y="180" style="--n:0">😕</text>
+                    <text class="em" x="270" y="70" style="--n:1">💡</text>
+                    <text class="em" x="530" y="180" style="--n:2">✏️</text>
+                    <text class="em" x="760" y="70" style="--n:3">🏆</text>
+                    <text x="40" y="224" style="--n:0">Stuck</text>
+                    <text x="270" y="24" style="--n:1">Visual Analogy</text>
+                    <text x="530" y="224" style="--n:2">Live Practice</text>
+                    <text x="735" y="24" style="--n:3">Mastered</text>
+                </svg>
+                <p class="cap">
+                    Our tutors don't read dry slides. They build vivid mental anchors — like neutrons acting as "nuclear glue" holding protons together.
+                </p>
+            </div>
+
+            <!-- SCENE 3: NOTHING GETS LOST & JOIN 1-ON-1 CLASS WITH A TEACHER -->
+            <div class="scene" data-s="3">
+                <div class="big t2 mask">Nothing gets <span class="hl">lost.</span></div>
+                <div class="cards">
+                    <div class="tc" style="--r:-7deg;--y:12px;background:#38BDF8">
+                        <svg viewBox="0 0 100 70">
+                            <rect width="100" height="70" rx="9" fill="#18181B"/>
+                            <circle cx="50" cy="31" r="15" fill="#FFFFFF"/>
+                            <path d="M45 23l14 8-14 8z" fill="#18181B"/>
+                            <rect x="10" y="57" width="80" height="5" rx="2.5" fill="#FFFFFF55"/>
+                            <rect x="10" y="57" width="46" height="5" rx="2.5" fill="#E76F51"/>
+                        </svg>
+                        <u>Recording</u>
+                        <b>Replay the whole class</b>
+                        <small>Every session saved</small>
+                    </div>
+
+                    <div class="tc" style="--r:0deg;--y:-14px;background:var(--g)">
+                        <svg viewBox="0 0 100 70">
+                            <rect width="100" height="70" rx="9" fill="#18181B"/>
+                            <path d="M10 48H90" stroke="#FFFFFF66" stroke-width="4" stroke-linecap="round"/>
+                            <circle cx="28" cy="48" r="5" fill="#FFFFFF"/>
+                            <circle cx="80" cy="48" r="5" fill="#FFFFFF"/>
+                            <path d="M58 14l5 11 12 1-9 8 3 12-11-6-11 6 3-12-9-8 12-1z" fill="#E76F51"/>
+                        </svg>
+                        <u>Key moments</u>
+                        <b>Jump straight to the 'Aha!'</b>
+                        <small>60-second reels</small>
+                    </div>
+
+                    <div class="tc" style="--r:7deg;--y:12px;background:#06D6A0">
+                        <svg viewBox="0 0 100 70">
+                            <rect width="100" height="70" rx="9" fill="#18181B"/>
+                            <rect x="8" y="8" width="58" height="22" rx="9" fill="#FFFFFFCC"/>
+                            <rect x="16" y="15" width="40" height="3" rx="1.5" fill="#18181B"/>
+                            <rect x="16" y="21" width="26" height="3" rx="1.5" fill="#18181B"/>
+                            <rect x="34" y="38" width="58" height="22" rx="9" fill="#E76F51"/>
+                            <rect x="42" y="45" width="40" height="3" rx="1.5" fill="#18181B"/>
+                            <rect x="42" y="51" width="22" height="3" rx="1.5" fill="#18181B"/>
+                        </svg>
+                        <u>Mitra AI</u>
+                        <b>Revise anytime</b>
+                        <small>Personalized AI companion</small>
+                    </div>
+                </div>
+
+                <!-- TEACHER MINI CARD WITH JOIN 1-ON-1 BUTTON -->
+                <div style="display:flex; flex-direction:column; align-items:center; gap:12px; margin-top:20px;">
+                    <div class="teacher-mini-preview-card">
+                        <div class="teacher-avatar-badge">👩‍🏫</div>
+                        <div class="teacher-preview-meta">
+                            <div class="teacher-preview-name">Leah Alexander · Master Physics Tutor</div>
+                            <div class="teacher-preview-badge">★ 4.95 Rating · Top 1.4% Verified Educator</div>
+                        </div>
+                    </div>
+
+                    <!-- BUTTON LEADING TO TEACHER PROFILE PAGE -->
+                    <a class="btn" href="https://paathshala.app/user-profile?publicId=alchemist-589748" target="_blank">
+                        Join 1 on 1 class with a teacher ➔
+                    </a>
+                </div>
+            </div>
+
+            <!-- SCENE 4: 1 : 1 CLIMAX -->
+            <div class="scene" data-s="4">
+                <div class="row">
+                    <svg viewBox="-70 -60 140 180" aria-hidden="true"><use href="#tea"/></svg>
+                    <div class="big stat mask">1 : 1</div>
+                    <svg viewBox="-70 -60 140 180" aria-hidden="true"><use href="#stuH"/></svg>
+                </div>
+                <p class="cap" style="margin-top:0">
+                    A dedicated top 1.4% educator who knows your child. Not a webinar crowd of 200 kids, not a pre-recorded video.
+                </p>
+                <a class="btn" href="https://paathshala.app/user-profile?publicId=alchemist-589748" style="margin-top:24px">
+                    Join 1 on 1 class with a teacher ➔
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- MARQUEE TICKER -->
+    <div class="marq">
+        <div>
+            <span>Stuck. </span><em>Guided. </em><span>Growing. </span><em>Confident. </em>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span>Stuck. </span><em>Guided. </em><span>Growing. </span><em>Confident. </em>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span>Stuck. </span><em>Guided. </em><span>Growing. </span><em>Confident. </em>&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+    </div>
+
+    <!-- FAQS -->
+    <section class="faq" id="faq">
+        <h2 class="rv">Quick answers.</h2>
+        <details class="rv" open>
+            <summary>What is guided learning?</summary>
+            <p>Each student is paired with a dedicated expert teacher for live 1-on-1 classes, backed by recordings, key moment reels, and an AI tutor for 24/7 revision.</p>
+        </details>
+        <details class="rv">
+            <summary>Who is it for?</summary>
+            <p>Students in classes 1 to 12 across India, with curriculum tailored to CBSE, ICSE, Cambridge, and State boards.</p>
+        </details>
+        <details class="rv">
+            <summary>How do we start?</summary>
+            <p>Book a free 30-minute trial class and meet your dedicated teacher on a shared interactive whiteboard.</p>
+        </details>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <h2 class="rv">Give them a <span class="hl">guide.</span></h2>
+        <a class="btn rv" href="https://paathshala.app/user-profile?publicId=alchemist-589748">Join 1 on 1 class with a teacher ➔</a>
+        <a class="btn ghost rv" href="https://paathshala.app/reels/6acca1a0fa97e5183b039237-r1">Explore highlight reels</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        © 2026 Safwhigre Technologies OPC Private Limited · <a href="https://paathshala.app/">paathshala.app</a> · +91 80105 71912
+    </footer>
+
+    <!-- SCRIPT ENGINE -->
+    <script>
+        // 1. Kinetic H1 Headline
+        document.getElementById("h1").innerHTML = "Don't get stuck. Get guided.".split(" ").map(function(w, i) {
+            return '<span class="w"><i style="--n:' + i + '" class="' + (i > 2 ? 'hl' : '') + '">' + w + '</i></span> ';
+        }).join("");
+
+        // 2. Interactive Guide Lab Toggle
+        var nuc = document.getElementById("nuc"),
+            gb = document.getElementById("glue"),
+            lt = document.getElementById("lt");
+
+        gb.onclick = function() {
+            var g = nuc.classList.toggle("glued");
+            gb.textContent = g ? "Turn off the guide ✕" : "Turn on the guide ✨";
+            lt.textContent = g ? "With a personal guide beside them, it clicks." : "Stuck on a question, alone.";
+        };
+
+        // 3. Autoplay All Muted Videos
+        function initMutedVideos() {
+            var vids = document.querySelectorAll('.reel-card video');
+            vids.forEach(function(v) {
+                v.muted = true;
+                v.play().catch(function() {});
+            });
+        }
+        document.addEventListener('DOMContentLoaded', initMutedVideos);
+        window.addEventListener('load', initMutedVideos);
+
+        // 4. Original Curtain Sweep Transition
+        var st = document.getElementById("story"),
+            sc = [].slice.call(document.querySelectorAll(".scene")),
+            stage = document.getElementById("stage"),
+            cu = document.getElementById("cur"),
+            cur = -1,
+            to;
+
+        function go(i) {
+            if (i === cur) return;
+            var prev = cur;
+            cur = i;
+            clearTimeout(to);
+
+            if (i < 0) {
+                sc.forEach(function(e) { e.classList.remove("on", "out"); });
+                return;
+            }
+
+            stage.dataset.s = i;
+
+            var d = 0;
+            if (prev >= 0) {
+                d = 450;
+                cu.classList.remove("go");
+                void cu.offsetWidth;
+                cu.classList.add("go");
+            }
+
+            to = setTimeout(function() {
+                sc.forEach(function(e, j) {
+                    e.classList.remove("out");
+                    if (j === prev) {
+                        e.classList.remove("on");
+                        e.classList.add("out");
+                    } else if (j !== i) {
+                        e.classList.remove("on");
+                    }
+                });
+                sc[i].classList.add("on");
+                setTimeout(function() {
+                    sc.forEach(function(e) { e.classList.remove("out"); });
+                }, 1500);
+            }, d);
+        }
+
+        function upd() {
+            var r = st.getBoundingClientRect(),
+                p = Math.min(.999, Math.max(0, -r.top / (r.height - innerHeight)));
+            stage.style.setProperty("--p", p);
+            go(r.top > innerHeight * .4 ? -1 : Math.floor(p * sc.length));
+        }
+
+        addEventListener("scroll", upd, { passive: true });
+        upd();
+
+        // 5. Intersection Observer for Scroll Reveal Elements
+        var io = new IntersectionObserver(function(es) {
+            es.forEach(function(e) {
+                if (e.isIntersecting) e.target.classList.add("in");
+            });
+        }, { threshold: 0.15 });
+        document.querySelectorAll(".rv").forEach(function(e) { io.observe(e); });
+    </script>
+</body>
+</html>
+'''
+
+with open("/Users/srinibashbartia/.gemini/antigravity/scratch/paathshala-guided-learning/landing.html", "w") as f:
+    f.write(html_content)
+
+print("Default curtain transition restored successfully!")
