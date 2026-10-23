@@ -1596,10 +1596,10 @@
             </div>
 
             <div class="nav-actions">
-                <button class="btn btn-coral" onclick="openApplyModal()">
-                    Teach With Us
+                <a href="/onboarding" class="btn btn-coral" style="text-decoration: none;">
+                    Apply as a Teacher
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </button>
+                </a>
             </div>
         </div>
     </nav>
@@ -1744,10 +1744,10 @@
 
                 <!-- STEP 4: RESERVE THIS TEACHING SCHEDULE (NO BORDER) -->
                 <div class="calc-bottom-cta">
-                    <button type="button" class="btn btn-coral btn-reserve-huge" onclick="applyWithCalculatedRhythm()">
-                        Reserve This Teaching Schedule
+                    <a href="/onboarding" class="btn btn-coral btn-reserve-huge" style="text-decoration: none;">
+                        Apply as a Teacher
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </button>
+                    </a>
                     <p class="calc-payout-assurance">
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                         Direct Monthly UPI / Bank Transfer • No Lock-in
@@ -1820,7 +1820,7 @@
                         <button class="btn btn-purple" onclick="openPaybookModal()">
                             Preview Paybook Chapters
                         </button>
-                        <button class="btn btn-ghost" onclick="downloadPaybookGuide()">
+                        <button class="btn btn-ghost" onclick="openPlaybookDownloadModal()">
                             Download Paybook PDF (Free)
                         </button>
                     </div>
@@ -2095,10 +2095,10 @@
                         We screen and onboard educators within 24 hours. Submit your subject preference, pick your weekly teaching days, and start conducting live sessions next week.
                     </p>
                     <div class="join-action-row">
-                        <button class="btn btn-coral" style="font-size: 17px; padding: 16px 36px;" onclick="openApplyModal()">
+                        <a href="/onboarding" class="btn btn-coral" style="font-size: 17px; padding: 16px 36px; text-decoration: none;">
                             Apply as a Teacher Today
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                        </button>
+                        </a>
                         <button class="btn btn-ghost" style="font-size: 17px; padding: 16px 32px;" onclick="openPaybookModal()">
                             Read The Paybook First
                         </button>
@@ -2134,63 +2134,51 @@
         </div>
     </footer>
 
-    <!-- APPLICATION MODAL -->
-    <div class="modal-overlay" id="applyModal" onclick="handleBackdropClick(event, 'applyModal')">
+    <!-- PLAYBOOK DOWNLOAD MODAL (NAME & MOBILE NUMBER GATE) -->
+    <div class="modal-overlay" id="playbookDownloadModal" onclick="handleBackdropClick(event, 'playbookDownloadModal')">
         <div class="modal-card">
-            <button type="button" class="modal-close-btn" onclick="closeModal('applyModal')">×</button>
+            <button type="button" class="modal-close-btn" onclick="closeModal('playbookDownloadModal')">×</button>
             <div style="margin-bottom: 20px;">
-                <span class="pill-badge pill-coral" style="margin-bottom: 10px;">Express Onboarding</span>
-                <h3 style="font-size: 24px; margin-bottom: 6px;">Join Paathshala as an Educator</h3>
-                <p style="font-size: 14px; color: var(--paathshala-muted);">Takes under 2 minutes. We review and invite for a 10-min live demo in 24 hours.</p>
+                <span class="pill-badge pill-purple" style="margin-bottom: 10px;">Free PDF Download</span>
+                <h3 style="font-size: 24px; margin-bottom: 6px;">Download Educator Playbook</h3>
+                <p style="font-size: 14px; color: var(--paathshala-muted);">Enter your name and mobile number to immediately download the complete Paathshala Educator Paybook & Culture Guide (2026 Edition).</p>
             </div>
 
-            <!-- PREFILLED RHYTHM BADGE -->
-            <div class="badge-rhythm-sync" id="modalRhythmNotice">
-                <span>⚡</span>
-                <span id="modalRhythmText">Synced with your simulator: 4 Days/wk · 3 Classes/day · Avg ₹15,080/mo</span>
-            </div>
-
-            <form id="teacherApplicationForm" onsubmit="handleApplySubmit(event)">
+            <form id="playbookDownloadForm" onsubmit="handlePlaybookDownloadSubmit(event)">
                 <div class="form-group">
-                    <label class="form-label" for="appName">Your Full Name</label>
-                    <input class="form-input" id="appName" type="text" placeholder="e.g. Meera Raman" required>
+                    <label class="form-label" for="playbookName">Your Full Name</label>
+                    <input class="form-input" id="playbookName" type="text" placeholder="e.g. Meera Raman" required autocomplete="name">
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label" for="appContact">WhatsApp Phone Number</label>
-                    <input class="form-input" id="appContact" type="tel" placeholder="e.g. +91 98765 43210" required>
+                    <label class="form-label" for="playbookMobile">Mobile / WhatsApp Number</label>
+                    <input class="form-input" id="playbookMobile" type="tel" placeholder="e.g. 98765 43210" pattern="[0-9+ -]{10,15}" required autocomplete="tel">
                 </div>
 
-                <div class="form-group">
-                    <label class="form-label" for="appEmail">Email Address</label>
-                    <input class="form-input" id="appEmail" type="email" placeholder="e.g. meera.raman@gmail.com" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" for="appSubject">Selected Teaching Track</label>
-                    <select class="form-select" id="appSubject">
-                        <option value="Mathematics">Mathematics (Grades 6–12)</option>
-                        <option value="Physics & Science">Physics & Science</option>
-                        <option value="English & Logic">English & Critical Thinking</option>
-                        <option value="Coding & Tech">Coding & Foundational AI</option>
-                        <option value="Multiple / General">Multiple Subjects</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" for="appExp">Teaching Experience</label>
-                    <select class="form-select" id="appExp">
-                        <option value="1-3">1 to 3 Years (School / Coaching)</option>
-                        <option value="3-7">3 to 7 Years (Seasoned Educator)</option>
-                        <option value="7+">7+ Years (Master / Senior Mentor)</option>
-                        <option value="College/Fresher">Fresh Graduate / Academic Researcher</option>
-                    </select>
-                </div>
-
-                <button type="submit" class="btn btn-coral" style="width: 100%; padding: 14px; font-size: 16px; margin-top: 10px;">
-                    Submit Teaching Application
+                <button type="submit" id="playbookDownloadSubmitBtn" class="btn btn-coral" style="width: 100%; padding: 14px; font-size: 16px; margin-top: 10px;">
+                    Download Playbook (PDF)
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 </button>
+                <p style="font-size: 12px; color: var(--paathshala-muted); text-align: center; margin-top: 12px;">🔒 100% privacy guaranteed. No unsolicited calls or marketing spam.</p>
             </form>
+
+            <div id="playbookDownloadSuccess" style="display: none; text-align: center; padding: 16px 0;">
+                <div style="width: 54px; height: 54px; border-radius: 50%; background: #DCFCE7; border: 2px solid #16A34A; display: inline-flex; align-items: center; justify-content: center; font-size: 26px; color: #16A34A; margin-bottom: 14px;">
+                    ✓
+                </div>
+                <h4 style="font-size: 20px; font-weight: 800; margin-bottom: 8px; color: var(--paathshala-dark);">Download Started!</h4>
+                <p style="font-size: 14px; color: var(--paathshala-muted); margin-bottom: 20px; line-height: 1.5;">
+                    Your copy of the Paathshala Educator Playbook is downloading.<br>Ready to start teaching live 1-on-1?
+                </p>
+                <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                    <a href="/onboarding" class="btn btn-coral" style="text-decoration: none;">
+                        Apply as a Teacher Now →
+                    </a>
+                    <button type="button" class="btn btn-ghost" onclick="closeModal('playbookDownloadModal')">
+                        Close
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -2235,10 +2223,10 @@
             </div>
 
             <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                <button class="btn btn-coral" style="flex: 1;" onclick="closeModal('paybookModal'); openApplyModal();">
-                    Apply With This Understanding
-                </button>
-                <button class="btn btn-ghost" onclick="downloadPaybookGuide()">
+                <a href="/onboarding" class="btn btn-coral" style="flex: 1; text-decoration: none; text-align: center;">
+                    Apply as a Teacher
+                </a>
+                <button class="btn btn-ghost" onclick="openPlaybookDownloadModal()">
                     Download Full PDF
                 </button>
             </div>
@@ -2408,14 +2396,66 @@
             el.innerHTML = `${prefix}${targetValue.toLocaleString('en-IN')}<span class="period">${suffix}</span>`;
         }
 
-        // Modal triggers
+        // Modal triggers & Onboarding Redirection
         function openApplyModal() {
-            document.getElementById('applyModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
+            window.location.href = '/onboarding';
         }
 
         function applyWithCalculatedRhythm() {
-            openApplyModal();
+            window.location.href = '/onboarding';
+        }
+
+        function openPlaybookDownloadModal() {
+            closeModal('paybookModal');
+            const form = document.getElementById('playbookDownloadForm');
+            const success = document.getElementById('playbookDownloadSuccess');
+            if (form) form.style.display = 'block';
+            if (success) success.style.display = 'none';
+
+            const modal = document.getElementById('playbookDownloadModal');
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function handlePlaybookDownloadSubmit(e) {
+            e.preventDefault();
+            const nameEl = document.getElementById('playbookName');
+            const mobileEl = document.getElementById('playbookMobile');
+            const name = nameEl ? nameEl.value.trim() : '';
+            const mobile = mobileEl ? mobileEl.value.trim() : '';
+
+            if (!name || !mobile) {
+                alert('Please enter your name and mobile number.');
+                return;
+            }
+
+            try {
+                localStorage.setItem('paathshala_playbook_lead', JSON.stringify({
+                    name: name,
+                    mobile: mobile,
+                    timestamp: new Date().toISOString()
+                }));
+            } catch (err) {}
+
+            // Trigger direct download of official PDF
+            const link = document.createElement('a');
+            link.href = '/static/Teacher_Agreement.pdf';
+            link.download = 'Paathshala_Educator_Playbook_2026.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            // Switch to success confirmation
+            const form = document.getElementById('playbookDownloadForm');
+            const success = document.getElementById('playbookDownloadSuccess');
+            if (form) form.style.display = 'none';
+            if (success) success.style.display = 'block';
+        }
+
+        function downloadPaybookGuide() {
+            openPlaybookDownloadModal();
         }
 
         function openPaybookModal() {
@@ -2424,7 +2464,8 @@
         }
 
         function closeModal(modalId) {
-            document.getElementById(modalId).classList.remove('active');
+            const el = document.getElementById(modalId);
+            if (el) el.classList.remove('active');
             document.body.style.overflow = '';
         }
 
@@ -2434,21 +2475,10 @@
             }
         }
 
-        function handleApplySubmit(e) {
-            e.preventDefault();
-            const name = document.getElementById('appName').value;
-            alert(`Thank you, ${name}! Your teaching rhythm (${state.selectedDays.length} days/wk, ${state.classesPerDay} classes/day for ${state.selectedSubject}) has been registered. Our educator onboarding team will WhatsApp you within 24 hours to schedule your 10-minute demo.`);
-            closeModal('applyModal');
-        }
-
-        function downloadPaybookGuide() {
-            alert('Downloading Paathshala Teacher Paybook & Transparency Guide (2026 Edition)...\n\nIncludes: Rate milestones, cancellation policy, tech stipends, and payout schedule.');
-        }
-
         // Esc key closes modals
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                closeModal('applyModal');
+                closeModal('playbookDownloadModal');
                 closeModal('paybookModal');
             }
         });
