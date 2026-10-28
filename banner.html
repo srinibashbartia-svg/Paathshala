@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Paathshala · Guided Learning After Class Horizontal Banner</title>
+<title>Paathshala · 24/7 AI Guided Learning After Class (Prototype)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -48,6 +48,7 @@
       align-items: center;
       justify-content: center;
       padding: clamp(0.75rem, 2vw, 1.5rem);
+      min-height: 100vh;
     }
 
     /* Wide Horizontal Ad / Hero Banner Canvas */
@@ -106,76 +107,105 @@
       padding-block-end: 1rem;
     }
 
-    .headline-stack {
+    /* Prominent Sellable Eyebrow Pill */
+    .ai-eyebrow-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background-color: var(--cream);
+      color: var(--ink);
+      border: 2.5px solid var(--ink);
+      border-radius: 999px;
+      padding: 5px 14px;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(0.66rem, 0.6rem + 0.25vw, 0.76rem);
+      letter-spacing: 0.02em;
+      box-shadow: 3.5px 3.5px 0px var(--ink);
+      margin-block-end: 0.85rem;
+    }
+
+    .ai-eyebrow-pill .sparkle {
+      color: #7C3AED;
+      font-size: 0.95rem;
+      line-height: 1;
+    }
+
+    .ai-eyebrow-pill .pill-divider {
+      color: #94A3B8;
+      font-weight: 400;
+      opacity: 0.7;
+    }
+
+    /* Single H1 Heading (Unified) */
+    .single-h1-heading {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(1.9rem, 1.25rem + 2vw, 2.9rem);
+      line-height: 1.12;
+      letter-spacing: -0.03em;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 0.45rem;
+      gap: 0.35rem;
+      margin: 0;
+      padding: 0;
     }
 
-    .hl-tier-1 {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: clamp(2.15rem, 1.4rem + 2.4vw, 3.3rem);
-      line-height: 1.04;
-      letter-spacing: -0.03em;
+    .h1-hook {
       color: var(--white);
       text-shadow: 3px 3px 0px var(--ink);
+      display: block;
     }
 
-    .hl-tier-2 {
-      display: inline-block;
-      background-color: var(--cream);
-      color: var(--ink);
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: clamp(2.2rem, 1.4rem + 2.5vw, 3.4rem);
-      line-height: 1.04;
-      letter-spacing: -0.03em;
-      padding: 0.12em 0.48em 0.16em;
-      border: 3px solid var(--ink);
-      box-shadow: 5px 5px 0px var(--ink);
-      transform: rotate(-1.5deg);
-    }
-
-    .hl-tier-3 {
+    .h1-badge-highlight {
       display: inline-block;
       background-color: var(--yellow);
       color: var(--ink);
       font-family: var(--font-display);
       font-weight: 900;
-      font-size: clamp(2.55rem, 1.6rem + 3vw, 4rem);
-      line-height: 1.02;
+      font-size: clamp(1.8rem, 1.15rem + 1.8vw, 2.7rem);
+      line-height: 1.05;
       letter-spacing: -0.035em;
-      padding: 0.12em 0.42em 0.16em;
+      padding: 0.14em 0.44em 0.18em;
       border: 3.5px solid var(--ink);
       box-shadow: 6px 6px 0px var(--ink);
-      transform: rotate(1.5deg);
+      transform: rotate(-1.2deg);
       margin-block-start: 0.15rem;
+    }
+
+    /* Subheadline */
+    .banner-subheadline {
+      margin-block-start: 0.9rem;
+      font-size: clamp(0.86rem, 0.78rem + 0.22vw, 0.96rem);
+      line-height: 1.45;
+      color: var(--cream);
+      font-weight: 600;
+      max-inline-size: 46ch;
     }
 
     .value-points-list {
       list-style: none;
-      margin-block-start: 1.15rem;
+      margin-block-start: 1rem;
       display: flex;
       flex-direction: column;
       gap: 0.52rem;
-      max-inline-size: 44ch;
+      max-inline-size: 48ch;
     }
 
     .value-point-item {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 0.65rem;
-      font-size: clamp(0.86rem, 0.78rem + 0.3vw, 0.96rem);
+      font-size: clamp(0.8rem, 0.72rem + 0.2vw, 0.88rem);
       line-height: 1.35;
       color: var(--cream);
-      font-weight: 600;
+      font-weight: 500;
     }
 
     .point-check-badge {
-      inline-size: 21px;
-      block-size: 21px;
+      inline-size: 20px;
+      block-size: 20px;
       border-radius: 50%;
       background-color: var(--mint);
       color: var(--ink);
@@ -185,8 +215,9 @@
       place-items: center;
       font-family: var(--font-display);
       font-weight: 900;
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       flex-shrink: 0;
+      margin-top: 1px;
     }
 
     .point-text strong {
@@ -194,8 +225,15 @@
       font-weight: 800;
     }
 
+    .left-cta-group {
+      margin-block-start: 1.15rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      align-items: flex-start;
+    }
+
     .left-cta-row {
-      margin-block-start: 1.25rem;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -210,39 +248,50 @@
       color: var(--white);
       font-family: var(--font-display);
       font-weight: 800;
-      font-size: clamp(0.96rem, 0.85rem + 0.35vw, 1.1rem);
-      text-decoration: none;
-      padding: 0.76rem 1.45rem;
-      border-radius: 999px;
+      font-size: clamp(0.92rem, 0.82rem + 0.32vw, 1.05rem);
+      padding: 0.75rem 1.5rem;
       border: 3px solid var(--ink);
+      border-radius: 12px;
       box-shadow: 5px 5px 0px var(--ink);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.12s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     .primary-cta-btn:hover {
       transform: translate(-2px, -2px);
       box-shadow: 7px 7px 0px var(--ink);
+      background-color: #FF6B4A;
     }
 
-    .primary-cta-btn:focus-visible {
-      outline: 3px solid var(--yellow);
-      outline-offset: 4px;
+    .primary-cta-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0px var(--ink);
+    }
+
+    .cta-secondary-note {
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: rgba(250, 247, 242, 0.88);
+      letter-spacing: 0.01em;
     }
 
     .trust-micro-note {
-      margin-block-start: 0.9rem;
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      gap: 0.5rem;
-      font-size: clamp(0.78rem, 0.72rem + 0.22vw, 0.86rem);
+      gap: 0.45rem;
+      margin-block-start: 0.85rem;
+      font-size: 0.72rem;
       font-weight: 700;
-      color: var(--cream);
-      opacity: 0.95;
+      color: rgba(250, 247, 242, 0.88);
+      letter-spacing: 0.01em;
+      line-height: 1.35;
+      max-inline-size: 52ch;
     }
 
     .trust-micro-dot {
-      inline-size: 8px;
-      block-size: 8px;
+      inline-size: 7px;
+      block-size: 7px;
       border-radius: 50%;
       background-color: var(--mint);
       border: 1.5px solid var(--ink);
@@ -251,207 +300,202 @@
 
     .trust-micro-domain {
       color: var(--yellow);
-      font-weight: 800;
       text-decoration: underline;
-      text-underline-offset: 3px;
+      text-decoration-thickness: 1.5px;
+      cursor: pointer;
     }
 
-    /* 3. Right Column: Realistic Open Laptop Showcase + Prominent External Tabs */
+    /* 3. Right Column: External Navigation Tabs + Laptop */
     .right-laptop-col {
       position: relative;
-      z-index: 4;
+      z-index: 3;
       display: flex;
       flex-direction: column;
       align-items: center;
       inline-size: 100%;
     }
 
-    /* Prominent External Navigation Bar Outside the Laptop */
+    /* Outer Navigation Tabs outside the laptop */
     .laptop-external-nav {
       display: flex;
-      align-items: center;
-      justify-content: center;
       flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
       gap: 8px;
       margin-block-end: 14px;
       inline-size: 100%;
-      z-index: 10;
+      z-index: 5;
     }
 
     .ext-nav-tab {
-      background-color: var(--white);
-      color: var(--ink);
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: clamp(0.72rem, 0.65rem + 0.35vw, 0.85rem);
-      letter-spacing: 0.02em;
-      padding: 0.52em 1.1em;
-      border-radius: 999px;
-      border: 2px solid var(--ink);
-      box-shadow: 2.5px 2.5px 0px var(--ink);
-      cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      white-space: nowrap;
-      transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.18s ease, background-color 0.18s ease;
+      background-color: var(--cream);
+      color: var(--ink);
+      border: 2.5px solid var(--ink);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(0.72rem, 0.68rem + 0.2vw, 0.82rem);
+      cursor: pointer;
+      box-shadow: 3.5px 3.5px 0px var(--ink);
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.12s ease;
+      user-select: none;
     }
 
     .ext-nav-tab:hover {
-      transform: translateY(-2px);
-      box-shadow: 4px 4px 0px var(--ink);
-      background-color: #FEF3C7;
+      transform: translate(-1.5px, -1.5px);
+      box-shadow: 5px 5px 0px var(--ink);
+      background-color: #FFFFFF;
     }
 
     .ext-nav-tab.active {
       background-color: var(--yellow);
-      color: var(--ink);
       border-color: var(--ink);
-      box-shadow: 3.5px 3.5px 0px var(--ink);
-      transform: translateY(-2px);
-    }
-
-    .ext-nav-tab:focus-visible {
-      outline: 3px solid var(--orange);
-      outline-offset: 2px;
+      box-shadow: 4px 4px 0px var(--ink);
+      transform: translate(-1px, -1px);
     }
 
     .ext-tab-icon {
-      font-size: 1rem;
+      font-size: 0.92rem;
       line-height: 1;
     }
 
+    /* Laptop Device Canvas Assembly */
     .laptop-assembly {
       position: relative;
       inline-size: 100%;
-      max-inline-size: 670px;
+      max-inline-size: 640px;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    /* Open Laptop Lid: Exact 82% width to match the top of the SVG Trapezoid Base */
+    /* Lid & Screen Housing (82% width matching base hinge) */
     .laptop-lid {
       position: relative;
       inline-size: 82%;
-      background-color: var(--yellow);
-      border: 3px solid var(--ink);
-      border-radius: 18px 18px 4px 4px;
-      padding: 6px 6px 0 6px;
-      box-shadow: 0 -2px 0px var(--ink);
+      z-index: 2;
     }
 
-    /* Realistic MacBook Dark Glass Bezel */
     .laptop-bezel {
       position: relative;
-      background-color: #090D16;
-      border: 2.5px solid var(--ink);
-      border-radius: 13px 13px 0 0;
-      padding: 10px 8px 8px;
+      background-color: #0F172A;
+      border: 3.5px solid #0F172A;
+      border-radius: 12px 12px 0 0;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45), inset 0 0 0 1.5px rgba(255, 255, 255, 0.1);
+      padding: 8px 9px 15px 9px;
+      overflow: hidden;
     }
 
-    /* Webcam Notch at Top Center of Bezel */
     .webcam-notch {
       position: absolute;
-      inset-block-start: 0;
+      inset-block-start: 2px;
       inset-inline-start: 50%;
       transform: translateX(-50%);
-      inline-size: 62px;
-      block-size: 9px;
-      background-color: #090D16;
-      border-radius: 0 0 6px 6px;
+      inline-size: 28px;
+      block-size: 4px;
+      background-color: #000000;
+      border-radius: 0 0 3px 3px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 4px;
-      z-index: 5;
+      gap: 3px;
+      z-index: 10;
     }
 
     .webcam-lens {
-      inline-size: 4px;
-      block-size: 4px;
+      inline-size: 2.5px;
+      block-size: 2.5px;
       border-radius: 50%;
-      background-color: #334155;
+      background-color: #1E293B;
     }
 
     .webcam-led {
-      inline-size: 3.5px;
-      block-size: 3.5px;
+      inline-size: 1.5px;
+      block-size: 1.5px;
       border-radius: 50%;
       background-color: var(--mint);
     }
 
-    /* Illuminated Display Screen Inside Bezel */
+    .bezel-chin {
+      position: absolute;
+      inset-block-end: 2px;
+      inset-inline-start: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-display);
+      font-size: 0.48rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      color: rgba(255, 255, 255, 0.28);
+      pointer-events: none;
+    }
+
+    /* Laptop Screen (16:10 ratio) */
     .laptop-screen {
       position: relative;
-      background-color: #060A12;
-      border: 1.5px solid #1E293B;
+      inline-size: 100%;
+      aspect-ratio: 16 / 10;
+      background-color: #090D16;
       border-radius: 6px;
-      padding: 0;
-      color: var(--white);
       overflow: hidden;
-      min-block-size: 335px;
-      block-size: 335px;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
     }
 
-    /* Screen Views Wrapper */
+    /* Screen Views Container */
     .screen-views-wrapper {
-      position: relative;
-      flex: 1;
-      block-size: 100%;
-      display: grid;
-    }
-
-    .screen-view {
-      grid-area: 1 / 1;
-      block-size: 100%;
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-      transform: scale(0.99);
-      transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s ease;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .screen-view.active {
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
-      transform: scale(1);
-      z-index: 2;
-    }
-
-    /* Screen 1: Full Detailed Concept Reel Studio Screen (Fits the screen perfectly) */
-    .view-full-video {
       position: relative;
       inline-size: 100%;
       block-size: 100%;
-      overflow: hidden;
-      background-color: #060A12;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
-    /* Ambient blurred glowing backdrop reflecting the reel */
-    .reel-ambient-bg {
+    .screen-view {
       position: absolute;
       inset: 0;
       inline-size: 100%;
       block-size: 100%;
-      object-fit: cover;
-      filter: blur(24px) brightness(0.36) saturate(1.4);
-      opacity: 0.72;
+      opacity: 0;
       pointer-events: none;
-      z-index: 1;
-      transform: scale(1.1);
+      visibility: hidden;
+      transition: opacity 0.22s ease;
     }
 
-    /* Centered Reel Frame fitting 100% height of the laptop screen */
+    .screen-view.active {
+      opacity: 1;
+      pointer-events: auto;
+      visibility: visible;
+      z-index: 2;
+    }
+
+    /* --- Screen 1: Full Video Player Screen (Reel) --- */
+    .view-full-video {
+      position: relative;
+      inline-size: 100%;
+      block-size: 100%;
+      background-color: #05070B;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Ambient blurred video background */
+    .reel-ambient-bg {
+      position: absolute;
+      inset: -20px;
+      inline-size: calc(100% + 40px);
+      block-size: calc(100% + 40px);
+      object-fit: cover;
+      filter: blur(28px) brightness(0.42) saturate(1.4);
+      opacity: 0.85;
+      pointer-events: none;
+      z-index: 1;
+      transform: scale(1.08);
+    }
+
+    /* Centered Reel Frame (9:16 default, full dimensions) */
     .main-reel-frame {
       position: relative;
       z-index: 2;
@@ -475,7 +519,7 @@
     .main-reel-frame video {
       inline-size: 100%;
       block-size: 100%;
-      object-fit: contain; /* Full 720x1280 dimension, 100% uncropped */
+      object-fit: contain;
       display: block;
       transition: object-fit 0.2s ease;
     }
@@ -498,6 +542,13 @@
       pointer-events: none;
     }
 
+    .video-top-left-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      pointer-events: auto;
+    }
+
     .video-topic-badge {
       display: inline-flex;
       align-items: center;
@@ -512,7 +563,30 @@
       font-size: 0.52rem;
       letter-spacing: 0.02em;
       backdrop-filter: blur(6px);
-      pointer-events: auto;
+    }
+
+    .video-hub-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background-color: rgba(15, 23, 42, 0.88);
+      color: var(--mint);
+      border: 1px solid rgba(134, 239, 172, 0.55);
+      border-radius: 999px;
+      padding: 3px 8px;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 0.48rem;
+      letter-spacing: 0.02em;
+      backdrop-filter: blur(6px);
+    }
+
+    .hub-status-dot {
+      inline-size: 5px;
+      block-size: 5px;
+      border-radius: 50%;
+      background-color: var(--mint);
+      box-shadow: 0 0 5px var(--mint);
     }
 
     .video-top-right-group {
@@ -558,27 +632,27 @@
       inset-block-end: 0;
       inset-inline: 0;
       z-index: 4;
-      padding: 12px 14px 10px;
-      background: linear-gradient(0deg, rgba(9, 13, 22, 0.95) 0%, rgba(9, 13, 22, 0.6) 65%, transparent 100%);
+      padding: 6px 12px 8px 12px;
+      background: linear-gradient(0deg, rgba(9, 13, 22, 0.95) 0%, rgba(9, 13, 22, 0.6) 70%, transparent 100%);
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 4px;
     }
 
     .video-progress-track {
       inline-size: 100%;
-      block-size: 5px;
-      background-color: rgba(255, 255, 255, 0.28);
-      border-radius: 999px;
-      overflow: hidden;
+      block-size: 4px;
+      background-color: rgba(255, 255, 255, 0.25);
+      border-radius: 2px;
       cursor: pointer;
+      overflow: hidden;
     }
 
     .video-progress-fill {
-      inline-size: 0%;
       block-size: 100%;
+      inline-size: 28%;
       background-color: var(--orange);
-      border-radius: 999px;
+      border-radius: 2px;
       transition: inline-size 0.1s linear;
     }
 
@@ -590,57 +664,53 @@
 
     .video-btn-group {
       display: flex;
-      gap: 6px;
       align-items: center;
+      gap: 6px;
     }
 
     .video-ctrl-btn {
-      background-color: rgba(255, 255, 255, 0.18);
-      color: var(--white);
-      border: 1px solid rgba(255, 255, 255, 0.32);
+      background-color: rgba(255, 255, 255, 0.12);
+      border: none;
+      color: var(--cream);
+      padding: 3px 7px;
       border-radius: 4px;
-      padding: 3px 8px;
-      font-size: 0.52rem;
+      font-size: 0.5rem;
       font-weight: 700;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-      transition: all 0.15s ease;
-      backdrop-filter: blur(4px);
+      gap: 3px;
+      transition: background-color 0.12s ease;
     }
 
     .video-ctrl-btn:hover {
-      background-color: var(--orange);
+      background-color: rgba(255, 255, 255, 0.25);
       color: var(--white);
-      border-color: var(--orange);
     }
 
     .video-time {
-      font-size: 0.52rem;
-      font-family: var(--font-display);
+      font-size: 0.5rem;
       font-weight: 700;
-      color: var(--cream);
-      letter-spacing: 0.04em;
+      color: #94A3B8;
+      font-variant-numeric: tabular-nums;
     }
 
-    /* Screen 2: Interactive Doubt Chat View */
+    /* --- Screen 2: Interactive Doubt Chat Screen (AI Doubt Mentor) --- */
     .view-mentor-chat {
-      background-color: #0E1526;
-      border-radius: 6px;
-      padding: 12px 14px;
+      block-size: 100%;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      block-size: 100%;
+      background-color: #0E1524;
+      padding: 10px 14px;
       box-sizing: border-box;
+      gap: 8px;
     }
 
     .mentor-profile-header {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      padding-block-end: 7px;
+      align-items: center;
+      padding-block-end: 8px;
       border-block-end: 1px solid #1E293B;
     }
 
@@ -651,103 +721,107 @@
     }
 
     .mentor-avatar {
-      inline-size: 24px;
-      block-size: 24px;
+      inline-size: 26px;
+      block-size: 26px;
       border-radius: 50%;
-      background-color: var(--orange);
+      background: linear-gradient(135deg, #7C3AED, #5458F7);
       color: var(--white);
       display: grid;
       place-items: center;
-      font-size: 0.58rem;
-      font-weight: 800;
-      border: 1.2px solid var(--ink);
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 0.62rem;
+      border: 1.5px solid var(--white);
+      box-shadow: 0 0 8px rgba(124, 58, 237, 0.6);
     }
 
     .mentor-name {
-      font-size: 0.62rem;
+      font-family: var(--font-display);
+      font-size: 0.68rem;
       font-weight: 800;
-      color: var(--cream);
+      color: var(--white);
     }
 
     .mentor-tag-pill {
-      font-size: 0.5rem;
-      font-weight: 700;
       background-color: rgba(134, 239, 172, 0.18);
       color: var(--mint);
-      padding: 2px 7px;
-      border-radius: 4px;
-      border: 1px solid var(--mint);
+      border: 1px solid rgba(134, 239, 172, 0.5);
+      border-radius: 999px;
+      padding: 2px 8px;
+      font-size: 0.48rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
     }
 
     .chat-thread-container {
+      flex: 1;
+      overflow-y: auto;
       display: flex;
       flex-direction: column;
       gap: 8px;
-      padding-block: 10px;
-      overflow-y: auto;
-      max-block-size: 195px;
+      padding-block-end: 4px;
     }
 
     .chat-bubble {
-      max-inline-size: 88%;
-      padding: 7px 10px;
-      border-radius: 7px;
-      font-size: 0.6rem;
-      font-weight: 600;
+      padding: 7px 11px;
+      border-radius: 8px;
+      font-size: 0.58rem;
       line-height: 1.35;
+      max-inline-size: 88%;
+      box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
     }
 
     .chat-bubble.student {
+      background-color: var(--cream);
+      color: var(--ink);
       align-self: flex-start;
-      background-color: #1E293B;
-      color: var(--cream);
-      border: 1px solid #334155;
+      border: 1.5px solid var(--ink);
+      border-bottom-left-radius: 2px;
     }
 
     .chat-bubble.mentor {
-      align-self: flex-end;
-      background-color: var(--violet);
+      background-color: #5458F7;
       color: var(--white);
-      border: 1px solid #7377F9;
-      box-shadow: 0 2px 8px rgba(84, 88, 247, 0.35);
+      align-self: flex-end;
+      border: 1.5px solid var(--ink);
+      border-bottom-right-radius: 2px;
     }
 
     .chat-prompt-chips {
       display: flex;
-      flex-wrap: wrap;
       gap: 6px;
-      padding-block-start: 8px;
+      flex-wrap: wrap;
+      padding-block-start: 4px;
       border-block-start: 1px solid #1E293B;
     }
 
     .prompt-chip-btn {
-      background-color: #162032;
+      background-color: #1E293B;
       color: var(--cream);
-      border: 1px solid #2B3855;
-      border-radius: 4px;
-      padding: 3.5px 8px;
-      font-size: 0.52rem;
+      border: 1px solid #334155;
+      border-radius: 999px;
+      padding: 3px 9px;
+      font-size: 0.5rem;
       font-weight: 700;
       cursor: pointer;
-      transition: all 0.15s ease;
+      transition: all 0.12s ease;
     }
 
     .prompt-chip-btn:hover {
-      background-color: var(--yellow);
-      color: var(--ink);
-      border-color: var(--ink);
+      background-color: var(--orange);
+      color: var(--white);
+      border-color: var(--orange);
     }
 
-    /* Screen 3: Important Revision Notes Screen */
+    /* --- Screen 3: Important Revision Notes Screen (AI Notes) --- */
     .view-class-notes {
-      background-color: #0E1526;
-      border-radius: 6px;
+      block-size: 100%;
+      background-color: #0E1524;
       padding: 12px 14px;
+      box-sizing: border-box;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      block-size: 100%;
-      box-sizing: border-box;
     }
 
     .notes-header-row {
@@ -843,169 +917,6 @@
       cursor: pointer;
     }
 
-    /* Screen 4: Split Hub Overview Screen */
-    .view-hub-overview {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      block-size: 100%;
-      box-sizing: border-box;
-      padding: 10px 12px;
-    }
-
-    .screen-stage {
-      position: relative;
-      margin-block: 6px;
-      display: grid;
-      grid-template-columns: 0.95fr 1.25fr;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .screen-card-reel {
-      position: relative;
-      background-color: var(--slate-dark);
-      border: 2px solid var(--cream);
-      border-radius: 7px;
-      overflow: hidden;
-      aspect-ratio: 4 / 3;
-    }
-
-    .screen-card-reel video {
-      inline-size: 100%;
-      block-size: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .screen-card-mentor {
-      position: relative;
-      background-color: var(--slate-dark);
-      border: 2px solid var(--cream);
-      border-radius: 7px;
-      padding: 10px 12px;
-      min-block-size: 115px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 6px;
-    }
-
-    .chat-msg {
-      font-size: 0.58rem;
-      font-weight: 700;
-      padding: 5px 8px;
-      border-radius: 6px;
-      line-height: 1.25;
-    }
-
-    .chat-msg.student {
-      background-color: var(--cream);
-      color: var(--ink);
-      align-self: flex-start;
-      border: 1.5px solid var(--ink);
-    }
-
-    .chat-msg.mentor {
-      background-color: var(--mint);
-      color: var(--ink);
-      align-self: flex-end;
-      border: 1.5px solid var(--ink);
-    }
-
-    .screen-bottom {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      gap: 8px;
-      padding-block-start: 8px;
-      border-block-start: 1px solid #1E293B;
-    }
-
-    .screen-proof {
-      font-size: 0.54rem;
-      font-weight: 600;
-      color: var(--cream);
-      line-height: 1.3;
-      text-align: start;
-    }
-
-    .screen-proof strong {
-      color: var(--yellow);
-      display: block;
-      font-family: var(--font-display);
-      font-size: 0.6rem;
-      font-weight: 800;
-    }
-
-    .screen-circle-cta {
-      inline-size: 48px;
-      block-size: 48px;
-      border-radius: 50%;
-      background-color: var(--cream);
-      color: var(--ink);
-      border: 2px solid var(--yellow);
-      box-shadow: 0 0 0 2px var(--ink);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      text-decoration: none;
-      font-family: var(--font-display);
-      font-weight: 900;
-      font-size: 0.48rem;
-      line-height: 1.1;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: transform 0.15s ease, background-color 0.15s ease;
-    }
-
-    .screen-circle-cta:hover {
-      background-color: var(--yellow);
-      transform: scale(1.06);
-    }
-
-    .screen-mini-card {
-      justify-self: end;
-      background-color: var(--cream);
-      color: var(--ink);
-      border: 1.5px solid var(--ink);
-      border-radius: 6px;
-      padding: 3px 6px;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .mini-card-title {
-      font-family: var(--font-display);
-      font-weight: 900;
-      font-size: 0.54rem;
-      color: var(--ink);
-    }
-
-    .mini-card-status {
-      font-size: 0.48rem;
-      font-weight: 800;
-      color: var(--ink);
-      background-color: var(--mint);
-      padding: 1px 4px;
-      border-radius: 3px;
-      border: 1px solid var(--ink);
-    }
-
-    .bezel-chin {
-      text-align: center;
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 0.46rem;
-      letter-spacing: 0.18em;
-      color: #64748B;
-      padding-block-start: 4px;
-    }
-
     /* True 3D Trapezoidal Open MacBook Pro Base (SVG Hardware Deck) */
     .laptop-base-svg {
       inline-size: 100%;
@@ -1014,6 +925,36 @@
       margin-block-start: -3px;
       z-index: 3;
       filter: drop-shadow(0px 10px 0px var(--ink));
+    }
+
+    /* Built-in Interactive Demo Toast Notification */
+    .demo-toast {
+      position: fixed;
+      inset-block-end: 24px;
+      inset-inline-start: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background-color: var(--yellow);
+      color: var(--ink);
+      border: 3px solid var(--ink);
+      box-shadow: 6px 6px 0px var(--ink);
+      border-radius: 999px;
+      padding: 10px 22px;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(0.78rem, 0.72rem + 0.3vw, 0.92rem);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
+    }
+
+    .demo-toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+      pointer-events: auto;
     }
   }
 
@@ -1029,21 +970,25 @@
         text-align: center;
         padding-inline-start: 0;
       }
-      .headline-stack {
+      .single-h1-heading {
         align-items: center;
+      }
+      .banner-subheadline {
+        text-align: center;
       }
       .value-points-list {
         align-items: flex-start;
         text-align: start;
       }
+      .left-cta-group {
+        align-items: center;
+      }
       .left-cta-row {
         justify-content: center;
       }
-    }
-
-    @media (max-width: 680px) {
-      .screen-stage {
-        grid-template-columns: 1fr;
+      .trust-micro-note {
+        justify-content: center;
+        text-align: center;
       }
     }
 
@@ -1059,9 +1004,9 @@
 </head>
 <body>
 
-<section class="banner-canvas" aria-label="Paathshala Guided Learning After Class Horizontal Banner">
+<section class="banner-canvas" aria-label="Paathshala 24/7 AI Guided Learning After Class Horizontal Banner">
 
-  <!-- 1. Top-Left Organic Petal Burst (Exact Reference Motif in Paathshala Gold + Ink Outline) -->
+  <!-- 1. Top-Left Organic Petal Burst -->
   <svg class="corner-burst" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <path d="M20 -10 C55 -10, 145 10, 155 38 C165 65, 95 62, 65 55 C115 72, 185 95, 175 125 C165 152, 95 115, 58 92 C92 128, 128 178, 102 192 C78 204, 48 145, 32 105 C35 148, 25 195, 2 192 C-18 188, -5 130, 0 88 L-20 88 L-20 -10 Z"
           fill="#FFD24A" stroke="#0F172A" stroke-width="5" stroke-linejoin="round" />
@@ -1071,43 +1016,58 @@
   <!-- Horizontal 2-Column Main Stage -->
   <div class="banner-body">
 
-    <!-- Left Column: 3-Tier Stacked Headline + Subcopy + CTA -->
+    <!-- Left Column: Outcome-Driven Headline + Mitra AI Subcopy + Bullets + Dual CTA -->
     <header class="left-copy-col">
-      <div class="headline-stack">
-        <h1 class="hl-tier-1">Too Shy to Ask</h1>
-        <div class="hl-tier-2">in Class?</div>
-        <div class="hl-tier-3">Clear It After!</div>
+      <div class="ai-eyebrow-pill">
+        <span class="sparkle" aria-hidden="true">✨</span>
+        <span>Free for Paathshala students [confirm]</span>
+        <span class="pill-divider" aria-hidden="true">|</span>
+        <span>Safe and DPDP compliant</span>
       </div>
 
-      <ul class="value-points-list" aria-label="Key Guided Learning benefits">
+      <h1 class="single-h1-heading">
+        <span class="h1-hook">Class Moved Too Fast?</span>
+        <span class="h1-badge-highlight">Meet Mitra, Your 24/7 AI Tutor</span>
+      </h1>
+
+      <p class="banner-subheadline">
+        Step-by-step homework help and doubt solving for Classes [6 to 12] in Maths, Science and more. Built for CBSE, ICSE and State Board students.
+      </p>
+
+      <ul class="value-points-list" aria-label="Key Mitra AI Guided Learning benefits">
         <li class="value-point-item">
           <span class="point-check-badge" aria-hidden="true">✓</span>
-          <span class="point-text"><strong>Important Notes:</strong> Chapter revision sheets &amp; formula summaries</span>
+          <span class="point-text"><strong>Homework help at 11 PM:</strong> Stuck on a sum? Mitra explains every step, so you learn the method, not just the answer.</span>
         </li>
         <li class="value-point-item">
           <span class="point-check-badge" aria-hidden="true">✓</span>
-          <span class="point-text"><strong>60s Concept Clips:</strong> Bite-sized visual animations for tough topics</span>
+          <span class="point-text"><strong>60-second concept reels:</strong> Understand tough chapters and formulas in a minute, not a 1-hour video.</span>
         </li>
         <li class="value-point-item">
           <span class="point-check-badge" aria-hidden="true">✓</span>
-          <span class="point-text"><strong>Zero Teacher Fear:</strong> Doubts cleared 1-on-1 without asking in class</span>
+          <span class="point-text"><strong>Ask as many times as you need:</strong> Mitra never gets tired of questions, so no doubt is too small.</span>
         </li>
         <li class="value-point-item">
           <span class="point-check-badge" aria-hidden="true">✓</span>
-          <span class="point-text"><strong>After-Class Care:</strong> Complete guided support the moment school ends</span>
+          <span class="point-text"><strong>Revision notes that save themselves:</strong> Chapter summaries and key formulas, ready for exam week.</span>
         </li>
       </ul>
 
-      <div class="left-cta-row">
-        <a href="/landing.html" class="primary-cta-btn">
-          <span>Book Free 1-on-1 Session</span>
-          <span aria-hidden="true">➔</span>
-        </a>
+      <div class="left-cta-group">
+        <div class="left-cta-row">
+          <button type="button" class="primary-cta-btn" onclick="handleDummyCta(event, 'Ask Mitra Your First Doubt, Free')">
+            <span>Ask Mitra Your First Doubt, Free</span>
+            <span aria-hidden="true">➔</span>
+          </button>
+        </div>
+        <div class="cta-secondary-note">
+          <span>Sign in with your phone number. No card needed. [confirm]</span>
+        </div>
       </div>
 
       <div class="trust-micro-note">
         <span class="trust-micro-dot" aria-hidden="true"></span>
-        <span>Trusted by 10,000+ Students &amp; Parents · <a href="/landing.html" class="trust-micro-domain">paathshala.app</a></span>
+        <span>CBSE, ICSE and State Boards &nbsp;|&nbsp; No ads profiling children &nbsp;|&nbsp; Real Paathshala teachers when you need one</span>
       </div>
     </header>
 
@@ -1115,28 +1075,24 @@
     <div class="right-laptop-col">
 
       <!-- Prominent External Navigation Bar Outside the Laptop -->
-      <nav class="laptop-external-nav" role="tablist" aria-label="Explore Guided Learning Features">
+      <nav class="laptop-external-nav" role="tablist" aria-label="Explore Mitra AI Features">
         <button type="button" class="ext-nav-tab active" role="tab" id="tab-reel" aria-selected="true" aria-controls="view-reel" data-screen="reel">
           <span class="ext-tab-icon">⚡</span>
-          <span>60s Concept Reel</span>
+          <span>Concept Reels</span>
         </button>
         <button type="button" class="ext-nav-tab" role="tab" id="tab-mentor" aria-selected="false" aria-controls="view-mentor" data-screen="mentor">
-          <span class="ext-tab-icon">💬</span>
-          <span>1:1 Doubt Mentor</span>
+          <span class="ext-tab-icon">🤖</span>
+          <span>Doubt Solver</span>
         </button>
         <button type="button" class="ext-nav-tab" role="tab" id="tab-notes" aria-selected="false" aria-controls="view-notes" data-screen="notes">
           <span class="ext-tab-icon">📝</span>
-          <span>Smart Class Notes</span>
-        </button>
-        <button type="button" class="ext-nav-tab" role="tab" id="tab-hub" aria-selected="false" aria-controls="view-hub" data-screen="hub">
-          <span class="ext-tab-icon">🎛️</span>
-          <span>Study Dashboard</span>
+          <span>Revision Notes</span>
         </button>
       </nav>
 
       <div class="laptop-assembly">
 
-        <!-- Open Laptop Lid & Display Bezel (82% width to match top of trapezoid base) -->
+        <!-- Open Laptop Lid & Display Bezel -->
         <div class="laptop-lid">
           <div class="laptop-bezel">
             <div class="webcam-notch" aria-hidden="true">
@@ -1148,7 +1104,7 @@
               <!-- Screen Views Container -->
               <div class="screen-views-wrapper">
 
-                <!-- 1. Full Detailed Video Screen (Centered 9:16 Reel fitting the screen with ambient mode) -->
+                <!-- 1. Full Detailed Video Screen (Centered 9:16 Reel fitting the screen with ambient mode & study hub) -->
                 <div class="screen-view active" id="view-reel" role="tabpanel" aria-labelledby="tab-reel">
                   <div class="view-full-video">
 
@@ -1160,11 +1116,17 @@
                       <video id="fullReelVideo" src="reel.mp4" poster="reel-poster.jpg" autoplay loop muted playsinline></video>
                     </div>
 
-                    <!-- Top Floating Header Bar -->
+                    <!-- Top Floating Header Bar (Topic + Hub Mastery Status) -->
                     <div class="video-overlay-top">
-                      <div class="video-topic-badge">
-                        <span>⚡ Concept Reel:</span>
-                        <span>Nuclear Strong Force</span>
+                      <div class="video-top-left-group">
+                        <div class="video-topic-badge">
+                          <span>⚡ 60s Reel:</span>
+                          <span>Nuclear Strong Force</span>
+                        </div>
+                        <div class="video-hub-badge">
+                          <span class="hub-status-dot" aria-hidden="true"></span>
+                          <span>Today: 3/3 Doubts Cleared</span>
+                        </div>
                       </div>
                       <div class="video-top-right-group">
                         <button type="button" class="video-mode-toggle-btn" id="videoModeToggleBtn" title="Toggle between Fit and Fill view">
@@ -1200,42 +1162,42 @@
                   </div>
                 </div>
 
-                <!-- 2. Interactive Doubt Chat Screen -->
+                <!-- 2. Interactive Doubt Chat Screen (AI Doubt Mentor) -->
                 <div class="screen-view" id="view-mentor" role="tabpanel" aria-labelledby="tab-mentor">
                   <div class="view-mentor-chat">
                     <div class="mentor-profile-header">
                       <div class="mentor-id-group">
-                        <div class="mentor-avatar">AS</div>
+                        <div class="mentor-avatar">AI</div>
                         <div>
-                          <div class="mentor-name">Prof. Amit Sharma · Physics Mentor</div>
+                          <div class="mentor-name">Mitra · AI Doubt Solver</div>
                         </div>
                       </div>
-                      <span class="mentor-tag-pill">🛡️ 100% Judgment-Free</span>
+                      <span class="mentor-tag-pill">🛡️ 100% Patient &amp; Friendly</span>
                     </div>
 
                     <div class="chat-thread-container" id="mentorChatStream">
                       <div class="chat-bubble student">
-                        "Sir, I was too shy to ask in class: why don't protons repel each other in the nucleus?"
+                        "Teacher went fast today: why don't positive protons repel each other in the nucleus?"
                       </div>
                       <div class="chat-bubble mentor">
-                        "Never hesitate! The Strong Nuclear Force is 137x stronger than electrostatic repulsion at distances &lt; 1 Fermi. It locks them tight! 💡"
+                        "Hi! I'm Mitra. Don't worry—let's break it down step-by-step: The Strong Nuclear Force is 137x stronger than electric repulsion at subatomic range. It glues them together tight! 💡"
                       </div>
                     </div>
 
                     <div class="chat-prompt-chips">
-                      <button type="button" class="prompt-chip-btn" data-q="neutrons">⚡ Why do neutrons matter?</button>
-                      <button type="button" class="prompt-chip-btn" data-q="atomic">🔬 What if Z &gt; 82?</button>
-                      <button type="button" class="prompt-chip-btn" data-q="gravity">🛡️ Stronger than gravity?</button>
+                      <button type="button" class="prompt-chip-btn" data-q="neutrons">⚡ Ask Mitra: Why do neutrons matter?</button>
+                      <button type="button" class="prompt-chip-btn" data-q="atomic">🔬 Ask Mitra: What if Z &gt; 82?</button>
+                      <button type="button" class="prompt-chip-btn" data-q="gravity">🛡️ Ask Mitra: Stronger than gravity?</button>
                     </div>
                   </div>
                 </div>
 
-                <!-- 3. Important Revision Notes Screen -->
+                <!-- 3. Important Revision Notes Screen (AI Generated) -->
                 <div class="screen-view" id="view-notes" role="tabpanel" aria-labelledby="tab-notes">
                   <div class="view-class-notes">
                     <div class="notes-header-row">
                       <span class="notes-title">📖 Chapter 4: Nuclei &amp; Strong Forces</span>
-                      <span class="notes-badge">CBSE &amp; ICSE Class 12</span>
+                      <span class="notes-badge">✨ Exam-Ready Notes · Class 12</span>
                     </div>
 
                     <div class="notes-formula-grid">
@@ -1250,57 +1212,14 @@
                     </div>
 
                     <ul class="notes-bullets-list">
-                      <li>Strong Nuclear Force is charge-independent (acts equally between p-p, n-n, p-n).</li>
+                      <li><strong>Key Takeaway:</strong> Strong Nuclear Force operates equally on p-p, n-n, and p-n pairs.</li>
                       <li>Operates at femtometre range (~10⁻¹⁵ m) and completely overpowers electric repulsion.</li>
-                      <li>Saturated force: only attracts immediate nearest neighbor nucleons.</li>
+                      <li>Saturated force: only attracts nearest neighbor nucleons.</li>
                     </ul>
 
                     <div class="notes-footer-row">
-                      <a href="/landing.html" class="notes-download-btn">📥 Download 1-Page Summary PDF</a>
+                      <button type="button" class="notes-download-btn" onclick="handleDummyCta(event, 'Download Class 12 Revision Sheet PDF')">📥 Download 1-Page Summary PDF</button>
                       <span style="font-size:0.52rem; color:#94A3B8; font-weight:700;">Revision Sheet #04</span>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- 4. Split Hub Overview Screen -->
-                <div class="screen-view" id="view-hub" role="tabpanel" aria-labelledby="tab-hub">
-                  <div class="view-hub-overview">
-                    <div class="screen-stage">
-                      <div class="screen-card-reel">
-                        <video src="reel.mp4" poster="reel-poster.jpg" autoplay loop muted playsinline></video>
-                      </div>
-                      <div class="screen-card-mentor">
-                        <div class="chat-msg student">
-                          "I was too shy to ask in class… why don't protons repel each other?"
-                        </div>
-                        <div class="chat-msg mentor">
-                          "Great question! Strong Nuclear Force locks them tight in 60s! 💡"
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="screen-bottom">
-                      <div class="screen-proof">
-                        <strong>Same-Day Doubt Clearing</strong>
-                        1-on-1 Mentor · Zero Classroom Fear
-                      </div>
-                      <a href="/landing.html" class="screen-circle-cta">
-                        <span>BOOK</span>
-                        <span>FREE 1:1</span>
-                      </a>
-                      <div class="screen-mini-card">
-                        <svg width="22" height="22" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-                          <circle cx="24" cy="24" r="21" fill="#5458F7" stroke="#0F172A" stroke-width="3"/>
-                          <circle cx="24" cy="19" r="9" fill="#FF5A36" stroke="#0F172A" stroke-width="3"/>
-                          <circle cx="21" cy="18" r="2.2" fill="#FFFFFF"/>
-                          <circle cx="27" cy="18" r="2.2" fill="#FFFFFF"/>
-                          <path d="M21 22 Q24 25 27 22" stroke="#0F172A" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                        <div>
-                          <div class="mini-card-title">Class Doubts</div>
-                          <div class="mini-card-status">✓ 3/3 Cleared</div>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -1312,7 +1231,7 @@
           </div>
         </div>
 
-        <!-- True 3D Trapezoidal Open Laptop Keyboard Deck, Trackpad & Front Lip (SVG) -->
+        <!-- True 3D Trapezoidal Open MacBook Pro Base (SVG Hardware Deck) -->
         <svg class="laptop-base-svg" viewBox="0 0 1000 190" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <!-- Top Hinge Shadow & Cylinder (Matches 82% Lid Width: x=90 to x=910) -->
           <polygon points="90,2 910,2 990,158 10,158" fill="#E2E8F0" stroke="#0F172A" stroke-width="6" stroke-linejoin="round"/>
@@ -1407,6 +1326,12 @@
 
 </section>
 
+<!-- Floating Demo Toast Notification -->
+<div class="demo-toast" id="demoToast" role="alert" aria-live="polite">
+  <span style="font-size: 1.1rem;">✨</span>
+  <span id="demoToastText">Prototype Demo Action</span>
+</div>
+
 <script>
   // --- External Navigation Tabs Architecture ---
   const screenTabs = document.querySelectorAll('.ext-nav-tab');
@@ -1415,7 +1340,6 @@
   const ambientVideo = document.getElementById('ambientReelVideo');
 
   function activateScreen(screenId) {
-    // Deactivate all tabs and views
     screenTabs.forEach((tab) => {
       const isTarget = tab.getAttribute('data-screen') === screenId;
       tab.classList.toggle('active', isTarget);
@@ -1427,14 +1351,12 @@
       view.classList.toggle('active', isTarget);
     });
 
-    // Autoplay video when reel screen is active
     if (screenId === 'reel') {
       if (fullVideo && fullVideo.paused) fullVideo.play().catch(() => {});
       if (ambientVideo && ambientVideo.paused) ambientVideo.play().catch(() => {});
     }
   }
 
-  // Tab click events
   screenTabs.forEach((tab) => {
     tab.addEventListener('click', () => {
       const screenId = tab.getAttribute('data-screen');
@@ -1478,7 +1400,6 @@
   }
 
   if (fullVideo) {
-    // Keep ambient video in sync
     if (ambientVideo) {
       fullVideo.addEventListener('play', () => ambientVideo.play().catch(() => {}));
       fullVideo.addEventListener('pause', () => ambientVideo.pause());
@@ -1486,7 +1407,6 @@
       fullVideo.addEventListener('seeked', () => { ambientVideo.currentTime = fullVideo.currentTime; });
     }
 
-    // Play/Pause toggle
     function togglePlay() {
       if (fullVideo.paused) {
         fullVideo.play().then(() => {
@@ -1504,7 +1424,6 @@
 
     if (playBtn) playBtn.addEventListener('click', togglePlay);
 
-    // Mute/Unmute toggle
     if (muteBtn) {
       muteBtn.addEventListener('click', () => {
         fullVideo.muted = !fullVideo.muted;
@@ -1514,7 +1433,6 @@
       });
     }
 
-    // Replay button
     if (replayBtn) {
       replayBtn.addEventListener('click', () => {
         fullVideo.currentTime = 0;
@@ -1527,7 +1445,6 @@
       });
     }
 
-    // Time update listener
     fullVideo.addEventListener('timeupdate', () => {
       if (fullVideo.duration) {
         const percent = (fullVideo.currentTime / fullVideo.duration) * 100;
@@ -1538,7 +1455,6 @@
       }
     });
 
-    // Click on progress track to seek
     if (progressTrack) {
       progressTrack.addEventListener('click', (e) => {
         const rect = progressTrack.getBoundingClientRect();
@@ -1552,20 +1468,20 @@
     }
   }
 
-  // --- Interactive Doubt Chat Prompts ---
+  // --- Interactive AI Doubt Chat Prompts ---
   const chatStream = document.getElementById('mentorChatStream');
   const chatReplies = {
     neutrons: {
       q: "Why do neutrons matter?",
-      a: "Neutrons provide extra Strong Nuclear Force attraction without adding repulsive charge, acting as the 'nuclear glue' that stabilizes the core! 🧪"
+      a: "Neutrons provide strong nuclear attraction without electrical repulsion, acting as the 'nuclear glue' that stabilizes the core! 🧪"
     },
     atomic: {
       q: "What if Z > 82?",
-      a: "For bismuth and heavier atoms, the electrostatic repulsion overpowers the short-range strong force, making the nucleus naturally radioactive! ☢️"
+      a: "For bismuth and heavier atoms, electrostatic repulsion overpowers the short-range strong force, making the nucleus naturally radioactive! ☢️"
     },
     gravity: {
       q: "Stronger than gravity?",
-      a: "Infinitely so! The Strong Nuclear Force is 10³⁸ times stronger than gravity at nuclear distances. That's why atomic nuclei never fall apart on their own! 🚀"
+      a: "Infinitely so! The Strong Nuclear Force is 10³⁸ times stronger than gravity at nuclear scale. That's why atomic nuclei never fall apart! 🚀"
     }
   };
 
@@ -1575,7 +1491,6 @@
       const item = chatReplies[qKey];
       if (!item || !chatStream) return;
 
-      // Add user question
       const studentBubble = document.createElement('div');
       studentBubble.className = 'chat-bubble student';
       studentBubble.textContent = `"${item.q}"`;
@@ -1583,7 +1498,6 @@
 
       chatStream.scrollTop = chatStream.scrollHeight;
 
-      // Mentor reply after brief pause
       setTimeout(() => {
         const mentorBubble = document.createElement('div');
         mentorBubble.className = 'chat-bubble mentor';
@@ -1593,6 +1507,21 @@
       }, 350);
     });
   });
+
+  // --- Built-in Dummy Action Toast Handler ---
+  function handleDummyCta(event, actionName) {
+    if (event) event.preventDefault();
+    const toast = document.getElementById('demoToast');
+    const toastText = document.getElementById('demoToastText');
+    if (toast && toastText) {
+      toastText.textContent = `✨ Demo: "${actionName}" triggered (Safe Prototype · Real site untouched)`;
+      toast.classList.add('show');
+      clearTimeout(window._toastTimeout);
+      window._toastTimeout = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3200);
+    }
+  }
 </script>
 </body>
 </html>

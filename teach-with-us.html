@@ -8,6 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Fira+Code:wght@500;700&display=swap" rel="stylesheet">
+    <link href="/static/images/new-logo-emblem.svg" rel="icon" type="image/svg+xml">
+    <link href="/static/images/new-logo-emblem.png" rel="icon" type="image/png">
+    <link rel="apple-touch-icon" href="/static/images/new-logo-emblem.png">
     
     <style>
         :root {
@@ -195,9 +198,9 @@
         }
 
         .brand-emblem {
-            width: 38px;
-            height: 38px;
-            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
             background: #FFFFFF;
             border: 2px solid var(--paathshala-dark);
             box-shadow: 2.5px 2.5px 0px var(--paathshala-dark);
@@ -205,11 +208,22 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+            overflow: hidden;
+            padding: 3px;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
         }
 
+        .brand-wrap:hover .brand-emblem {
+            transform: translate(-1px, -1px);
+            box-shadow: 3.5px 3.5px 0px var(--paathshala-dark);
+        }
+
+        .brand-emblem img,
         .brand-emblem svg {
-            width: 26px;
-            height: 26px;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
         }
 
         .brand-text {
@@ -1575,12 +1589,9 @@
     <!-- FIXED TOP NAVBAR -->
     <nav>
         <div class="container nav-inner">
-            <a href="https://paathshala.app/" class="brand-wrap">
+            <a href="https://paathshala.app/" class="brand-wrap" title="Paathshala Home">
                 <div class="brand-emblem">
-                    <svg viewBox="-5.5 -2.5 45 45" fill="none">
-                        <circle cx="16.827" cy="20.95" r="21.5" fill="#FFFFFF" />
-                        <path d="M15.3789 1.56641C18.3485 -0.00397233 21.8239 -0.319563 25.0273 0.691406V0.692383C28.099 1.67819 30.6634 3.82668 32.1709 6.67871V6.67969C33.65 9.5688 33.9475 12.9198 33.001 16.0244L33 16.0273C32.7663 16.8763 32.3452 17.8593 31.7959 18.7578C31.2461 19.6571 30.5729 20.4651 29.8379 20.9727L29.8301 20.9785L29.8232 20.9854C29.2171 21.5856 28.6251 22.154 27.9209 22.6201L27.9131 22.626C27.417 23.0235 26.8435 23.281 26.2578 23.5615C23.8896 24.6956 21.2532 25.014 18.6572 25.3838C17.5223 25.5455 16.3713 25.7405 15.2402 25.874L15.1436 25.8857V25.9824C15.1382 26.9792 15.125 28.0164 15.1436 29.0146V29.0195C15.2326 30.5471 15.239 32.7448 14.9053 34.1934C13.8023 38.9792 8.91801 41.328 4.48145 39.2656H4.48047C3.48 38.8053 2.75252 38.2262 2.0791 37.3516L2.07324 37.3457L1.92285 37.1709C0.397689 35.3408 -0.21388 32.689 0.275391 30.3652L0.167969 30.3418L0.276367 30.3652L0.277344 30.3525C0.278271 30.3429 0.278388 30.3323 0.279297 30.3223C0.903668 26.8641 3.29994 24.1185 6.36719 22.4961C6.57023 22.3887 7.15533 22.1484 7.72852 21.9053C8.01263 21.7848 8.29222 21.6643 8.51465 21.5615C8.62571 21.5102 8.72387 21.4623 8.80176 21.4209C8.87621 21.3814 8.94258 21.3425 8.98145 21.3076L9.01953 21.2734L9.01758 21.2227C8.99171 20.3933 8.98483 19.563 8.99609 18.7334C9.00396 17.9678 8.98779 17.1376 8.97266 16.2813C8.95751 15.4242 8.94299 14.5395 8.95312 13.6621C8.97343 11.9056 9.09309 10.1855 9.5 8.77832C10.3637 5.7917 12.3812 3.2335 15.1123 1.71094L15.3789 1.56641Z" fill="#5F5AF6" stroke="black" stroke-width="0.22"/>
-                    </svg>
+                    <img src="/static/images/new-logo-emblem.svg" alt="Paathshala Logo" class="brand-logo-img">
                 </div>
                 <div class="brand-text">
                     <span class="brand-title">Paathshala</span>
@@ -2112,15 +2123,12 @@
     <footer>
         <div class="container">
             <div class="footer-grid">
-                <div class="brand-wrap">
+                <a href="https://paathshala.app/" class="brand-wrap" title="Paathshala Home">
                     <div class="brand-emblem">
-                        <svg viewBox="-5.5 -2.5 45 45" fill="none">
-                            <circle cx="16.827" cy="20.95" r="21.5" fill="#FFFFFF" />
-                            <path d="M15.3789 1.56641C18.3485 -0.00397233 21.8239 -0.319563 25.0273 0.691406V0.692383C28.099 1.67819 30.6634 3.82668 32.1709 6.67871V6.67969C33.65 9.5688 33.9475 12.9198 33.001 16.0244L33 16.0273C32.7663 16.8763 32.3452 17.8593 31.7959 18.7578C31.2461 19.6571 30.5729 20.4651 29.8379 20.9727L29.8301 20.9785L29.8232 20.9854C29.2171 21.5856 28.6251 22.154 27.9209 22.6201L27.9131 22.626C27.417 23.0235 26.8435 23.281 26.2578 23.5615C23.8896 24.6956 21.2532 25.014 18.6572 25.3838C17.5223 25.5455 16.3713 25.7405 15.2402 25.874L15.1436 25.8857V25.9824C15.1382 26.9792 15.125 28.0164 15.1436 29.0146V29.0195C15.2326 30.5471 15.239 32.7448 14.9053 34.1934C13.8023 38.9792 8.91801 41.328 4.48145 39.2656H4.48047C3.48 38.8053 2.75252 38.2262 2.0791 37.3516L2.07324 37.3457L1.92285 37.1709C0.397689 35.3408 -0.21388 32.689 0.275391 30.3652L0.167969 30.3418L0.276367 30.3652L0.277344 30.3525C0.278271 30.3429 0.278388 30.3323 0.279297 30.3223C0.903668 26.8641 3.29994 24.1185 6.36719 22.4961C6.57023 22.3887 7.15533 22.1484 7.72852 21.9053C8.01263 21.7848 8.29222 21.6643 8.51465 21.5615C8.62571 21.5102 8.72387 21.4623 8.80176 21.4209C8.87621 21.3814 8.94258 21.3425 8.98145 21.3076L9.01953 21.2734L9.01758 21.2227C8.99171 20.3933 8.98483 19.563 8.99609 18.7334C9.00396 17.9678 8.98779 17.1376 8.97266 16.2813C8.95751 15.4242 8.94299 14.5395 8.95312 13.6621C8.97343 11.9056 9.09309 10.1855 9.5 8.77832C10.3637 5.7917 12.3812 3.2335 15.1123 1.71094L15.3789 1.56641Z" fill="#5F5AF6" stroke="black" stroke-width="0.22"/>
-                        </svg>
+                        <img src="/static/images/new-logo-emblem.svg" alt="Paathshala Logo" class="brand-logo-img">
                     </div>
                     <span class="brand-title">Paathshala</span>
-                </div>
+                </a>
 
                 <div style="font-size: 14px; font-weight: 700; color: var(--paathshala-muted);">
                     Questions? Write to <a href="mailto:mentors@paathshala.app" style="color: var(--paathshala-purple); text-decoration: underline;">mentors@paathshala.app</a>
